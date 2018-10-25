@@ -1,0 +1,18 @@
+#Mad Lib
+holiday = input ("Whats a holiday? >_ ")
+verb = input ("What's a verb? >_ ")
+plural_noun = input ("What's a plural noun? >_")
+person = input ("What's a persons name? >_")
+thing = input ("What's a thing? >_")
+thing2 = input ("What's another thing? >_")
+feeling = input ("Name a feeling. >_")
+food = input ("List a food item. >_")
+drink = input ("list a drink item. >_")
+verb2 = input ("List another verb. >_")
+person2 = input ("List another person. >_")
+thing3 = input ("List another thing >_")
+
+print("We are so excited it's %s!" % holiday)
+print("After we %s %s with my friend," % (verb, plural_noun))
+print ("%s, we're going on a %s ride and through a %s Maze" % (person, thing, thing2))
+print ("We're going to be %s after, so dinner is next!" )
