@@ -1,11 +1,10 @@
+"""
 print("Hello world")
-
 
 #this is a comment
 #1. make notes to myself
 #2. Comment pieces of code that do not work
 #3. make my code easier to read
-
 
 print ("Look at what happens her. Is there any space?")
 print()
@@ -57,3 +56,49 @@ print("I have a car called %s. It is a %s." % (car_name, car_type))
 real_age = int(input("How old are you again?"))
 hidden_age = real_age + 5
 print("This is your real age: %d" % hidden_age)
+"""
+
+"""
+This is a multi-line comment
+anything between the "s is not run
+"""
+
+
+#functions
+def say_it():
+    print("Hello World!")
+
+
+say_it()
+say_it()
+say_it()
+
+# f(X) = 2x + 3
+def f(x):
+    print(2*x + 3)
+f(1)
+f(5)
+f(5000)
+
+print()
+
+# Distance Formula
+def distance(x1, y1, x2, y2):
+    dist = ((x1-x2)**2 + (y2-y1)**2)**(1/2)
+    print(dist)
+
+distance(0,0,3,4)
+distance(0,0,5,12)
+
+#Loops
+for i in range(5): # This gives the numbers 0-4
+    say_it()
+
+for i in range(10):
+    print(i)
+
+
+for i in range(5): #This is going back to the f(x)=2x+3
+    f(i)
+
+    #while loops
