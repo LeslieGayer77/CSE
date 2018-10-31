@@ -100,5 +100,45 @@ for i in range(10):
 
 for i in range(5): #This is going back to the f(x)=2x+3
     f(i)
+print()
+#while loops
+a = 1
+while a < 10:
+    print(a)
+    a += 2  # This is the same as saying a = a + 1
 
-    #while loops
+
+"""
+At the moment you START the loop:
+Fir loops - Use when you know EXACTLY how many interations
+While loops - Use when you DONT know how many iterations
+"""
+
+print()
+
+# Control structures (If statements)
+sunny = False
+if sunny:
+    print("Go Outside!")
+
+def grade_calc(percentage):
+    if percentage >=90:
+        return "A"
+    elif percentage >=80:
+        return "B"
+    elif percentage >= 70:
+        return "C"
+    elif percentage >= 60:
+        return "D"
+    else:
+        return "F"
+
+
+your_grade = grade_calc(82)
+print(your_grade)
+
+print()
+
+# "Random" Notes
+import random   # This should be on line one
+print(random.randint(0, 100))
