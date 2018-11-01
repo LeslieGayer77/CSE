@@ -107,6 +107,7 @@ while a < 10:
     print(a)
     a += 2  # This is the same as saying a = a + 1
 
+guesses = 5
 
 """
 At the moment you START the loop:
@@ -142,3 +143,15 @@ print()
 # "Random" Notes
 import random   # This should be on line one
 print(random.randint(0, 100))
+
+print()
+
+# Equality Statements
+print(5>3)
+print(5>=3)
+print(3==3)
+print(3!=4)
+"""
+a=3 # A is set to 3
+a==3 # Is a equal to 3
+"""
