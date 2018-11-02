@@ -1,9 +1,7 @@
-maximim = 10
-minimum = 1
+#Guess Game
 number = 7
-
 guesses = 5
-while guesses >0:
+while guesses > 0:
     num = int(input("What's a number from 1 to 10?"))
     if num >= 11:
         print("WAY TOO HIGH. Follow the directions")
@@ -17,6 +15,9 @@ while guesses >0:
     elif num == 7:
         print("Correct")
         guesses = 0
+print()
+if guesses == 0:
+    print ("You lose")
 
 print("Game end.")
 
