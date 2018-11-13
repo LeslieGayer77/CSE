@@ -1,7 +1,32 @@
-passage = ("Lets Go Tigers!")
+import random
+
+word_bank = ["cat", "box", "dog"]
+word = random.choice(word_bank)
+letters_correct = []
+letters_incorrect = []
 guesses = 10
 while guesses > 0:
     letter = (input("What's a letter?"))
+    if letter.lower() in letters_correct:
+        print("Yes, that's in the word, but you already said that!")
+    elif letter in word:
+        print("Yes, that's correct")
+        list.appends(letters_correct, letter)
+        guesses = guesses - 1
+    elif letter.lower() in letters_incorrect:
+        print("You already tried that letter;it was wrong.")
+    else:
+        print("Nope.")
+        list.append(letters_incorrect, letter)
+        guesses = guesses - 1
+    print("%s guesses left" % guesses)
+    print()
+
+print("The word was %s" % word)
+
+
+"""passage = ("Lets Go Tigers!")
+
     if letter == "A":
         print("Nope")
         guesses = guesses - 1
@@ -59,18 +84,19 @@ while guesses > 0:
         guesses = guesses - 1
     elif letter == "L":
         print("Yep!")
-    if letter == "E":
+    elif letter == "E":
         print("Yep!")
-    if letter == "T":
+    elif letter == "T":
         print("Yep!")
-    if letter == "S":
+    elif letter == "S":
         print("Yep!")
-    if letter == "G":
+    elif letter == "G":
         print("Yep!")
-    if letter == "O":
+    elif letter == "O":
         print("Yep!")
-    if letter == "R":
+    elif letter == "R":
         print("Yep!")
-    if letter == "I":
+    elif letter == "I":
         print("Yep!")
-print("Lets Go Tigers!")
+    
+print("Lets Go Tigers!")"""

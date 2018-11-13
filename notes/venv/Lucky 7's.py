@@ -4,10 +4,11 @@ money = 15
 dice1 = 0
 dice2 = 0
 lose = True
-round = 0
+round = 1
 highscore = 0
 best_round = 0
 while money > 0:
+    print("Round %s" % round)
     num = int(input("What are you betting?"))
     money = money - num
     dice1 = random.randint(1, 6)
@@ -21,7 +22,12 @@ while money > 0:
         print("- %s" % num)
     print("You have %s dollars left" % money)
     print()
-
+    if highscore < money:
+        highscore = money
+        best_round = round
+    round = round + 1
+print("You lasted %s Rounds" % round)
+print("You should have stopped when you had %s in round %s" % (highscore, best_round))
 print()
 if lose == True:
     print("You dont have anymore money")
