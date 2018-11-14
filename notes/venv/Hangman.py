@@ -1,17 +1,17 @@
 import random
 
-word_bank = ["cat", "box", "dog"]
+word_bank = ["ThatsNotVeryCashMoneyOfYou"]
 word = random.choice(word_bank)
 letters_correct = []
 letters_incorrect = []
-guesses = 10
+guesses = 15
 while guesses > 0:
     letter = (input("What's a letter?"))
     if letter.lower() in letters_correct:
         print("Yes, that's in the word, but you already said that!")
-    elif letter in word:
+    elif letter in word.lower():
         print("Yes, that's correct")
-        list.appends(letters_correct, letter)
+        list.append(letters_correct, letter)
         guesses = guesses - 1
     elif letter.lower() in letters_incorrect:
         print("You already tried that letter;it was wrong.")
@@ -19,6 +19,13 @@ while guesses > 0:
         print("Nope.")
         list.append(letters_incorrect, letter)
         guesses = guesses - 1
+    print()
+    for i in range(len(word)):  # Listing correct letters
+        if (word[i]) in letters_correct:
+            print(word[i])
+        else:
+            print("EMPTY")
+    print()
     print("%s guesses left" % guesses)
     print()
 

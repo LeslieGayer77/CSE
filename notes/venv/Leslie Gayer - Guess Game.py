@@ -1,5 +1,7 @@
+import random
 #Guess Game
-number = 7
+number = random.randint(1, 10)
+
 guesses = 5
 win = False
 while guesses > 0:
@@ -13,7 +15,7 @@ while guesses > 0:
     elif num < number:
         print("a little higher")
         guesses = guesses - 1
-    elif num == 7:
+    elif num == number:
         print("Correct")
         guesses = 0
         win = True
