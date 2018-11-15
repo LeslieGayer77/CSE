@@ -1,11 +1,33 @@
 import random
 
-word_bank = ["ThatsNotVeryCashMoneyOfYou"]
-word = random.choice(word_bank)
 letters_correct = []
 letters_incorrect = []
+letters_found = 0
+letters_required = 0
+doubles = 0
 guesses = 15
-while guesses > 0:
+word_bank = ["supernatural", "superstituous", "bangbang", "damnson", "mynamesjeff", "coolaid",
+             "omgitsrdj", "darkness", "boi", "friends", "night", "reaper",]
+word = random.choice(word_bank)
+letters_required = len(word)
+counting_letters = []
+for i in range(len(word)):
+    count = word.count(word[i])
+    list.append(counting_letters, word[i])
+    # print(word[i])
+    # print(count)
+    if word[i] in counting_letters:
+       print()
+    elif count > 1:
+        count = count - 1
+        doubles = doubles + count
+
+letters_required = len(word) - doubles
+# print(doubles)
+# print(word)
+print(letters_required)
+
+while guesses > 0 and not letters_found == letters_required:
     letter = (input("What's a letter?"))
     if letter.lower() in letters_correct:
         print("Yes, that's in the word, but you already said that!")
@@ -13,6 +35,7 @@ while guesses > 0:
         print("Yes, that's correct")
         list.append(letters_correct, letter)
         guesses = guesses - 1
+        letters_found = letters_found + 1
     elif letter.lower() in letters_incorrect:
         print("You already tried that letter;it was wrong.")
     else:
@@ -24,13 +47,17 @@ while guesses > 0:
         if (word[i]) in letters_correct:
             print(word[i])
         else:
-            print("EMPTY")
+            print(".")
     print()
     print("%s guesses left" % guesses)
     print()
+    print(letters_found)
 
 print("The word was %s" % word)
-
+if letters_found == letters_required:
+    print("You won!")
+else:
+    print("You lost.")
 
 """passage = ("Lets Go Tigers!")
 
