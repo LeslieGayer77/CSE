@@ -5,27 +5,27 @@ letters_incorrect = []
 letters_found = 0
 letters_required = 0
 doubles = 0
-guesses = 15
-word_bank = ["supernatural", "superstituous", "bangbang", "damnson", "mynamesjeff", "coolaid",
-             "omgitsrdj", "darkness", "boi", "friends", "night", "reaper",]
+guesses = 10
+word_bank = ["supernatural", "superstituous", "bangbang", "damnson", "mynamesjeff", "koolaid",
+             "omgitsrdj", "darkness", "friends", "night", "reaper", "goldfish", "desirably", "woah", "selectively", "itsyaboi"]
 word = random.choice(word_bank)
 letters_required = len(word)
 counting_letters = []
 for i in range(len(word)):
     count = word.count(word[i])
-    list.append(counting_letters, word[i])
-    # print(word[i])
-    # print(count)
     if word[i] in counting_letters:
        print()
     elif count > 1:
         count = count - 1
         doubles = doubles + count
+    list.append(counting_letters, word[i])
 
 letters_required = len(word) - doubles
+
 # print(doubles)
-# print(word)
-print(letters_required)
+#print(word)
+#print("%s doubles" % doubles)
+#print("%s letters needed" % letters_required)
 
 while guesses > 0 and not letters_found == letters_required:
     letter = (input("What's a letter?"))
@@ -34,7 +34,6 @@ while guesses > 0 and not letters_found == letters_required:
     elif letter in word.lower():
         print("Yes, that's correct")
         list.append(letters_correct, letter)
-        guesses = guesses - 1
         letters_found = letters_found + 1
     elif letter.lower() in letters_incorrect:
         print("You already tried that letter;it was wrong.")
@@ -51,7 +50,7 @@ while guesses > 0 and not letters_found == letters_required:
     print()
     print("%s guesses left" % guesses)
     print()
-    print(letters_found)
+    print("You found %s letters" % letters_found)
 
 print("The word was %s" % word)
 if letters_found == letters_required:

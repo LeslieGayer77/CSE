@@ -1,12 +1,12 @@
 import random
 #Guess Game
-number = random.randint(1, 10)
+number = random.randint(1, 100)
 
-guesses = 5
+guesses = 10
 win = False
 while guesses > 0:
     num = int(input("What's a number from 1 to 10?"))
-    if num >= 11:
+    if num >= 101:
         print("WAY TOO HIGH. Follow the directions")
         guesses = guesses - 1
     elif num > number:
