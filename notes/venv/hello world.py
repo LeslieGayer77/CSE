@@ -155,3 +155,47 @@ print(3!=4)
 a=3 # A is set to 3
 a==3 # Is a equal to 3
 """
+print()
+print()
+#Creating Lists
+colors = ["black", "red", "turquoise", "pink", "blue", "burgundy", "charcoal", "green", "white", "grey"]
+print(colors)
+print(colors[1])
+print(colors[0])
+
+#length of list
+print("There are %d things in the list" % len(colors))
+
+#Changing elements in a list
+colors[3] = "Orange"
+print(colors)
+
+#Looping through lists
+for item in colors:
+    print(item)
+
+print()
+print()
+"""
+1. Make a list with 7 items
+2. Change the third thing in the list
+3. Print the item
+4. Print the full list
+"""
+
+names = ["Jensen", "Jared", "Misha", "Justin", "Jeremy",
+         "James", "Jackson"]
+names[2] = "Dean"
+print(names[2])
+print()
+for item in names:
+    print(item)
+print("The last thing in the list is %s" % names[len(names)-1])
+#len = length
+print()
+print()
+#slicing a list
+print(names[1:3])
+print(names[1:4])
+print(names[1:])
+print(names[:4])
