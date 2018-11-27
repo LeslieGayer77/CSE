@@ -199,3 +199,66 @@ print(names[1:3])
 print(names[1:4])
 print(names[1:])
 print(names[:4])
+
+print()
+print()
+
+food_list = ["pizza", "tacos", "pie", "meat", "salad", "chips", "burrito", "macarroni", "sushi",
+             "rice", "noodles", "icecream", "cookies", "chicken", "chocolate", "waffles", "water", "ramen", "bleach",
+             "hamburger", "candy"]
+
+print(len(food_list))
+print(food_list[13])
+
+#adding stuff to the list
+food_list.append("bacon")
+food_list.append("eggs")
+#notice that everything is object.method(parameters)
+
+food_list.insert(1, "eggo waffles")
+
+#removing things
+food_list.remove("salad")
+print(food_list)
+
+print()
+
+care = ["jay","jar","jen"]
+care.append("mish")
+care.remove("jay")
+print(care)
+
+#tuples
+bramds = ("apple", "samsung", "HTC",) #PARENTHESIS
+print()
+#also removing stuff from a list
+print(food_list)
+food_list.pop(0)
+print(food_list)
+
+print()
+#frind the index of an item
+print(food_list.index("chicken"))
+
+print()
+#changing thingnto a list
+string1 = "black"
+list1 = list(string1)
+print(list1)
+
+for i in range(len(list1)): # i goes through all indicies
+    if list1[i] == "a": #if we find a
+        list1.pop(i) # remove the i-th index
+        list1.insert(i, "*")
+
+#turning a list into a string
+print("".join(list1))
+
+"""
+for character in list1:
+    if character == "a":
+    #replace with a *
+    current_index = list1.index(character)
+    list1.pop(current_index)
+    list1.insert(current_index, "*")
+"""
