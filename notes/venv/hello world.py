@@ -262,3 +262,10 @@ for character in list1:
     list1.pop(current_index)
     list1.insert(current_index, "*")
 """
+print()
+#function notes
+#a**2 + b**2 = c**2
+def pythagorean(a, b):
+    return(a**2 + b**2)**(1/2)
+
+print(pythagorean(3,4))
