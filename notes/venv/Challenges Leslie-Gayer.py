@@ -38,10 +38,20 @@ print()
 
 #5
 def challenge5(r):
-    math.pi
-    V = 4.0 / 3.0 * pi * r ** 3
+    A = math.pi * r ** 2
+    return A
+print(challenge5(4))
+print()
+
+#6
+def challenge6(r):
+    V = 4.0 / 3.0 * math.pi * r ** 3
     return V
-print(challenge5(6))
+print(challenge6(2))
+print()
+
+#7
+def challenge7()
 
 
 
