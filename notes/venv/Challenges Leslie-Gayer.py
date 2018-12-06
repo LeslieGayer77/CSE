@@ -51,8 +51,22 @@ print(challenge6(2))
 print()
 
 #7
-def challenge7()
+def challenge7(n):
+    A = n + n**2 + n**3
+    return A
+print(challenge7(2))
+print()
 
+#8
+def challenge8(nam):
+    if nam >= 1850 and nam <= 2150:
+        return "This is within 150 of 2,000"
+    elif nam >= 2850 and nam <= 3150:
+        return "This is within 150 of 3,000"
+    else:
+        return "No, This is not 150 within 2,000 or 3,000"
+print(challenge8(1900))
+print()
 
-
+#9
 
