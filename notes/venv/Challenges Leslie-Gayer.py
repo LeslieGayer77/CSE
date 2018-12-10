@@ -68,5 +68,4 @@ def challenge8(nam):
 print(challenge8(1900))
 print()
 
-#9
 
