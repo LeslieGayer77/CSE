@@ -7,7 +7,7 @@ letters_required = 0
 doubles = 0
 guesses = 10
 list = output
-word_bank = ["supernatural", "superstituous", "bangbang", "mynamesjeff", "koolaid",
+word_bank = ["supernatural", "superstitious", "kayak", "mynamesjeff", "koolaid",
      "darkness", "friends", "night", "reaper", "goldfish", "woah", "selectively",]
 word = random.choice(word_bank)
 letters_required = len(word)
