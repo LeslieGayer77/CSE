@@ -1,0 +1,21 @@
+#Mad Lib
+woop = []
+woop.append(input("What's a holiday?"))
+woop.append(input("What's a verb with ing? "))
+woop.append(input("What's a fruit? "))
+woop.append(input("What's a persons name? "))
+woop.append(input("What's a thing? "))
+woop.append(input ("What's another thing? "))
+woop.append(input ("Name a feeling. "))
+woop.append(input("list a drink item. "))
+woop.append(input("List another verb. "))
+woop.append(input("List another person. "))
+woop.append(input("List another thing "))
+
+print("We are so excited it's %s!" % woop[0])
+print("After we %s %s with my friend," % (woop[1],woop[2]))
+print ("%s, we're going on a %s ride and through a %s Maze" % (woop[3],woop[4],woop[5]))
+print ("We're going to be %s after, so dinner is next!" % woop[6])
+print ("We are going to eat %s and wash it down with %s." % (woop[7],woop[8]))
+print ("Late at night, we plan to %s down a scary street." % woop[9])
+print ("%s says it's haunted! But we wont be scared since we have eachother. Happy Holloween!" % woop[10])
