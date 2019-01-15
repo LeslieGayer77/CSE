@@ -1,4 +1,8 @@
 import random
+import string
+print(list(string.ascii_letters))
+print(string.digits)
+print(string.punctuation)
 wordbank = ["Supernatural", "Butterfly", "School", "School is great!", "Pokemon", "Minecraft", "Avengers",
             "Pizza!", "Captain America", "Iron Man"]
 
@@ -26,3 +30,6 @@ while guesses > 0 and not letters_found == letters_required:
         list.append(letters_incorrect, letter)
         guesses = guesses - 1
     print()
+    for i in range(len(word)):  # Listing correct letters
+        if (word[i]) in letters_correct:
+            print("si")
