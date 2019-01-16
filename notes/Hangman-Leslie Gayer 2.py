@@ -14,7 +14,14 @@ letters_found = 0
 word = random.choice(wordbank)
 letters_required = len(word)
 guesses = 8
+blank = []
+for i in range(len(word)):
+    if word[i] in list(string.punctuation):
+        blank.append(word[i])
+    else:
+        blank.append("*")
 
+print(blank)
 while guesses > 0 and not letters_found == letters_required:
     letter = input("What is a letter?")
     if letter.lower() in letters_correct:
@@ -22,6 +29,8 @@ while guesses > 0 and not letters_found == letters_required:
     elif letter in word.lower():
         print("Yes, that's correct")
         list.append(letters_correct, letter)
+        
+        display = "".join(blank)
         letters_found = letters_found + 1
     elif letter.lower() in letters_incorrect:
         print("You already tried that letter; it was wrong.")
