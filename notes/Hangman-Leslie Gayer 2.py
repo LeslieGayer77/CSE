@@ -16,6 +16,7 @@ for i in range(len(word)):
     elif word[i] == " ":
         blank.append(" ")
     else:
+
         blank.append("*")
 
 print("Welcome to hangman")
@@ -24,14 +25,14 @@ print()
 while guesses > 0 and not win:
     letter = input("What is a letter?")
     print()
-    if letter.lower() in letters_guessed:
+    if letter.lower()  in letters_guessed:
         print("You already said that!")
-    elif letter in word.lower():
+    elif letter.lower() in word.lower():
         print("Yes, that's correct")
-        list.append(letters_guessed, letter)
+        list.append(letters_guessed, letter.lower())
     else:
         print("Nope.")
-        list.append(letters_guessed, letter)
+        list.append(letters_guessed, letter.lower())
         guesses = guesses - 1
 
     letters_found = 0
