@@ -16,8 +16,7 @@ for i in range(len(word)):
     elif word[i] == " ":
         blank.append(" ")
     else:
-
-        blank.append("*")
+         blank.append("*")
 
 print("Welcome to hangman")
 print("You have 8 guesses, Good Luck!")
