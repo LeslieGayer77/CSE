@@ -72,3 +72,23 @@ Complex_dictionary = {
     }}
 
 print(Complex_dictionary["AK"]["CITIES"][0])
+print(Complex_dictionary["CA"]["CITIES"][1])
+print(Complex_dictionary.keys())
+print(Complex_dictionary.items())
+print(nested_dictionary.items())
+
+print()
+
+for key, value in Complex_dictionary.items():
+    print(key)
+    print(value)
+    print("-" * 20)
+
+print()
+
+for state, info in Complex_dictionary.items():
+    for label, stats in info.items():
+        print(label)
+        print(stats)
+        print("-" * 20)
+    print("-" * 20)
