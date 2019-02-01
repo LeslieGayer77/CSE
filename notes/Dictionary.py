@@ -91,4 +91,11 @@ for state, info in Complex_dictionary.items():
         print(label)
         print(stats)
         print("-" * 20)
-    print("-" * 20)
+    print("=" * 20)
+
+#other notes
+states["AR"] = "Arizona?" #it isntarizona
+
+states['AR'] = "Arkansas" #Fixed it
+
+print(states['AR'])
