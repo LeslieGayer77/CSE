@@ -1,8 +1,8 @@
 import random
 import string
-wordbank =["Supernatural", "Butterfly", "School is great!", "Pokemon", "Minecraft", "Avengers",
-            "Pizza!", "Captain America", "Iron Man", "Awkward", "Cupcake", "Promiscuous", "superstitious",
-           "Goldfish", "koolaid", "Reaper", "Burgundy", "Military"]
+wordbank = ["Supernatural", "Butterfly", "School is great!", "Pokemon", "Minecraft", "Avengers",
+            "Pizza!", "Captain America", "Iron Man", "Awkward", "Cupcake", "Promiscuous", "Superstitious",
+            "Goldfish", "koolaid", "Reaper", "Burgundy", "Military"]
 
 win = False
 letters_guessed = []
@@ -16,7 +16,7 @@ for i in range(len(word)):
     elif word[i] == " ":
         blank.append(" ")
     else:
-         blank.append("*")
+        blank.append("*")
 
 print("Welcome to hangman")
 print("You have 8 guesses, Good Luck!")
@@ -24,7 +24,7 @@ print()
 while guesses > 0 and not win:
     letter = input("What is a letter?")
     print()
-    if letter.lower()  in letters_guessed:
+    if letter.lower() in letters_guessed:
         print("You already said that!")
     elif letter.lower() in word.lower():
         print("Yes, that's correct")
@@ -42,7 +42,7 @@ while guesses > 0 and not win:
             blank[i] = " "
         elif word[i].lower() in letters_guessed:
             blank[i] = word[i]
-            letters_found =+1
+            letters_found = +1
         else:
             blank[i] = "*"
     display = "".join(blank)
