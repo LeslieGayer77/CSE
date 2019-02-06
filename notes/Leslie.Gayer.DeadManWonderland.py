@@ -1,23 +1,45 @@
 world_map = {
-    'R19A': {
-        'NAME': "Home",
-        'DESCRIPTION': "wake up on your couch in an uncomfortable position."
-                                  "The TV is creeching on the North wall while a distant dog barks"
-                                  "The front door is leading to Northeast"
-                                  "The kitchen door is leading to the East",
+    'LIVING_ROOM': {
+        'NAME': "Living Room",
+        'DESCRIPTION': "wake up on your couch in an uncomfortable position. "
+                                  "The TV is Screeching on the North wall while a distant dog barks. "
+                                  "The front door is leading to Northeast. "
+                                  "The kitchen door is leading to the East. ",
         'PATHS': {
              'NORTH': "Tv",
-             'NORTHEAST': "Front Door",
-             'EAST': "Kitchen"
+             'NORTHEAST': "FRONT_YARD",
+             'EAST': "KITCHEN"
 
         }
     },
-    'PARKING_LOT': {
-        'NAME': "The North Parking Lot",
-        'DESCRIPTION': "There are a couple cars parked here.",
+    'KITCHEN': {
+        'NAME': "Kitchen",
+        'DESCRIPTION': "Theres a kitchen that looks well taken care of "
+                      "with stake knives hanging above the oven to the East. "
+                       "and door to the garage is to the North. "
+                      "I wonder whats in the fridge. ",
         'PATHS': {
-                'SOUTH': 'R19A'
+                'NORTH': "The Garage"
         }
+    }
+    'FRONT_YARD':{
+        'NAME': "Porch",
+        'DESCRIPTION': "Theres nobody out here,"
+                       "It looks like everybody left"
+                       "to the East is my car. Wait. MY CAR IS GONE"
+                        "Isn't that convenient",
+        'PATHS': {
+             'NORTH': "ROAD",
+             'NORTHEAST': "FRONT_YARD",
+             'EAST': "MY CAR"
+        }
+    }
+    'Tv':{
+        'NAME': "Tv",
+        'DESCRIPTION': "The tv is loud and screeching"
+                                  "The front door is leading to Northeast. "
+                                  "The kitchen door is leading to the East. ",
+
     }
 }
 
@@ -25,7 +47,7 @@ world_map = {
 
 #Controller
 playing = True
-current_node = world_map["Home"]
+current_node = world_map["LIVING_ROOM"]
 directions = ['NORTH', 'SOUTH', 'EAST', 'WEST', 'UP', 'DOWN', 'NORTHWEST', 'SOUTHWEST',  'NORTHEAST', 'SOUTHEAST']
 while playing:
     print(current_node['NAME'])
