@@ -13,7 +13,7 @@
     <SUITE FILE_PATH="coverage/CSE$Leslie_Gayer_Dictionary_World_Map.coverage" NAME="Leslie.Gayer_Dictionary.World.Map Coverage Results" MODIFIED="1549387199018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/notes" />
     <SUITE FILE_PATH="coverage/CSE$Semester_2_Notes.coverage" NAME="Semester 2 Notes Coverage Results" MODIFIED="1546969322328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CSE$Leslie_Gayer___Guess_Game.coverage" NAME="Leslie Gayer - Guess Game Coverage Results" MODIFIED="1547658062495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CSE$Leslie_Gayer_DeadManWonderland.coverage" NAME="Leslie.Gayer.DeadManWonderland Coverage Results" MODIFIED="1549473476237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/notes" />
+    <SUITE FILE_PATH="coverage/CSE$Leslie_Gayer_DeadManWonderland.coverage" NAME="Leslie.Gayer.DeadManWonderland Coverage Results" MODIFIED="1549561322200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/notes" />
     <SUITE FILE_PATH="coverage/CSE$Hangman_Leslie_Gayer_2.coverage" NAME="Hangman-Leslie Gayer 2 Coverage Results" MODIFIED="1549386703521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/notes" />
     <SUITE FILE_PATH="coverage/CSE$Dictionary.coverage" NAME="Dictionary Coverage Results" MODIFIED="1549044777265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/notes" />
     <SUITE FILE_PATH="coverage/CSE$Hangman.coverage" NAME="Hangman Coverage Results" MODIFIED="1548176464818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -33,14 +33,14 @@
           <entry key="project.open.time.50" value="1" />
           <entry key="project.open.time.51" value="1" />
           <entry key="project.open.time.54" value="1" />
-          <entry key="project.open.time.56" value="2" />
+          <entry key="project.open.time.56" value="3" />
           <entry key="project.open.time.57" value="1" />
           <entry key="project.open.time.58" value="1" />
           <entry key="project.open.time.60" value="1" />
           <entry key="project.open.time.61" value="1" />
           <entry key="project.open.time.70" value="1" />
           <entry key="project.open.time.76" value="1" />
-          <entry key="project.opened" value="19" />
+          <entry key="project.opened" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -57,13 +57,13 @@
         <counts>
           <entry key="Python Console" value="1" />
           <entry key="dummy" value="22" />
-          <entry key="py" value="5963" />
+          <entry key="py" value="6847" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="22" />
-          <entry key="Python" value="5964" />
+          <entry key="Python" value="6848" />
         </counts>
       </usages-collector>
     </session>
@@ -103,7 +103,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/notes/Dictionary.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1440">
+            <state relative-caret-position="526">
               <caret line="80" selection-start-line="80" selection-end-line="80" />
             </state>
           </provider>
@@ -113,7 +113,7 @@
         <entry file="file://$PROJECT_DIR$/notes/Leslie.Gayer_Dictionary.World.Map.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
-              <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+              <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -121,8 +121,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/notes/Leslie.Gayer.DeadManWonderland.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="40" column="78" lean-forward="true" selection-start-line="40" selection-start-column="78" selection-end-line="40" selection-end-column="78" />
+            <state relative-caret-position="180">
+              <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -169,27 +169,14 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="CSE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -478,7 +465,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/notes/Dictionary.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1440">
+        <state relative-caret-position="526">
           <caret line="80" selection-start-line="80" selection-end-line="80" />
         </state>
       </provider>
@@ -486,14 +473,14 @@
     <entry file="file://$PROJECT_DIR$/notes/Leslie.Gayer_Dictionary.World.Map.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/notes/Leslie.Gayer.DeadManWonderland.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="40" column="78" lean-forward="true" selection-start-line="40" selection-start-column="78" selection-end-line="40" selection-end-column="78" />
+        <state relative-caret-position="180">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
         </state>
       </provider>
     </entry>
