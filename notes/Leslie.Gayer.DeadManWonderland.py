@@ -1,63 +1,69 @@
 world_map = {
     'LIVING_ROOM': {
         'NAME': "Living Room",
-        'DESCRIPTION': " You wake up on your couch in an uncomfortable position. "
+        'DESCRIPTION': " That couch inst very comfortable.\n"
                        "The TV is Screeching on the North wall "
-                       "while a distant dog barks. " 
-                       "The front door is leading to Northeast. " 
-                       "The kitchen door is leading to the East. "
-                        "And the hallway to the Southeast",
+                       "while a distant dog barks. \n" 
+                       "The front door is leading to Northeast. \n" 
+                       "The kitchen door is leading to the East. \n"
+                       "And the hallway to the Southeast\n",
         'PATHS': {
              'NORTH': "Tv",
              'NORTHEAST': "FRONT_YARD",
              'EAST': "KITCHEN",
-             'SOUTHEAST': "HALLWAY"
+             'SOUTHEAST': "HALLWAY",
+            'SOUTH': "COUCH",
+             'WEST': 'WINDOW'
 
         }
     },
 
     'KITCHEN': {
         'NAME': "Kitchen",
-        'DESCRIPTION': "Theres a kitchen that looks well taken care of "
+        'DESCRIPTION': "Theres a kitchen that looks well taken care of \n"
                        "with stake knives hanging above the oven to the East. "
-                       "and door to the garage is to the North. "
+                       "and door to the garage is to the North. \n"
                        "I wonder whats in the fridge. ",
         'PATHS': {
                 'NORTH': "GARAGE",
-                'WEST': "LIVING_ROOM"
+                'WEST': "LIVING_ROOM",
+                'EAST': "STAKE_KNIVES"
         }
     },
 
     'FRONT_YARD': {
         'NAME': "Porch",
-        'DESCRIPTION': "Theres nobody out here,"
-                       "It looks like everybody left"
-                       "to the East is my car. Wait. MY CAR IS GONE"
-                       "Isn't that convenient",
+        'DESCRIPTION': "Theres nobody out here,\n"
+                       "It looks like everybody left.\n"
+                       "to the East is my car. Wait. MY CAR IS GONE\n"
+                       "Isn't that convenient\n",
         'PATHS': {
              'NORTH': "ROAD",
              'NORTHEAST': "ROAD",
-             'EAST': "MY_CAR"
+             'EAST': "MY_CAR",
+             'NORTHWEST': "ROAD"
         }
     },
 
     'Tv': {
         'NAME': "Tv",
-        'DESCRIPTION': "The tv is loud and screeching" 
-                       "The front door is leading to Northeast. " 
-                       "The kitchen door is leading to the East. ",
+        'DESCRIPTION': "The tv is loud and screeching\n" 
+                       "The front door is leading to Northeast. \n" 
+                       "The kitchen door is leading to the East. \n",
         'PATHS': {
              'NORTHEAST': "FRONT_YARD",
              'EAST': "KITCHEN",
-             'SOUTHEAST': "HALLWAY"
+             'SOUTHEAST': "HALLWAY",
+             'SOUTH': "COUCH",
+             'WEST': "WINDOW"
          }
     },
 
     'HALLWAY': {
         'NAME': "Hallway",
-        'DESCRIPTION': "A narrow hallway with family photos arranged on the wall" 
-                       "The kitchen is to the Northeast" 
-                       "A door to a room is to the West",
+        'DESCRIPTION': "A narrow hallway with family photos arranged on the wall\n" 
+                       "The kitchen is to the Northeast\n" 
+                       "A door to a room is to the West\n",
         'PATHS': {
              'NORTH': "LIVING_ROOM",
              'NORTHEAST': "KITCHEN",
@@ -69,9 +75,9 @@ world_map = {
 
     'MY_CAR': {
         'NAME': "Drive Way",
-        'DESCRIPTION': "My very empty drive way" 
-                       "Who could have wanted my broken down car that bad" 
-                       "My neighbors car is brand new",
+        'DESCRIPTION': "My very empty drive way\n" 
+                       "Who could have wanted my broken down car that bad\n" 
+                       "My neighbors car is brand new\n",
         'PATHS': {
              'NORTH': "ROAD",
              'NORTHEAST': "ROAD",
@@ -83,7 +89,7 @@ world_map = {
 
     'BUSHES': {
         'NAME': "Bushes",
-        'DESCRIPTION': "This has a nice view of my neighbors car",
+        'DESCRIPTION': "This has a nice view of my neighbors car\n",
         'PATHS': {
              'NORTH': "ROAD",
              'NORTHEAST': "ROAD",
@@ -91,9 +97,56 @@ world_map = {
              'EAST': "I cant go through rose bushes",
              'SOUTHWEST': "FRONT_YARD"
         }
-    }
+    },
+
+    'GARAGE': {
+        'NAME': "The Garage",
+        'DESCRIPTION': "An partially empty space with a toolbox and the left\n",
+        'PATHS': {
+             'EAST': "KITCHEN",
+             'WEST': "TOOLBOX"
+        }
+    },
+
+    'BACKYARD': {
+        'NAME': "The Backyard",
+        'DESCRIPTION': "A small backyard with a garden full of lilies\n" 
+                       "The fence is open to the East\n" 
+                       "The barking isn't faint anymore\n",
+        'PATHS': {
+             'NORTH': "HALLWAY",
+             'EAST': "ALMOST_OTHERSIDE",
+             'WEST': "GARDEN",
+             'SOUTH': "FENCE"
+        }
+    },
+
+    'ALMOST_OTHERSIDE': {
+        'NAME': "Fence",
+        'DESCRIPTION': "The neighbors dog is staring rather aggressively " 
+                       "for my liking\n" 
+                       "If im gonna go further i should have an offering\n",
+        'PATHS': {
+             'NORTHWEST': "HALLWAY",
+             'EAST': "DOG",
+             'WEST': "BACKYARD",
+             'SOUTH': "FENCE",
+             'NORTH': "FENCE"
+        }
+    },
+    'COUCH': {
+        'NAME': "Couch",
+        'DESCRIPTION': "Just a couch\n",
+        'PATHS': {
+            'NORTHWEST': "HALLWAY",
+            'EAST': "DOG",
+            'WEST': "BACKYARD",
+            'SOUTH': "FENCE",
+            'NORTH': "FENCE"
+        }
+    },
+
 }
-print()
 
 # Controller
 
@@ -114,3 +167,5 @@ while playing:
             print("I can't got that way")
     else:
         print("Command Not Found")
+
+    print()
