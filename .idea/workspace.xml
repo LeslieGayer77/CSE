@@ -33,6 +33,7 @@
           <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.50" value="1" />
           <entry key="project.open.time.51" value="1" />
+          <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.54" value="1" />
           <entry key="project.open.time.56" value="3" />
           <entry key="project.open.time.57" value="1" />
@@ -41,33 +42,36 @@
           <entry key="project.open.time.61" value="1" />
           <entry key="project.open.time.70" value="1" />
           <entry key="project.open.time.76" value="1" />
-          <entry key="project.opened" value="21" />
+          <entry key="project.opened" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="16" />
+          <entry key="py" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="16" />
+          <entry key="Python" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="1" />
           <entry key="dummy" value="22" />
-          <entry key="py" value="7607" />
+          <entry key="py" value="8680" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="22" />
-          <entry key="Python" value="7608" />
+          <entry key="Python" value="8681" />
         </counts>
       </usages-collector>
     </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="CSE" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -119,11 +123,36 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/notes/Leslie.Gayer.DeadManWonderland.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="328">
-              <caret line="138" column="40" lean-forward="true" selection-start-line="138" selection-start-column="40" selection-end-line="138" selection-end-column="40" />
+              <caret line="138" column="40" selection-start-line="138" selection-start-column="40" selection-end-line="138" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/notes/Object_Notes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="472">
+              <caret line="33" column="64" lean-forward="true" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
+              <folding>
+                <marker date="1549993574484" expanded="true" signature="20:65" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:68" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:69" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:71" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:74" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:75" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:80" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:81" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:82" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:83" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:85" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:87" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:88" ph="..." />
+                <marker date="1549993574484" expanded="true" signature="20:97" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -151,6 +180,7 @@
         <option value="$PROJECT_DIR$/notes/Dictionary.py" />
         <option value="$PROJECT_DIR$/notes/Hangman-Leslie Gayer 2.py" />
         <option value="$PROJECT_DIR$/notes/Leslie.Gayer.DeadManWonderland.py" />
+        <option value="$PROJECT_DIR$/notes/Object_Notes.py" />
       </list>
     </option>
   </component>
@@ -343,7 +373,7 @@
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49836066" weight="0.26096824" />
-      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info id="Favorites" order="1" side_tool="true" weight="0.32980332" />
       <window_info id="Structure" order="2" sideWeight="0.50163937" side_tool="true" weight="0.26096824" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -481,7 +511,30 @@
     <entry file="file://$PROJECT_DIR$/notes/Leslie.Gayer.DeadManWonderland.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
-          <caret line="138" column="40" lean-forward="true" selection-start-line="138" selection-start-column="40" selection-end-line="138" selection-end-column="40" />
+          <caret line="138" column="40" selection-start-line="138" selection-start-column="40" selection-end-line="138" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/Object_Notes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="33" column="64" lean-forward="true" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
+          <folding>
+            <marker date="1549993574484" expanded="true" signature="20:65" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:68" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:69" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:71" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:74" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:75" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:80" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:81" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:82" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:83" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:85" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:87" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:88" ph="..." />
+            <marker date="1549993574484" expanded="true" signature="20:97" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
