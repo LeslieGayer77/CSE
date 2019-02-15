@@ -49,4 +49,6 @@ my_phone.make_call(10)
 my_phone.make_call(10)
 my_phone.make_call(100)
 
+my_phone.smash_phone()
+
 print(Special_Random.RandomWiebe.my_random())
