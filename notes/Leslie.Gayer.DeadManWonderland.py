@@ -8,9 +8,9 @@ world_map = {
                        "The kitchen door is leading to the East. \n"
                        "And the hallway to the Southeast\n",
         'PATHS': {
-             'NORTH': "Tv",
+             'NORTH': "TV",
              'NORTHEAST': "FRONT_YARD",
-             'EAST': "KITCHEN",
+             'EAST': "HALLWAY",
              'SOUTHEAST': "HALLWAY",
             'SOUTH': "COUCH",
              'WEST': 'WINDOW'
@@ -26,7 +26,7 @@ world_map = {
                        "I wonder whats in the fridge. ",
         'PATHS': {
                 'NORTH': "GARAGE",
-                'WEST': "LIVING_ROOM",
+                'WEST': "HALLWAY",
                 'EAST': "STAKE_KNIVES"
         }
     },
@@ -41,11 +41,12 @@ world_map = {
              'NORTH': "ROAD",
              'NORTHEAST': "ROAD",
              'EAST': "MY_CAR",
-             'NORTHWEST': "ROAD"
+             'NORTHWEST': "ROAD",
+             'SOUTH': "LIVING_ROOM"
         }
     },
 
-    'Tv': {
+    'TV': {
         'NAME': "Tv",
         'DESCRIPTION': "The tv is loud and screeching\n" 
                        "The front door is leading to Northeast. \n" 
@@ -83,7 +84,8 @@ world_map = {
              'NORTHEAST': "ROAD",
              'NORTHWEST': "ROAD",
              'EAST': "BUSHES",
-             'SOUTHWEST': "FRONT_YARD"
+             'SOUTHWEST': "FRONT_YARD",
+             'SOUTH': "FRONT_YARD"
         }
     },
 
@@ -104,7 +106,8 @@ world_map = {
         'DESCRIPTION': "An partially empty space with a toolbox and the left\n",
         'PATHS': {
              'EAST': "KITCHEN",
-             'WEST': "TOOLBOX"
+             'WEST': "TOOLBOX",
+             'SOUTH': "KITCHEN"
         }
     },
 
@@ -138,13 +141,73 @@ world_map = {
         'NAME': "Couch",
         'DESCRIPTION': "Just a couch\n",
         'PATHS': {
-            'NORTHWEST': "HALLWAY",
-            'EAST': "DOG",
-            'WEST': "BACKYARD",
-            'SOUTH': "FENCE",
-            'NORTH': "FENCE"
+            'NORTHWEST': "WALL",
+            'EAST': "KITCHEN",
+            'WEST': "WINDOW",
+            'NORTH': "TV"
         }
     },
+    'NEIGHBORS_BACKYARD': {
+        'NAME': "Neighbors backyard",
+        'DESCRIPTION': "Im right infront of the golden retreiver? \n"
+                       "What should i do? \n",
+        'PATHS': {
+            'NORTHWEST': "WALL",
+            'EAST': "POOL",
+            'WEST': "ALMOST_OTHERSIDE",
+            'SOUTH': "FENCE",
+            'NORTH': "NSL"
+        }
+    },
+    'NLR': {
+        'NAME': "Neigbors living room",
+        'DESCRIPTION': "Another blaring tv\n"
+                       "The kitchen is to the Northwest\n"
+                       "A hallway is to the Northeast\n",
+        'PATHS': {
+            'NORTHWEST': "NKITCHEN",
+            'EAST': "SIDEWALL",
+            'WEST': "WALL",
+            'SOUTH': "NEIGHBORS_BACKYARD",
+            'NORTH': "NTV"
+        }
+    },
+    'NKITCHEN': {
+        'NAME': "Neighbors Kitchen",
+        'DESCRIPTION': "Another blaring tv\n"
+                       "The kitchen is to the Northwest\n"
+                       "A hallway is to the Northeast\n",
+        'PATHS': {
+            'NORTHWEST': "NGARAGE",
+            'EAST': "NCOUNTER",
+            'WEST': "WALL",
+            'SOUTH': "WALL",
+            'NORTH': "COUNTER",
+            'NORTHEAST': "NEIGHBORS_DOOR"
+        }
+    },
+    'WINDOW': {
+        'NAME': "Window",
+        'DESCRIPTION': "A window showing the side of my neighbors house\n",
+        'PATHS': {
+            'NORTHWEST': "WALL",
+            'EAST': "KITCHEN",
+            'SOUTH': "COUCH",
+            'NORTH': "TV",
+            'NORTHEAST': "FRONT_YARD"
+        }
+    },
+    'ROAD': {
+        'NAME': "Road",
+        'DESCRIPTION': "An open road going west to east\n",
+        'PATHS': {
+            'SOUTHWEST': "FRONT_YARD",
+            'SOUTH': "LIVING_ROOM",
+            'SOUTHEAST': "MY_CAR"
+        }
+    }
+
+
 
 }
 
