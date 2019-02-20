@@ -12,7 +12,7 @@ world_map = {
              'NORTHEAST': "FRONT_YARD",
              'EAST': "HALLWAY",
              'SOUTHEAST': "HALLWAY",
-            'SOUTH': "COUCH",
+             'SOUTH': "COUCH",
              'WEST': 'WINDOW'
 
         }
