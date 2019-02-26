@@ -12,31 +12,51 @@ class Room(object):
         self.southeast = southeast
         self.southwest = southwest
 
-        # Option 1 - define as we go
-        # R19A = Room("Mr. Weibe's Room")
-        # parking_lot = Room("Parking Lot", None, R19A)
 
-        # R19A.north + parking_lot
+class Player(object):
+    def __init__(self, starting_location):
+        self.current_location = starting_location
+        self.inventory = []
 
-        # Option 2 - Se tall at once, modify controller
-        # R19A = Room("Mr. Weibe's Room" 'parking_lot')
-        # parking_lot = Room("Parking Lot", None, "R19A")
+    def move(self, new_location):
+        """ This moves the player to a new room
+
+        :param new_location: The room object of which you are going to
+        """
+        self.current_location = new_location
+
+    def find_next_room(self, direction):
+        """
+        This method  searches the current room so see if a room
+        exists in that direction
+
+        :param direction: The direction you want to move to
+        :return: The room object if it exists, or none if it does not
+        """
+        name_of_room = getattr(self.current_location, direction)
+        return globals()[name_of_room]
 
 
-living_room = Room("Living Room",  " That couch inst very comfortable.\n" 
-                                   "The TV is Screeching on the North wall " 
-                                   "while a distant dog barks. \n"  
-                                   "The front door is leading to Northeast. \n" 
-                                   "The kitchen door is leading to the East. \n" 
-                                   "And the hallway to the Southeast\n", 'tv', 'hallway', 'couch',
+# Option 1 - define as we go
+# R19A = Room("Mr. Weibe's Room")
+# parking_lot = Room("Parking Lot", None, R19A)
+
+# R19A.north + parking_lot
+
+# Option 2 - Se tall at once, modify controller
+R19A = Room("Mr. Weibe's Room", 'parking_lot')
+parking_lot = Room("Parking Lot", None, "R19A")
+
+
+living_room = Room("Living Room",  "", 'tv', 'hallway', 'couch',
                    'window', 'front_yard', None, 'hallway', None)
-tv = Room("Tv", None, 'living_room', 'couch', 'window', 'front_yard',
+tv = Room("Tv", "", None, 'living_room', 'couch', 'window', 'front_yard',
           None, 'hallway', None)
-hallway = Room("The hallway", 'living_room', 'kitchen', 'backyard',
+hallway = Room("The hallway", "", 'living_room', 'kitchen', 'backyard',
                'room1', None, None, None,  None)
-couch = Room("The Couch", 'tv', 'hallway', None, 'window', 'front_yard', None,
+couch = Room("The Couch", "", 'tv', 'hallway', None, 'window', 'front_yard', None,
              'hallway', None)
-window = Room("The Window", None, 'living_room', None, None, 'front_yard', None,
+window = Room("The Window", "", None, 'living_room', None, None, 'front_yard', None,
               'hallway', None)
 front_yard = Room("The Front Yard", "", 'grass', 'car', 'living_room', None, 'road',
                   'road1', None, None)
@@ -81,6 +101,26 @@ grass2 = Room("The Grass", " ", 'nroad', 'nroad', 'ndoor', 'ncar', 'nroad',
               'noroad', None, None)
 TV = Room("Tv", " ", 'north', 'east', 'south', 'west', 'northeast',
           'northwest', 'southeast', 'southwest')
-TV = Room("Tv", " ", 'north', 'east', 'south', 'west', 'northeast',
-          'northwest', 'southeast', 'southwest')
+# TV = Room("Tv", " ", 'north', 'east', 'south', 'west', 'northeast',
+#           'northwest', 'southeast', 'southwest')
 
+player = Player(living_room)
+
+playing = True
+directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
+              'southeast', 'southwest', 'up', 'down']
+
+while playing:
+    print(player.current_location.name)
+    print(player.current_location.description)
+    command = input(">_")
+    if command.lower() in ['q', 'quit', 'exit']:
+        playing = False
+    elif command.lower() in directions:
+        try:
+            next_room = player.find_next_room(command)
+            player.move(next_room)
+        except KeyError:
+            print("I can't got that way")
+    else:
+        print("Command Not Found")

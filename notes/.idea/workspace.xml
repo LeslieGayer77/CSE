@@ -22,7 +22,7 @@
     <SUITE FILE_PATH="coverage/notes$hello_world.coverage" NAME="hello world Coverage Results" MODIFIED="1544461356998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/notes$Leslie_Gayer_1_1_000_000.coverage" NAME="Leslie Gayer 1-1,000,000 Coverage Results" MODIFIED="1540575464082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/notes$Leslie_Gayer___Guess_Game.coverage" NAME="Leslie Gayer - Guess Game Coverage Results" MODIFIED="1543944677069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
-    <SUITE FILE_PATH="coverage/notes$World_Map_OOF.coverage" NAME="World_Map OOF Coverage Results" MODIFIED="1550770454449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/notes$World_Map_OOF.coverage" NAME="World_Map OOF Coverage Results" MODIFIED="1551203161266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -63,9 +63,10 @@
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.60" value="1" />
           <entry key="project.open.time.61" value="1" />
+          <entry key="project.open.time.63" value="1" />
           <entry key="project.open.time.73" value="1" />
           <entry key="project.open.time.81" value="1" />
-          <entry key="project.opened" value="36" />
+          <entry key="project.opened" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -81,13 +82,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="42" />
-          <entry key="py" value="20065" />
+          <entry key="py" value="21052" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="42" />
-          <entry key="Python" value="20065" />
+          <entry key="Python" value="21052" />
         </counts>
       </usages-collector>
     </session>
@@ -129,10 +130,13 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/World_Map OOF.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="312">
-                  <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+                <state relative-caret-position="238">
+                  <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
                   <folding>
-                    <marker date="1551116664699" expanded="true" signature="19:24" ph="..." />
+                    <marker date="1551203190359" expanded="true" signature="19:24" ph="..." />
+                    <marker date="1551203190359" expanded="true" signature="901:910" ph="..." />
+                    <marker date="1551203190359" expanded="true" signature="901:1260" ph="..." />
+                    <marker date="1551203190359" expanded="true" signature="1218:1219" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -145,8 +149,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Leslie.Gayer.DeadManWonderland.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2093">
-                  <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+                <state relative-caret-position="98">
+                  <caret line="231" column="34" lean-forward="true" selection-start-line="215" selection-end-line="231" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
@@ -374,7 +378,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.50163937" side_tool="true" weight="0.53630865" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.47213113" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47213113" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -485,10 +489,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/World_Map OOF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+        <state relative-caret-position="238">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
           <folding>
-            <marker date="1551116664699" expanded="true" signature="19:24" ph="..." />
+            <marker date="1551203190359" expanded="true" signature="19:24" ph="..." />
+            <marker date="1551203190359" expanded="true" signature="901:910" ph="..." />
+            <marker date="1551203190359" expanded="true" signature="901:1260" ph="..." />
+            <marker date="1551203190359" expanded="true" signature="1218:1219" ph="..." />
           </folding>
         </state>
       </provider>
