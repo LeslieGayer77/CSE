@@ -4,13 +4,20 @@ class Room(object):
         self.name = name
         self.description = description
         self.north = north
-        self. east = south
-        self.south = east
+        self. east = east
+        self.south = south
         self.west = west
         self.northeast = northeast
         self.northwest = northwest
         self.southeast = southeast
         self.southwest = southwest
+        self.characters = []
+
+
+class Characters(object):
+    def __init__(self, name,  dialogue):
+        self.name = name
+        self.dialogue = dialogue
 
 
 class Player(object):
@@ -48,21 +55,32 @@ R19A = Room("Mr. Weibe's Room", 'parking_lot')
 parking_lot = Room("Parking Lot", None, "R19A")
 
 
-living_room = Room("Living Room",  "", 'tv', 'hallway', 'couch',
-                   'window', 'front_yard', None, 'hallway', None)
-tv = Room("Tv", "", None, 'living_room', 'couch', 'window', 'front_yard',
+living_room = Room("Living Room",  "The TV is Screeching on the North wall " 
+                                   "while a distant dog barks. \n" 
+                                   "The front door is leading to Northeast. \n" 
+                                   "The hallway is leading to the East. \n",
+                   'tv', 'hallway', 'couch', 'window', 'front_yard', None, 'hallway', None)
+tv = Room("Tv", "Its ear piercing. \n", None, 'living_room', 'couch', 'window', 'front_yard',
           None, 'hallway', None)
-hallway = Room("The hallway", "", 'living_room', 'kitchen', 'backyard',
-               'room1', None, None, None,  None)
-couch = Room("The Couch", "", 'tv', 'hallway', None, 'window', 'front_yard', None,
-             'hallway', None)
-window = Room("The Window", "", None, 'living_room', None, None, 'front_yard', None,
+hallway = Room("The hallway", "A narrow hallway with family photos arranged "
+                              "across the wall. \n"
+                              "The kitchens to the East.\n"
+                              "A room is to the West. \n ",
+               'living_room', 'kitchen', 'backyard', 'room1', None, None, None,  None)
+couch = Room("The Couch", "good for taking long naps on",
+             'tv', 'hallway', None, 'window', 'front_yard', None, 'hallway', None)
+window = Room("The Window", "can't see much. \n"
+                            "doesn't look like anybody is out today. \n",
+              None, 'living_room', None, None, 'front_yard', None,
               'hallway', None)
-front_yard = Room("The Front Yard", "", 'grass', 'car', 'living_room', None, 'road',
-                  'road1', None, None)
+front_yard = Room("The Front Yard", "The really is no one out here. \n"
+                                    "The whole neighborhood looks condemned. \n",
+                  'grass', 'car', 'living_room', None, 'road', 'road1', None, None)
 grass = Room("The Grass", "", 'road', 'my_car', 'front_yard', None, 'road1', 'road',
              None, None)
-road_1 = Room("The Front Yard", "", 'grass', 'car', 'living_room', None, 'road',
+road_1 = Room("The Front Yard", "Maybe if i follow this road East"
+                                "i could get somewhere. \n"
+                                "If only i had a car.", 'grass', 'car', 'living_room', None, 'road',
               'road1', None, None)
 kitchen = Room("The Kitchen", 'garage', 'stake_knives', None, 'hallway', None,
                None, None, None)
@@ -121,6 +139,7 @@ while playing:
             next_room = player.find_next_room(command)
             player.move(next_room)
         except KeyError:
-            print("I can't got that way")
+            print("I can't go that way")
+            print()
     else:
         print("Command Not Found")
