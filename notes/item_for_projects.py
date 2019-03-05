@@ -26,3 +26,4 @@ class Food(Item):
 class Weapon(Item):
     def __init__(self, name, damage):
         super(Weapon, self) .__init__(name)
+        self.damage = damage
