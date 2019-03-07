@@ -16,6 +16,7 @@
     <SUITE FILE_PATH="coverage/notes$Inheritance.coverage" NAME="Inheritance Coverage Results" MODIFIED="1551375200085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Tries.coverage" NAME="Tries Coverage Results" MODIFIED="1541090047362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/notes$Car.coverage" NAME="Car Coverage Results" MODIFIED="1550681740792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/notes$item_for_projects.coverage" NAME="item_for_projects Coverage Results" MODIFIED="1551980373593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Mad_Libs_2_LeslieGayer.coverage" NAME="Mad_Libs_2_LeslieGayer Coverage Results" MODIFIED="1544462487920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/notes$Fix_it.coverage" NAME="Fix it Coverage Results" MODIFIED="1543601872530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/notes$Challenges_Leslie_Gayer.coverage" NAME="Challenges Leslie-Gayer Coverage Results" MODIFIED="1544117913439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
@@ -53,7 +54,7 @@
           <entry key="project.open.time.38" value="4" />
           <entry key="project.open.time.40" value="2" />
           <entry key="project.open.time.41" value="3" />
-          <entry key="project.open.time.43" value="2" />
+          <entry key="project.open.time.43" value="3" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.47" value="2" />
           <entry key="project.open.time.48" value="1" />
@@ -68,29 +69,29 @@
           <entry key="project.open.time.73" value="1" />
           <entry key="project.open.time.76" value="1" />
           <entry key="project.open.time.81" value="1" />
-          <entry key="project.opened" value="42" />
+          <entry key="project.opened" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="33" />
+          <entry key="py" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="33" />
+          <entry key="Python" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="42" />
-          <entry key="py" value="23962" />
+          <entry key="py" value="24618" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="42" />
-          <entry key="Python" value="23962" />
+          <entry key="Python" value="24618" />
         </counts>
       </usages-collector>
     </session>
@@ -99,7 +100,7 @@
     <favorites_list name="notes" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.73373675">
+    <splitter split-orientation="horizontal" split-proportion="0.45385778">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -114,7 +115,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Object_Notes.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="918">
+                <state relative-caret-position="526">
                   <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
                 </state>
               </provider>
@@ -132,8 +133,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/World_Map OOF.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1136">
-                  <caret line="81" column="72" selection-start-line="81" selection-start-column="72" selection-end-line="81" selection-end-column="72" />
+                <state relative-caret-position="187">
+                  <caret line="139" selection-start-line="139" selection-end-line="139" />
                   <folding>
                     <marker date="1551807895939" expanded="true" signature="19:24" ph="..." />
                   </folding>
@@ -149,8 +150,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Inheritance.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="15" selection-start-line="15" selection-end-line="15" />
+                <state relative-caret-position="72">
+                  <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
                   <folding>
                     <marker date="1551464289391" expanded="true" signature="22:27" ph="..." />
                     <marker date="1551464289391" expanded="true" signature="99:104" ph="..." />
@@ -164,17 +165,22 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+        <leaf>
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/item_for_projects.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="358">
-                  <caret line="22" column="241" selection-start-line="22" selection-start-column="241" selection-end-line="22" selection-end-column="241" />
+                <state relative-caret-position="385">
+                  <caret line="75" column="57" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
                   <folding>
-                    <marker date="1551894229662" expanded="true" signature="743:822" ph="..." />
+                    <marker date="1551980677926" expanded="true" signature="1184:1699" ph="..." />
                   </folding>
                 </state>
               </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Leslie Gayer - Guess Game.py">
+              <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
         </leaf>
@@ -252,7 +258,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.World_Map OOF">
+  <component name="RunManager" selected="Python.item_for_projects">
     <configuration name="Car" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="notes" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -319,28 +325,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Object_Notes" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="notes" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Object_Notes.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="World_Map OOF" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="notes" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -363,20 +347,42 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="item_for_projects" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="notes" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/item_for_projects.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.Object_Notes" />
       <item itemvalue="Python.Car" />
       <item itemvalue="Python.Leslie.Gayer.DeadManWonderland" />
       <item itemvalue="Python.World_Map OOF" />
       <item itemvalue="Python.Inheritance" />
+      <item itemvalue="Python.item_for_projects" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.item_for_projects" />
         <item itemvalue="Python.World_Map OOF" />
         <item itemvalue="Python.Inheritance" />
         <item itemvalue="Python.Leslie.Gayer.DeadManWonderland" />
         <item itemvalue="Python.Car" />
-        <item itemvalue="Python.Object_Notes" />
       </list>
     </recent_temporary>
   </component>
@@ -497,13 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Object_Notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Car_Leslie.Gayer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -513,8 +512,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Inheritance.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="72">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
           <folding>
             <marker date="1551464289391" expanded="true" signature="22:27" ph="..." />
             <marker date="1551464289391" expanded="true" signature="99:104" ph="..." />
@@ -524,22 +523,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Object_Notes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/World_Map OOF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1136">
-          <caret line="81" column="72" selection-start-line="81" selection-start-column="72" selection-end-line="81" selection-end-column="72" />
+        <state relative-caret-position="187">
+          <caret line="139" selection-start-line="139" selection-end-line="139" />
           <folding>
             <marker date="1551807895939" expanded="true" signature="19:24" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Leslie Gayer - Guess Game.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/item_for_projects.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="22" column="241" selection-start-line="22" selection-start-column="241" selection-end-line="22" selection-end-column="241" />
+        <state relative-caret-position="385">
+          <caret line="75" column="57" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
           <folding>
-            <marker date="1551894229662" expanded="true" signature="743:822" ph="..." />
+            <marker date="1551980677926" expanded="true" signature="1184:1699" ph="..." />
           </folding>
         </state>
       </provider>
