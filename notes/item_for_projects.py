@@ -1,5 +1,3 @@
-import random
-
 
 class Player(object):
     def __init__(self, energy=100, resistance=100):
@@ -45,8 +43,18 @@ class Weapon(Item):
 
 
 class Knife(Weapon):
+    def __init__(self, name, damage, visibility):
+        super(Knife, self) .__init__(name, damage, visibility)
+
+
+class KitchenKnife(Knife):
     def __init__(self):
-        super(Knife, self) .__init__('Knife', 50, 25)
+        super(KitchenKnife, self) .__init__('Kitchen Knife', 50, 25)
+
+
+class HuntingKnife(Knife):
+    def __init__(self):
+        super(HuntingKnife, self) .__init__('Hunting Knife', 50, 25)
 
 
 class Machete(Weapon):
@@ -55,20 +63,13 @@ class Machete(Weapon):
 
 
 class Bat(Weapon):
-    def __init__(self):
-        super(Bat, self) .__init__('bat', 25, 100)
-        hit = random.randint(1, 2)
-        if hit == 1:
-            hit = True
-            print("They took 25 damage and where knocked out")
-        if hit == 2:
-            hit = False
-            print("They took 25 damage")
+    def __init__(self, name, damage=25, visibility=100):
+        super(Bat, self) .__init__(name,  damage, visibility)
 
 
 class Woodbat(Bat):
     def __init__(self):
-        super(Woodbat, self) .__init__('Woodbat', 25, 100)
+        super(Woodbat, self) .__init__('Woodbat')
 
 
 class Ironbat(Bat):
