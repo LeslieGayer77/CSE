@@ -1,4 +1,3 @@
-
 class Player(object):
     def __init__(self, energy=100, resistance=100):
         self.energy = energy
@@ -80,3 +79,5 @@ class Ironbat(Bat):
 class Key(Item):
     def __init__(self, name,):
         super(Key, self) .__init__(name)
+
+TV = Room("Tv", " ", 'north', 'east', 'south', 'west', 'northeast',

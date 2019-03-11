@@ -61,6 +61,7 @@
           <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.49" value="3" />
           <entry key="project.open.time.50" value="4" />
+          <entry key="project.open.time.51" value="1" />
           <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.53" value="2" />
           <entry key="project.open.time.6" value="1" />
@@ -70,7 +71,7 @@
           <entry key="project.open.time.73" value="1" />
           <entry key="project.open.time.76" value="1" />
           <entry key="project.open.time.81" value="1" />
-          <entry key="project.opened" value="44" />
+          <entry key="project.opened" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -86,13 +87,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="42" />
-          <entry key="py" value="24810" />
+          <entry key="py" value="24813" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="42" />
-          <entry key="Python" value="24810" />
+          <entry key="Python" value="24813" />
         </counts>
       </usages-collector>
     </session>
@@ -101,14 +102,14 @@
     <favorites_list name="notes" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.45385778">
+    <splitter split-orientation="horizontal" split-proportion="0.45083207">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Leslie.Gayer.DeadManWonderland.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3924">
-                  <caret line="218" column="14" selection-start-line="218" selection-start-column="14" selection-end-line="218" selection-end-column="14" />
+                <state relative-caret-position="72">
+                  <caret line="4" column="64" lean-forward="true" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="64" />
                 </state>
               </provider>
             </entry>
@@ -127,18 +128,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="72">
                   <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/World_Map OOF.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="139" selection-start-line="139" selection-end-line="139" />
-                  <folding>
-                    <marker date="1551807895939" expanded="true" signature="19:24" ph="..." />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -170,8 +159,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/item_for_projects.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+                <state relative-caret-position="198">
+                  <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
                 </state>
               </provider>
             </entry>
@@ -212,11 +201,11 @@
         <option value="$PROJECT_DIR$/Cell_Phone.py" />
         <option value="$PROJECT_DIR$/Object_Notes.py" />
         <option value="$PROJECT_DIR$/Car.py" />
-        <option value="$PROJECT_DIR$/Leslie.Gayer.DeadManWonderland.py" />
         <option value="$PROJECT_DIR$/Inheritance.py" />
-        <option value="$PROJECT_DIR$/World_Map OOF.py" />
-        <option value="$PROJECT_DIR$/item_for_projects.py" />
         <option value="$PROJECT_DIR$/Car_Leslie.Gayer.py" />
+        <option value="$PROJECT_DIR$/World_Map OOF.py" />
+        <option value="$PROJECT_DIR$/Leslie.Gayer.DeadManWonderland.py" />
+        <option value="$PROJECT_DIR$/item_for_projects.py" />
       </list>
     </option>
   </component>
@@ -494,13 +483,6 @@
     <entry file="file://$PROJECT_DIR$/Leslie.Gayer_Dictionary.World.Map.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Leslie.Gayer.DeadManWonderland.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3924">
-          <caret line="218" column="14" selection-start-line="218" selection-start-column="14" selection-end-line="218" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Object_Notes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
@@ -524,6 +506,13 @@
     <entry file="file://$PROJECT_DIR$/Leslie Gayer - Guess Game.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/World_Map OOF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="128" column="48" lean-forward="true" selection-start-line="128" selection-start-column="48" selection-end-line="128" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Car_Leslie.Gayer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -531,16 +520,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/item_for_projects.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World_Map OOF.py">
+    <entry file="file://$PROJECT_DIR$/Leslie.Gayer.DeadManWonderland.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="139" selection-start-line="139" selection-end-line="139" />
-          <folding>
-            <marker date="1551807895939" expanded="true" signature="19:24" ph="..." />
-          </folding>
+        <state relative-caret-position="72">
+          <caret line="4" column="64" lean-forward="true" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/item_for_projects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>

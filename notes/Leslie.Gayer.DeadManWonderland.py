@@ -233,31 +233,3 @@ while playing:
         print("Command Not Found")
 
     print()
-
-
-living_room = Room("Living Room",  "The TV is Screeching on the North wall " 
-                                   "while a distant dog barks. \n" 
-                                   "The front door is leading to Northeast. \n" 
-                                   "The hallway is leading to the East. \n",
-                   'tv', 'hallway', 'couch', 'window', 'front_yard', None, 'hallway', None)
-tv = Room("Tv", "Its ear piercing. \n", None, 'living_room', 'couch', 'window', 'front_yard',
-          None, 'hallway', None)
-hallway = Room("The hallway", "A narrow hallway with family photos arranged "
-                              "across the wall. \n"
-                              "The kitchens to the East.\n"
-                              "A room is to the West. \n ",
-               'living_room', 'kitchen', 'backyard', 'room1', None, None, None,  None)
-couch = Room("The Couch", "good for taking long naps on",
-             'tv', 'hallway', None, 'window', 'front_yard', None, 'hallway', None)
-window = Room("The Window", "can't see much. \n"
-                            "doesn't look like anybody is out today. \n",
-              None, 'living_room', None, None, 'front_yard', None,
-              'hallway', None)
-front_yard = Room("The Front Yard", "The really is no one out here. \n"
-                                    "The whole neighborhood looks condemned. \n",
-                  'grass', 'car', 'living_room', None, 'road', 'road1', None, None)
-grass = Room("The Grass", "", 'road', 'my_car', 'front_yard', None, 'road1', 'road',
-             None, None)
-road_1 = Room("The Front Yard", "Maybe if i follow this road East"
-                                "i could get somewhere. \n"
-                                "If only i had a car.", 'grass', 'car', 'living_room', None, 'road',

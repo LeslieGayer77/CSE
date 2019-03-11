@@ -135,10 +135,6 @@ grass2 = Room("The Neigbor's Lawn", " ", 'nroad', 'nroad', 'ndoor', 'ncar', 'nro
               'noroad', None, None)
 playgrounds = Room("Playground Front Gate", " ", None, 'east', 'south', 'nroad', 'northeast',
                    'northwest', 'southeast', 'southwest')
-TV = Room("Tv", " ", 'north', 'east', 'south', 'west', 'northeast',
-          'northwest', 'southeast', 'southwest')
-TV = Room("Tv", " ", 'north', 'east', 'south', 'west', 'northeast',
-          'northwest', 'southeast', 'southwest')
 nkitchen.item = "key"
 
 
