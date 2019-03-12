@@ -2,7 +2,14 @@ class Player(object):
     def __init__(self, energy=100, resistance=100):
         self.energy = energy
         self.resistance = resistance
+        self.dead = False
         self.inventory = []
+
+
+class Zombie(object):
+    def __init__(self, resistance=100, bite=100):
+        self.resistance = resistance
+        self.bite = bite
 
 
 class Item(object):
@@ -11,11 +18,10 @@ class Item(object):
 
 
 class Car(Item):
-    def __init__(self, name, milage):
+    def __init__(self, name):
         super(Car, self) .__init__(name)
         self.engine_status = False
         self.fuel = 100
-        self.milage = milage
 
 
 class Food(Item):
@@ -41,6 +47,24 @@ class Weapon(Item):
         self.visibility = visibility
 
 
+class Gun(Weapon):
+    def __init__(self, name, damage, visibility, blocked):
+        super(Gun, self) .__init__(name, damage, visibility)
+        self.blocked = blocked
+
+
+class Pistol(Gun):
+    def __init__(self):
+        super(Pistol, self) .__init__("Pistol", 90, 50, False)
+        self.blocked = False
+
+
+class Shotgun(Gun):
+    def __init__(self):
+        super(Shotgun, self) .__init__("Shotgun", 100, 100, False)
+        self.blocked = False
+
+
 class Knife(Weapon):
     def __init__(self, name, damage, visibility):
         super(Knife, self) .__init__(name, damage, visibility)
@@ -62,8 +86,9 @@ class Machete(Weapon):
 
 
 class Bat(Weapon):
-    def __init__(self, name, damage=25, visibility=100):
-        super(Bat, self) .__init__(name,  damage, visibility)
+    def __init__(self, name, damage=25, visibility=100, knockout=False):
+        super(Bat, self) .__init__(name,  damage, visibility,)
+        self.knockout = knockout
 
 
 class Woodbat(Bat):
@@ -76,8 +101,22 @@ class Ironbat(Bat):
         super(Ironbat, self) .__init__('Ironbat', 50, 100)
 
 
+class Armor(Item):
+    def __init__(self, name, protection):
+        super(Armor, self) .__init__(name)
+        self.protection = protection
+
+
+class BV(Armor):
+    def __init__(self):
+        super(BV, self) .__init__("Bulletproof Vest", 100)
+        self.blocked = True
+
+
 class Key(Item):
     def __init__(self, name,):
         super(Key, self) .__init__(name)
 
-TV = Room("Tv", " ", 'north', 'east', 'south', 'west', 'northeast',
+
+key = Key("Car Key")
+key1 = Key("House Key")
