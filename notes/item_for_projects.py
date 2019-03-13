@@ -1,9 +1,29 @@
 class Player(object):
-    def __init__(self, energy=100, resistance=100):
+    def __init__(self, name, energy=100, resistance=100):
+        self.name = name
         self.energy = energy
         self.resistance = resistance
         self.dead = False
         self.inventory = []
+
+
+class Character(object):
+    def __init__(self, name, health, weapon, armor):
+        self.name = name
+        self.health = health
+        self.weapon = weapon
+        self.armor = armor
+
+    def take_damage(self, damage: int):
+        if self.armor.protection > damage:
+            print("No damage is done because of great armor")
+        else:
+            self.health -= damage - self.armor.protection
+        print("%s has %d health left" % (self.name, self.health))
+
+    def attack(self, target):
+        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
+        target.take_damage(self.weapon.damage)
 
 
 class Zombie(object):
@@ -120,3 +140,13 @@ class Key(Item):
 
 key = Key("Car Key")
 key1 = Key("House Key")
+
+sword = Weapon("Sword", 10, 100)
+canoe = Weapon("Canoe", 42, 100)
+wiebe_armor = Armor("Armor of the gods", 10000000000)
+
+orc = Character("Orc", 100, sword, ("Generic Armor", 2))
+orc2 = Character("Weibe", 10000, canoe, wiebe_armor)
+
+orc.attack(orc2)
+orc2.attack(orc)

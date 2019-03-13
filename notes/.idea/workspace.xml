@@ -16,7 +16,7 @@
     <SUITE FILE_PATH="coverage/notes$Inheritance.coverage" NAME="Inheritance Coverage Results" MODIFIED="1551375200085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Tries.coverage" NAME="Tries Coverage Results" MODIFIED="1541090047362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/notes$Car.coverage" NAME="Car Coverage Results" MODIFIED="1550681740792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/notes$item_for_projects.coverage" NAME="item_for_projects Coverage Results" MODIFIED="1551980373593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/notes$item_for_projects.coverage" NAME="item_for_projects Coverage Results" MODIFIED="1552494915080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Mad_Libs_2_LeslieGayer.coverage" NAME="Mad_Libs_2_LeslieGayer Coverage Results" MODIFIED="1544462487920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/notes$Fix_it.coverage" NAME="Fix it Coverage Results" MODIFIED="1543601872530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/notes$Challenges_Leslie_Gayer.coverage" NAME="Challenges Leslie-Gayer Coverage Results" MODIFIED="1544117913439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
@@ -51,7 +51,7 @@
           <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.36" value="2" />
           <entry key="project.open.time.37" value="2" />
-          <entry key="project.open.time.38" value="4" />
+          <entry key="project.open.time.38" value="5" />
           <entry key="project.open.time.40" value="2" />
           <entry key="project.open.time.41" value="3" />
           <entry key="project.open.time.42" value="1" />
@@ -71,29 +71,29 @@
           <entry key="project.open.time.73" value="1" />
           <entry key="project.open.time.76" value="1" />
           <entry key="project.open.time.81" value="1" />
-          <entry key="project.opened" value="46" />
+          <entry key="project.opened" value="47" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="35" />
+          <entry key="py" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="35" />
+          <entry key="Python" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="42" />
-          <entry key="py" value="25608" />
+          <entry key="py" value="26496" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="42" />
-          <entry key="Python" value="25608" />
+          <entry key="Python" value="26496" />
         </counts>
       </usages-collector>
     </session>
@@ -102,14 +102,14 @@
     <favorites_list name="notes" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.45083207">
+    <splitter split-orientation="horizontal" split-proportion="0.39334342">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Leslie.Gayer.DeadManWonderland.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="36">
-                  <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+                  <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
                 </state>
               </provider>
             </entry>
@@ -159,8 +159,20 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/item_for_projects.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1646">
-                  <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+                <state relative-caret-position="-1760">
+                  <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+                  <folding>
+                    <marker date="1552494914987" expanded="true" signature="251:870" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/charcters_fight.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="10" selection-start-column="10" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -205,6 +217,7 @@
         <option value="$PROJECT_DIR$/Car_Leslie.Gayer.py" />
         <option value="$PROJECT_DIR$/World_Map OOF.py" />
         <option value="$PROJECT_DIR$/Leslie.Gayer.DeadManWonderland.py" />
+        <option value="$PROJECT_DIR$/charcters_fight.py" />
         <option value="$PROJECT_DIR$/item_for_projects.py" />
       </list>
     </option>
@@ -484,6 +497,13 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/World_Map OOF.py" />
+    <entry file="file://$PROJECT_DIR$/Leslie.Gayer.DeadManWonderland.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Object_Notes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
@@ -504,16 +524,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Leslie Gayer - Guess Game.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Leslie.Gayer.DeadManWonderland.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Car_Leslie.Gayer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -521,10 +531,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Leslie Gayer - Guess Game.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/charcters_fight.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/item_for_projects.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1646">
-          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+        <state relative-caret-position="-1760">
+          <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+          <folding>
+            <marker date="1552494914987" expanded="true" signature="251:870" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
