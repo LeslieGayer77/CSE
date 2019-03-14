@@ -105,8 +105,14 @@ class HuntingKnife(Knife):
 
 
 class Machete(Weapon):
-    def __init__(self):
+    def __init__(self, kill_count):
         super(Machete, self) .__init__('Machete', 100, 100)
+        self.kill_count = kill_count
+
+
+class Katana(Weapon):
+    def __init__(self):
+        super(Katana, self) .__init__('Machete', 100, 100)
 
 
 class Bat(Weapon):
