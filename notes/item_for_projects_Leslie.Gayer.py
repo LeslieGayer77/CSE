@@ -37,6 +37,17 @@ class Item(object):
         self.name = name
 
 
+class Car(Item):
+    def __init__(self, name, gas_left, durability):
+        super(Car, self) .__init__(name)
+        self.gas_left = gas_left
+        self.durability = durability
+
+
+nc = Car("Neighbors car", 100, 100)
+bdc = Car("Broken down car", 50, 50)
+
+
 class Food(Item):
     def __init__(self, name, energy=0):
         super(Food, self) .__init__(name)
@@ -115,19 +126,25 @@ class Ironbat(Bat):
 
 
 class Armor(Item):
-    def __init__(self, name, protection):
+    def __init__(self, name, protectiong, protectionk, protectionb):
         super(Armor, self) .__init__(name)
-        self.protection = protection
+        self.protectiong = protectiong
+        self.protectionk = protectionk
+        self.protectionb = protectionb
 
 
 class BV(Armor):
     def __init__(self):
-        super(BV, self) .__init__("Bulletproof Vest", 100)
-        self.blocked = True
+        super(BV, self) .__init__("Bulletproof Vest", 100, 0, 0)
+
+
+class RG(Armor):
+    def __init__(self):
+        super(RG, self) .__init__("Riot Gear", 100, 50, 100)
 
 
 class Key(Item):
-    def __init__(self, name,):
+    def __init__(self, name):
         super(Key, self) .__init__(name)
 
 
@@ -136,7 +153,7 @@ key1 = Key("House Key")
 
 sword = Weapon("Sword", 10, 100)
 canoe = Weapon("Canoe", 42, 100)
-wiebe_armor = Armor("Armor of the gods", 10000000000)
+wiebe_armor = Armor("Armor of the gods", 10000000000, 100000000, 10000000)
 
 orc = Character("Orc", 100, sword, ("Generic Armor", 2))
 orc2 = Character("Weibe", 10000, canoe, wiebe_armor)
