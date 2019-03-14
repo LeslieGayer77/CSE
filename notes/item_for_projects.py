@@ -37,13 +37,6 @@ class Item(object):
         self.name = name
 
 
-class Car(Item):
-    def __init__(self, name):
-        super(Car, self) .__init__(name)
-        self.engine_status = False
-        self.fuel = 100
-
-
 class Food(Item):
     def __init__(self, name, energy=0):
         super(Food, self) .__init__(name)
