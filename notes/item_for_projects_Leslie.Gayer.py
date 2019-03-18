@@ -1,18 +1,30 @@
+import random
+
+
 class Player(object):
-    def __init__(self, name, energy=100, resistance=100):
+    def __init__(self, name, energy=100, health=100, resistance=100, weapon=100):
         self.name = name
         self.energy = energy
+        self.health = health
         self.resistance = resistance
+
         self.dead = False
         self.inventory = []
 
 
 class Character(object):
-    def __init__(self, name, health, weapon, armor):
+    def __init__(self, name, health=100, weapon, armor):
         self.name = name
         self.health = health
         self.weapon = weapon
         self.armor = armor
+
+    class Enemy(object):
+        def __init__(self, name, health, weapon, armor):
+            self.name = name
+            self.health = health
+            self.weapon = weapon
+            self.armor = armor
 
     def take_damage(self, damage: int):
         if self.armor.protection > damage:
@@ -104,31 +116,51 @@ class HuntingKnife(Knife):
         super(HuntingKnife, self) .__init__('Hunting Knife', 50, 25)
 
 
-class Machete(Weapon):
-    def __init__(self, kill_count):
-        super(Machete, self) .__init__('Machete', 100, 100)
+class Melee(Weapon):
+    def __init__(self, name, damage, visibility, kill_count):
+        super(Melee, self) .__init__(name, damage, visibility,)
         self.kill_count = kill_count
 
 
-class Katana(Weapon):
+class Katana(Melee):
     def __init__(self):
-        super(Katana, self) .__init__('Machete', 100, 100)
+        super(Katana, self) .__init__('Katana', 100, 100, 3)
+
+
+class Machete(Melee):
+    def __init__(self, kill_count):
+        super(Machete, self) .__init__('Basic Machete', 100, 100, 2)
+        self.kill_count = kill_count
 
 
 class Bat(Weapon):
-    def __init__(self, name, damage=25, visibility=100, knockout=False):
+    def __init__(self, name, damage, visibility, knockout=False):
         super(Bat, self) .__init__(name,  damage, visibility,)
         self.knockout = knockout
 
 
 class Woodbat(Bat):
     def __init__(self):
-        super(Woodbat, self) .__init__('Woodbat')
+        super(Woodbat, self) .__init__('Woodbat', 50, 100)
+        hit = random.randint(0, 100)
+        if hit > 50:
+            knockout = True
+            print("You knocked them out and they received 50 damage")
+        if hit < 50:
+            knockout = False
+            print("They received 50 damage")
 
 
 class Ironbat(Bat):
     def __init__(self):
-        super(Ironbat, self) .__init__('Ironbat', 50, 100)
+        super(Ironbat, self) .__init__('Ironbat', 60, 100)
+        hit = random.randint(0, 100)
+        if hit > 30:
+            knockout = True
+            print("You knocked them out and they received 50 damage")
+        if hit < 30:
+            knockout = False
+            print("They received 60 damage")
 
 
 class Armor(Item):

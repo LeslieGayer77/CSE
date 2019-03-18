@@ -1,6 +1,10 @@
+import random
+
+
 class Room(object):
     def __init__(self, name,  description, north=None,  east=None, south=None,
-                 west=None, northeast=None, northwest=None,  southeast=None,  southwest=None):
+                 west=None, northeast=None, northwest=None,  southeast=None,
+                 southwest=None):
         self.name = name
         self.description = description
         self.north = north
@@ -22,30 +26,199 @@ class Characters(object):
 
 
 class Player(object):
-    def __init__(self, starting_location):
+    def __init__(self, name, starting_location, energy=100, resistance=100):
+        self.name = name
         self.current_location = starting_location
+        self.energy = energy
+        self.resistance = resistance
+        self.dead = False
         self.inventory = []
 
-    def move(self, new_location):
-        """ This moves the player to a new room
 
-        :param new_location: The room object of which you are going to
-        """
-        self.current_location = new_location
+class Zombie(object):
+    def __init__(self, resistance=100, bite=100):
+        self.resistance = resistance
+        self.bite = bite
 
-    def find_next_room(self, direction):
-        """
-        This method  searches the current room so see if a room
-        exists in that direction
 
-        :param direction: The direction you want to move to
-        :return: The room object if it exists, or none if it does not
-        """
-        name_of_room = getattr(self.current_location, direction)
-        if name_of_room == "ncar" and "key" not in player.inventory:
-            print("You don't have the keys")
-            return None
-        return globals()[name_of_room]
+class Item(object):
+    def __init__(self,  name):
+        self.name = name
+
+
+class Car(Item):
+    def __init__(self, name,  gas_left,  durability):
+        super(Car, self).__init__(name)
+        self.gas_left = gas_left
+        self.durability = durability
+
+
+nc = Car("Neighbors car", 100, 100)
+bdc = Car("Broken down car", 50, 50)
+
+
+class Food(Item):
+    def __init__(self,  name,  energy=0):
+        super(Food, self).__init__(name)
+        self.energy = energy
+
+
+class Junk(Food):
+    def __init__(self):
+        super(Junk, self).__init__('Junk Food', 25)
+
+
+class Cans(Food):
+    def __init__(self):
+        super(Cans, self).__init__('Canned Food', 50)
+
+
+class Weapon(Item):
+    def __init__(self, name, damage, visibility):
+        super(Weapon, self).__init__(name)
+        self.damage = damage
+        self.visibility = visibility
+
+
+class Gun(Weapon):
+    def __init__(self,  name, damage, visibility, blocked):
+        super(Gun, self).__init__(name, damage, visibility)
+        self.blocked = blocked
+
+
+class Pistol(Gun):
+    def __init__(self):
+        super(Pistol, self).__init__("Pistol", 90, 50, False)
+        self.blocked = False
+
+
+class Shotgun(Gun):
+    def __init__(self):
+        super(Shotgun, self).__init__("Shotgun", 100, 100, False)
+        self.blocked = False
+
+
+class Knife(Weapon):
+    def __init__(self, name, damage, visibility):
+        super(Knife, self).__init__(name, damage, visibility)
+
+
+class KitchenKnife(Knife):
+    def __init__(self):
+        super(KitchenKnife, self).__init__('Kitchen Knife', 50, 25)
+
+
+class HuntingKnife(Knife):
+    def __init__(self):
+        super(HuntingKnife, self).__init__('Hunting Knife', 50, 25)
+
+
+class Melee(Weapon):
+    def __init__(self, name, damage, visibility, kill_count):
+        super(Melee, self).__init__(name, damage, visibility, )
+        self.kill_count = kill_count
+
+
+class Katana(Melee):
+    def __init__(self):
+        super(Katana, self).__init__('Katana', 100, 100, 3)
+
+
+class Machete(Melee):
+    def __init__(self, kill_count):
+        super(Machete, self).__init__('Basic Machete', 100, 100, 2)
+        self.kill_count = kill_count
+
+
+class Bat(Weapon):
+    def __init__(self, name, damage, visibility, knockout=False):
+        super(Bat, self).__init__(name, damage, visibility, )
+        self.knockout = knockout
+
+
+class Woodbat(Bat):
+    def __init__(self):
+        super(Woodbat, self).__init__('Woodbat', 50, 100)
+        hit = random.randint(0, 100)
+        if hit > 50:
+            knockout = True
+        if hit < 50:
+            knockout = False
+
+
+class Ironbat(Bat):
+    def __init__(self):
+        super(Ironbat, self).__init__('Ironbat', 50, 100)
+        hit = random.randint(0, 100)
+        if hit > 30:
+            knockout = True
+        if hit < 30:
+            knockout = False
+
+
+class Armor(Item):
+    def __init__(self, name, protectiong, protectionk, protectionb):
+        super(Armor, self).__init__(name)
+        self.protectiong = protectiong
+        self.protectionk = protectionk
+        self.protectionb = protectionb
+
+
+class BV(Armor):
+    def __init__(self):
+        super(BV, self).__init__("Bulletproof Vest", 100, 0, 0)
+
+
+class RG(Armor):
+    def __init__(self):
+        super(RG, self).__init__("Riot Gear", 100, 50, 100)
+
+
+class Key(Item):
+    def __init__(self, name):
+        super(Key, self).__init__(name)
+
+
+class Character(object):
+    def __init__(self, name, health, weapon, armor):
+        self.name = name
+        self.health = health
+        self.weapon = weapon
+        self.armor = armor
+
+    def take_damage(self, damage: int):
+        if self.armor.protection > damage:
+            print("No damage is done because of great armor")
+        else:
+            self.health -= damage - self.armor.protection
+        print("%s has %d health left" % (self.name, self.health))
+
+    def attack(self, target):
+        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
+        target.take_damage(self.weapon.damage)
+
+
+def move(self, new_location):
+    """ This moves the player to a new room
+
+    :param new_location: The room object of which you are going to
+    """
+    self.current_location = new_location
+
+
+def find_next_room(self, direction):
+    """
+    This method  searches the current room so see if a room
+    exists in that direction
+
+    :param direction: The direction you want to move to
+    :return: The room object if it exists, or none if it does not
+    """
+    name_of_room = getattr(self.current_location, direction)
+    if name_of_room == "ncar" and "key" not in player.inventory:
+        print("You don't have the keys")
+        return None
+    return globals()[name_of_room]
 
 
 # Option 1 - define as we go
