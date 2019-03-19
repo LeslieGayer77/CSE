@@ -18,27 +18,71 @@ class Room(object):
         self.characters = []
 
 
-class Characters(object):
-    def __init__(self, name,  dialogue):
-        self.name = name
-        self.dialogue = dialogue
-        self.item = None
-
-
 class Player(object):
-    def __init__(self, name, starting_location, energy=100, resistance=100):
+    def __init__(self, name, starting_location, energy=100, health=100, resistance=100, weapon=100):
         self.name = name
         self.current_location = starting_location
         self.energy = energy
+        self.health = health
         self.resistance = resistance
+        self.weapon = weapon
         self.dead = False
+        self.awake = True
+        self.bitten = False
+        self.inventory = []
+
+    def move(self, new_location):
+        """ This moves the player to a new room
+
+        :param new_location: The room object of which you are going to
+        """
+        self.current_location = new_location
+
+    def find_next_room(self, direction):
+        """
+        This method  searches the current room so see if a room
+        exists in that direction
+
+        :param direction: The direction you want to move to
+        :return: The room object if it exists, or none if it does not
+        """
+        name_of_room = getattr(self.current_location, direction)
+        if name_of_room == "ncar" and "key" not in player.inventory:
+            print("You don't have the keys")
+            return None
+        return globals()[name_of_room]
+
+class Characters(object):
+    def __init__(self, name, dialogue, health=75, resistance=75, weapon=None):
+        self.name = name
+        self.dialogue = dialogue
+        self.health = health
+        self.resistance = resistance
+        self.weapon = weapon
+        self.dead = False
+        self.awake = True
+        self.bitten = False
+        self.inventory = []
+    
+
+class Enemy(object):
+    def __init__(self, name, dialogue, health=75, resistance=75, weapon=None):
+        self.name = name
+        self.dialogue = dialogue
+        self.health = health
+        self.resistance = resistance
+        self.weapon = weapon
+        self.dead = False
+        self.awake = True
+        self.bitten = False
         self.inventory = []
 
 
 class Zombie(object):
-    def __init__(self, resistance=100, bite=100):
+    def __init__(self, resistance=None, attack=None):
         self.resistance = resistance
-        self.bite = bite
+        self.attack = attack
+        self.bite = False
 
 
 class Item(object):
@@ -139,11 +183,17 @@ class Bat(Weapon):
 class Woodbat(Bat):
     def __init__(self):
         super(Woodbat, self).__init__('Woodbat', 50, 100)
+
+    def hit_target(self, target):
         hit = random.randint(0, 100)
         if hit > 50:
             knockout = True
+            print("You knocked them out and they received 50 damage")
+
         if hit < 50:
+            target.take_damage
             knockout = False
+            print("They received 50 damage")
 
 
 class Ironbat(Bat):
@@ -152,8 +202,10 @@ class Ironbat(Bat):
         hit = random.randint(0, 100)
         if hit > 30:
             knockout = True
+            print("You knocked them out and they received 50 damage")
         if hit < 30:
             knockout = False
+            print("They received 60 damage")
 
 
 class Armor(Item):
@@ -198,27 +250,7 @@ class Character(object):
         target.take_damage(self.weapon.damage)
 
 
-def move(self, new_location):
-    """ This moves the player to a new room
 
-    :param new_location: The room object of which you are going to
-    """
-    self.current_location = new_location
-
-
-def find_next_room(self, direction):
-    """
-    This method  searches the current room so see if a room
-    exists in that direction
-
-    :param direction: The direction you want to move to
-    :return: The room object if it exists, or none if it does not
-    """
-    name_of_room = getattr(self.current_location, direction)
-    if name_of_room == "ncar" and "key" not in player.inventory:
-        print("You don't have the keys")
-        return None
-    return globals()[name_of_room]
 
 
 # Option 1 - define as we go
@@ -311,7 +343,7 @@ playgrounds = Room("Playground Front Gate", " ", None, 'east', 'south', 'nroad',
 nkitchen.item = "key"
 
 
-player = Player(living_room)
+player = Player("You", living_room)
 
 playing = True
 directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',

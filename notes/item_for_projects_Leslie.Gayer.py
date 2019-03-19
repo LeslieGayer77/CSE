@@ -7,24 +7,18 @@ class Player(object):
         self.energy = energy
         self.health = health
         self.resistance = resistance
-
+        self.weapon = weapon
         self.dead = False
+        self.awake = True
         self.inventory = []
 
 
-class Character(object):
-    def __init__(self, name, health=100, weapon, armor):
+class Enemy(object):
+    def __init__(self, name, health, weapon, armor):
         self.name = name
         self.health = health
         self.weapon = weapon
         self.armor = armor
-
-    class Enemy(object):
-        def __init__(self, name, health, weapon, armor):
-            self.name = name
-            self.health = health
-            self.weapon = weapon
-            self.armor = armor
 
     def take_damage(self, damage: int):
         if self.armor.protection > damage:
