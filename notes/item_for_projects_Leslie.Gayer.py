@@ -2,23 +2,48 @@ import random
 
 
 class Player(object):
-    def __init__(self, name, energy=100, health=100, resistance=100, weapon=100):
+    def __init__(self, name, energy=100, health=100, resistance=100, weapon=None,
+                 armor=None):
         self.name = name
         self.energy = energy
         self.health = health
         self.resistance = resistance
         self.weapon = weapon
+        self.armor = armor
         self.dead = False
         self.awake = True
         self.inventory = []
 
 
-class Enemy(object):
-    def __init__(self, name, health, weapon, armor):
+class Character(object):
+    def __init__(self, name, dialogue, health=75, resistance=75, weapon=None,
+                 armor=None):
         self.name = name
+        self.dialogue = dialogue
         self.health = health
+        self.resistance = resistance
         self.weapon = weapon
         self.armor = armor
+        self.dead = False
+        self.awake = True
+        self.bitten = False
+        self.inventory = []
+
+        class Bat(Weapon):
+            def __init__(self, name, damage, visibility, knockout=False):
+                super(Bat, self).__init__(name, damage, visibility, )
+                self.knockout = knockout
+
+    class Enemy(object):
+        def __init__(self, name, dialogue, health=75, resistance=75, weapon=None):
+            self.name = name
+            self.dialogue = dialogue
+            self.health = health
+            self.resistance = resistance
+            self.weapon = weapon
+            self.dead = False
+            self.awake = True
+            self.bitten = False
 
     def take_damage(self, damage: int):
         if self.armor.protection > damage:
@@ -187,8 +212,9 @@ sword = Weapon("Sword", 10, 100)
 canoe = Weapon("Canoe", 42, 100)
 wiebe_armor = Armor("Armor of the gods", 10000000000, 100000000, 10000000)
 
-orc = Character("Orc", 100, sword, ("Generic Armor", 2))
-orc2 = Character("Weibe", 10000, canoe, wiebe_armor)
+orc = Character("Orc", "hello human", 100, 75, sword, ("Generic Armor", 2))
+orc2 = Character("Weibe", "I will smite you for your insulance", 10000, 10000, canoe,
+                 wiebe_armor)
 
 orc.attack(orc2)
 orc2.attack(orc)

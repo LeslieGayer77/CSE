@@ -52,18 +52,35 @@ class Player(object):
             return None
         return globals()[name_of_room]
 
-class Characters(object):
-    def __init__(self, name, dialogue, health=75, resistance=75, weapon=None):
+
+class Character(object):
+    def __init__(self, name, dialogue, health=75, resistance=75, weapon=None,
+                 armor=None):
         self.name = name
         self.dialogue = dialogue
         self.health = health
         self.resistance = resistance
         self.weapon = weapon
+        self.armor = armor
         self.dead = False
         self.awake = True
         self.bitten = False
         self.inventory = []
-    
+
+    def take_damage(self, damage: int):
+        if self.armor.protection > damage:
+            print("No damage is done because of great armor")
+        else:
+            self.health -= damage - self.armor.protection
+        print("%s has %d health left" % (self.name, self.health))
+
+    def attack(self, target):
+        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
+        target.take_damage(self.weapon.damage)
+
+# def take_damage1(self, damage):
+#   self.health = self.health - (damage - (self.resistance - self.armor.protection))
+
 
 class Enemy(object):
     def __init__(self, name, dialogue, health=75, resistance=75, weapon=None):
@@ -230,29 +247,7 @@ class Key(Item):
     def __init__(self, name):
         super(Key, self).__init__(name)
 
-
-class Character(object):
-    def __init__(self, name, health, weapon, armor):
-        self.name = name
-        self.health = health
-        self.weapon = weapon
-        self.armor = armor
-
-    def take_damage(self, damage: int):
-        if self.armor.protection > damage:
-            print("No damage is done because of great armor")
-        else:
-            self.health -= damage - self.armor.protection
-        print("%s has %d health left" % (self.name, self.health))
-
-    def attack(self, target):
-        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
-        target.take_damage(self.weapon.damage)
-
-
-
-
-
+Dean = Character("Dean", "HOwdy", 100, 100, Machete(), BV(), )
 # Option 1 - define as we go
 # R19A = Room("Mr. Weibe's Room")
 # parking_lot = Room("Parking Lot", None, R19A)
