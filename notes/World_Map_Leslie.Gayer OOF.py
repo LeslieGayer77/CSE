@@ -19,13 +19,15 @@ class Room(object):
 
 
 class Player(object):
-    def __init__(self, name, starting_location, energy=100, health=100, resistance=100, weapon=100):
+    def __init__(self, name, starting_location, energy=100, health=100,
+                 resistance=100, weapon=None, armor=None):
         self.name = name
         self.current_location = starting_location
         self.energy = energy
         self.health = health
         self.resistance = resistance
         self.weapon = weapon
+        self.armor = armor
         self.dead = False
         self.awake = True
         self.bitten = False
@@ -54,7 +56,7 @@ class Player(object):
 
 
 class Character(object):
-    def __init__(self, name, dialogue, health=75, resistance=75, weapon=None,
+    def __init__(self, name, dialogue, health=100, resistance=75, weapon=None,
                  armor=None):
         self.name = name
         self.dialogue = dialogue
@@ -205,12 +207,24 @@ class Woodbat(Bat):
         hit = random.randint(0, 100)
         if hit > 50:
             knockout = True
-            print("You knocked them out and they received 50 damage")
-
-        if hit < 50:
             target.take_damage
+            target.self.awake = False
+            print("You knocked them out and they received 50 damage")
+            if hit < 50:
             knockout = False
+            target.take_damage
             print("They received 50 damage")
+
+    def hit_target(self, target):
+        if self.armor == 'RG':
+            print("No damage is done because of great armor")
+        else:
+            self.health -= damage - self.armor.protection
+        print("%s has %d health left" % (self.name, self.health))
+
+    def attack(self, target):
+        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
+        target.take_damage(self.weapon.damage)
 
 
 class Ironbat(Bat):
@@ -240,14 +254,15 @@ class BV(Armor):
 
 class RG(Armor):
     def __init__(self):
-        super(RG, self).__init__("Riot Gear", 100, 50, 100)
+        super(RG, self).__init__("Riot Gear", 90, 50, 100)
 
 
 class Key(Item):
     def __init__(self, name):
         super(Key, self).__init__(name)
 
-Dean = Character("Dean", "HOwdy", 100, 100, Machete(), BV(), )
+Dean = Character("Dean", "HOwdy", 100, 100, Machete(1), BV(), )
+Sam = Character("Sam", "No hablo espanol", 100, 90, Pistol(), RG(), )
 # Option 1 - define as we go
 # R19A = Room("Mr. Weibe's Room")
 # parking_lot = Room("Parking Lot", None, R19A)

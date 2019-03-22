@@ -29,22 +29,6 @@ class Character(object):
         self.bitten = False
         self.inventory = []
 
-        class Bat(Weapon):
-            def __init__(self, name, damage, visibility, knockout=False):
-                super(Bat, self).__init__(name, damage, visibility, )
-                self.knockout = knockout
-
-    class Enemy(object):
-        def __init__(self, name, dialogue, health=75, resistance=75, weapon=None):
-            self.name = name
-            self.dialogue = dialogue
-            self.health = health
-            self.resistance = resistance
-            self.weapon = weapon
-            self.dead = False
-            self.awake = True
-            self.bitten = False
-
     def take_damage(self, damage: int):
         if self.armor.protection > damage:
             print("No damage is done because of great armor")
@@ -55,6 +39,12 @@ class Character(object):
     def attack(self, target):
         print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
         target.take_damage(self.weapon.damage)
+
+
+class Enemy(Character):
+    def __init__(self, name, dialogue, health, resistance, weapon, armor):
+        super(Enemy, self).__init__(name, dialogue, health, resistance, weapon,
+                                    armor)
 
 
 class Zombie(object):
@@ -197,7 +187,7 @@ class BV(Armor):
 
 class RG(Armor):
     def __init__(self):
-        super(RG, self) .__init__("Riot Gear", 100, 50, 100)
+        super(RG, self) .__init__("Riot Gear", 90, 50, 100)
 
 
 class Key(Item):
