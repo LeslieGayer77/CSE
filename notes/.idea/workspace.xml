@@ -77,8 +77,9 @@
           <entry key="project.open.time.73" value="1" />
           <entry key="project.open.time.76" value="1" />
           <entry key="project.open.time.81" value="1" />
+          <entry key="project.open.time.83" value="1" />
           <entry key="project.open.time.87" value="1" />
-          <entry key="project.opened" value="54" />
+          <entry key="project.opened" value="55" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -94,13 +95,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="42" />
-          <entry key="py" value="28831" />
+          <entry key="py" value="29041" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="42" />
-          <entry key="Python" value="28831" />
+          <entry key="Python" value="29041" />
         </counts>
       </usages-collector>
     </session>
@@ -122,8 +123,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/World_Map_Leslie.Gayer OOF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="214" column="30" lean-forward="true" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
+            <state relative-caret-position="259">
+              <caret line="223" column="13" lean-forward="true" selection-start-line="223" selection-start-column="13" selection-end-line="223" selection-end-column="13" />
+              <folding>
+                <marker date="1553532285956" expanded="true" signature="1505:1507" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,10 +135,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/item_for_projects_Leslie.Gayer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1452">
-              <caret line="50" column="49" lean-forward="true" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+            <state relative-caret-position="-613">
+              <caret line="158" column="12" selection-start-line="158" selection-start-column="12" selection-end-line="158" selection-end-column="12" />
               <folding>
-                <marker date="1553274436627" expanded="true" signature="1901:1978" ph="..." />
+                <marker date="1553532285808" expanded="true" signature="2023:2100" ph="..." />
               </folding>
             </state>
           </provider>
@@ -524,18 +528,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/item_for_projects_Leslie.Gayer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1452">
-          <caret line="50" column="49" lean-forward="true" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+        <state relative-caret-position="-613">
+          <caret line="158" column="12" selection-start-line="158" selection-start-column="12" selection-end-line="158" selection-end-column="12" />
           <folding>
-            <marker date="1553274436627" expanded="true" signature="1901:1978" ph="..." />
+            <marker date="1553532285808" expanded="true" signature="2023:2100" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/World_Map_Leslie.Gayer OOF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="214" column="30" lean-forward="true" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
+        <state relative-caret-position="259">
+          <caret line="223" column="13" lean-forward="true" selection-start-line="223" selection-start-column="13" selection-end-line="223" selection-end-column="13" />
+          <folding>
+            <marker date="1553532285956" expanded="true" signature="1505:1507" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

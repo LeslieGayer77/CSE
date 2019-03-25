@@ -47,8 +47,9 @@ class Enemy(Character):
                                     armor)
 
 
-class Zombie(object):
-    def __init__(self, resistance=100, bite=100):
+class Zombie(Character):
+    def __init__(self, name, dialogue, health, resistance, weapon, armor, bite):
+        super(Zombie, self).__init__(name, dialogue, health, resistance, weapon, armor)
         self.resistance = resistance
         self.bite = bite
 
@@ -151,25 +152,35 @@ class Bat(Weapon):
 class Woodbat(Bat):
     def __init__(self):
         super(Woodbat, self) .__init__('Woodbat', 50, 100)
+
+    def hit_target(self, target):
         hit = random.randint(0, 100)
         if hit > 50:
             knockout = True
+            target.take_damage(self.damage)
+            target.self.awake = False
             print("You knocked them out and they received 50 damage")
-        if hit < 50:
+        else:
             knockout = False
+            target.take_damage(self.damage)
             print("They received 50 damage")
 
 
 class Ironbat(Bat):
     def __init__(self):
         super(Ironbat, self) .__init__('Ironbat', 60, 100)
+
+    def hit_target(self, target):
         hit = random.randint(0, 100)
-        if hit > 30:
+        if hit > 80:
             knockout = True
-            print("You knocked them out and they received 50 damage")
-        if hit < 30:
+            target.take_damage(self.damage)
+            target.self.awake = False
+            print("You knocked them out and they received 65 damage")
+        else:
             knockout = False
-            print("They received 60 damage")
+            target.take_damage(self.damage)
+            print("They received 65 damage")
 
 
 class Armor(Item):

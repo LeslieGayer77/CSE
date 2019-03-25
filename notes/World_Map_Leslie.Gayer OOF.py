@@ -33,6 +33,17 @@ class Player(object):
         self.bitten = False
         self.inventory = []
 
+    def take_damage(self, damage: int):
+        if self.armor.protection > damage:
+            print("No damage is done because of great armor")
+        else:
+            self.health -= damage - self.armor.protection
+        print("%s has %d health left" % (self.name, self.health))
+
+    def attack(self, target):
+        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
+        target.take_damage(self.weapon.damage)
+
     def move(self, new_location):
         """ This moves the player to a new room
 
@@ -97,10 +108,10 @@ class Enemy(object):
         self.inventory = []
 
 
-class Zombie(object):
-    def __init__(self, resistance=None, attack=None):
+class Zombie(Character):
+    def __init__(self, name, dialogue, health, resistance, weapon, armor):
+        super(Zombie, self).__init__(name, dialogue, health, resistance, weapon, armor)
         self.resistance = resistance
-        self.attack = attack
         self.bite = False
 
 
@@ -207,36 +218,30 @@ class Woodbat(Bat):
         hit = random.randint(0, 100)
         if hit > 50:
             knockout = True
-            target.take_damage
+            target.take_damage(self.damage)
             target.self.awake = False
             print("You knocked them out and they received 50 damage")
-            if hit < 50:
-            knockout = False
-            target.take_damage
-            print("They received 50 damage")
-
-    def hit_target(self, target):
-        if self.armor == 'RG':
-            print("No damage is done because of great armor")
         else:
-            self.health -= damage - self.armor.protection
-        print("%s has %d health left" % (self.name, self.health))
-
-    def attack(self, target):
-        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
-        target.take_damage(self.weapon.damage)
+            knockout = False
+            target.take_damage(self.damage)
+            print("They received 50 damage")
 
 
 class Ironbat(Bat):
     def __init__(self):
-        super(Ironbat, self).__init__('Ironbat', 50, 100)
+        super(Ironbat, self).__init__('Ironbat', 65, 100)
+
+    def hit_target(self, target):
         hit = random.randint(0, 100)
-        if hit > 30:
+        if hit > 80:
             knockout = True
-            print("You knocked them out and they received 50 damage")
-        if hit < 30:
+            target.take_damage(self.damage)
+            target.self.awake = False
+            print("You knocked them out and they received 65 damage")
+        else:
             knockout = False
-            print("They received 60 damage")
+            target.take_damage(self.damage)
+            print("They received 65 damage")
 
 
 class Armor(Item):
@@ -260,6 +265,7 @@ class RG(Armor):
 class Key(Item):
     def __init__(self, name):
         super(Key, self).__init__(name)
+
 
 Dean = Character("Dean", "HOwdy", 100, 100, Machete(1), BV(), )
 Sam = Character("Sam", "No hablo espanol", 100, 90, Pistol(), RG(), )
@@ -358,6 +364,7 @@ player = Player("You", living_room)
 playing = True
 directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
               'southeast', 'southwest', 'up', 'down']
+actions = ['hit', 'shoot', 'stab', 'run', 'hide']
 
 while playing:
     print(player.current_location.name)
