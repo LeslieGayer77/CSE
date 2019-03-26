@@ -46,7 +46,7 @@
     <session id="1478536887">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="30" />
+          <entry key="project.closed" value="31" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.29" value="2" />
@@ -225,20 +225,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="notes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="notes" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -400,7 +387,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.50163937" side_tool="true" weight="0.15128593" />
       <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49836066" weight="0.21709532" />
