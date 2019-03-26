@@ -236,17 +236,17 @@ class Ironbat(Bat):
     def __init__(self):
         super(Ironbat, self).__init__('Ironbat', 65, 100)
 
-    def hit_target(self, target):
+    def hit_target(self, origin, target):
         hit = random.randint(0, 100)
-        if hit > 80:
-            knockout = True
+        if hit > 40:
+            origin.knockout = True
             target.take_damage(self.damage)
-            target.self.awake = False
-            print("You knocked them out and they received 65 damage")
+            target.awake = False
+            print("%s knocked them out and %s received 50 damage" % (origin.name, target.name))
         else:
-            knockout = False
+            origin.knockout = False
             target.take_damage(self.damage)
-            print("They received 65 damage")
+            print("They received 50 damage")
 
 
 class Armor(Item):

@@ -1,22 +1,8 @@
 import random
 
 
-class Player(object):
-    def __init__(self, name, energy=100, health=100, resistance=100, weapon=None,
-                 armor=None):
-        self.name = name
-        self.energy = energy
-        self.health = health
-        self.resistance = resistance
-        self.weapon = weapon
-        self.armor = armor
-        self.dead = False
-        self.awake = True
-        self.inventory = []
-
-
 class Character(object):
-    def __init__(self, name, dialogue, health=75, resistance=75, weapon=None,
+    def __init__(self, name, dialogue, health=100, resistance=75, weapon=None,
                  armor=None):
         self.name = name
         self.dialogue = dialogue
@@ -28,6 +14,7 @@ class Character(object):
         self.awake = True
         self.bitten = False
         self.inventory = []
+        self.follower = None  # Character Object
 
     def take_damage(self, damage: int):
         if self.armor.protection > damage:
@@ -38,20 +25,32 @@ class Character(object):
 
     def attack(self, target):
         print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
-        target.take_damage(self.weapon.damage)
+        target.take_damage(self.weapon.damage,)
+
+
+class Player(Character):
+    def __init__(self, name, starting_location, energy=100, health=100,
+                 resistance=100, weapon=None, armor=None):
+        super(Player, self).__init__(name, None, health, resistance, weapon, armor)
+        self.current_location = starting_location
+        self.energy = energy
+
+
+class NPC(Character):
+    def __init__(self, name, dialogue, health=100, resistance=75, weapon=None,
+                 armor=None):
+        super(NPC, self).__init__(name, dialogue, health, resistance, weapon, armor)
 
 
 class Enemy(Character):
+    def __init__(self, name, dialogue, health=75, resistance=75, weapon=None, armor=None):
+        super(Enemy, self).__init__(name, dialogue, health, resistance, weapon, armor)
+
+
+class Zombie(Enemy):
     def __init__(self, name, dialogue, health, resistance, weapon, armor):
-        super(Enemy, self).__init__(name, dialogue, health, resistance, weapon,
-                                    armor)
-
-
-class Zombie(Character):
-    def __init__(self, name, dialogue, health, resistance, weapon, armor, bite):
         super(Zombie, self).__init__(name, dialogue, health, resistance, weapon, armor)
-        self.resistance = resistance
-        self.bite = bite
+        self.bite = False
 
 
 class Item(object):
@@ -151,54 +150,52 @@ class Bat(Weapon):
 
 class Woodbat(Bat):
     def __init__(self):
-        super(Woodbat, self) .__init__('Woodbat', 50, 100)
+        super(Woodbat, self).__init__('Woodbat', 50, 100)
 
-    def hit_target(self, target):
+    def hit_target(self, origin, target):
         hit = random.randint(0, 100)
         if hit > 50:
-            knockout = True
+            origin.knockout = True
             target.take_damage(self.damage)
-            target.self.awake = False
-            print("You knocked them out and they received 50 damage")
+            target.awake = False
+            print("%s knocked them out and %s received 50 damage" % (origin.name, target.name))
         else:
-            knockout = False
+            origin.knockout = False
             target.take_damage(self.damage)
             print("They received 50 damage")
 
 
 class Ironbat(Bat):
     def __init__(self):
-        super(Ironbat, self) .__init__('Ironbat', 60, 100)
+        super(Ironbat, self).__init__('Ironbat', 65, 100)
 
-    def hit_target(self, target):
+    def hit_target(self, origin, target):
         hit = random.randint(0, 100)
-        if hit > 80:
-            knockout = True
+        if hit > 40:
+            origin.knockout = True
             target.take_damage(self.damage)
-            target.self.awake = False
-            print("You knocked them out and they received 65 damage")
+            target.awake = False
+            print("%s knocked them out and %s received 65 damage" % (origin.name, target.name))
         else:
-            knockout = False
+            origin.knockout = False
             target.take_damage(self.damage)
             print("They received 65 damage")
 
 
 class Armor(Item):
-    def __init__(self, name, protectiong, protectionk, protectionb):
+    def __init__(self, name, protection):
         super(Armor, self) .__init__(name)
-        self.protectiong = protectiong
-        self.protectionk = protectionk
-        self.protectionb = protectionb
+        self.protection = protection
 
 
 class BV(Armor):
     def __init__(self):
-        super(BV, self) .__init__("Bulletproof Vest", 100, 0, 0)
+        super(BV, self) .__init__("Bulletproof Vest", 80)
 
 
 class RG(Armor):
     def __init__(self):
-        super(RG, self) .__init__("Riot Gear", 90, 50, 100)
+        super(RG, self) .__init__("Riot Gear", 100)
 
 
 class Key(Item):
@@ -211,11 +208,17 @@ key1 = Key("House Key")
 
 sword = Weapon("Sword", 10, 100)
 canoe = Weapon("Canoe", 42, 100)
-wiebe_armor = Armor("Armor of the gods", 10000000000, 100000000, 10000000)
+wiebe_armor = Armor("Armor of the gods", 1000000000)
 
-orc = Character("Orc", "hello human", 100, 75, sword, ("Generic Armor", 2))
+orc = Character("Orc", "hello human", 100, 75, sword, Armor("Generic Armor", 2))
 orc2 = Character("Weibe", "I will smite you for your insulance", 10000, 10000, canoe,
                  wiebe_armor)
 
 orc.attack(orc2)
 orc2.attack(orc)
+
+Dean = Character("Dean", "You betrayed me", 100, 100, Machete(1), Armor("BV", 80))
+Sam = Character("Sam", "I dont care", 70, 60, Woodbat(), Armor(None, 0))
+
+Dean.attack(Sam)
+Sam.attack(Dean)
