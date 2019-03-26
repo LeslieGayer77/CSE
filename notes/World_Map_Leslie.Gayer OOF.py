@@ -1,6 +1,32 @@
 import random
 
 
+def fight(player_list: list, enemy_list: list):
+    # Player fights person
+    player_index = 0
+    enemy_index = -1
+    while player in player_list and len(enemy_list) > 0:
+        target = random.choice(enemy_list)
+        player_list[player_index].attack(target)
+        if target.health <= 0:
+            enemy_list.remove(target)
+
+        enemy_list += 1
+        if enemy_index > len(enemy_list) - 1:
+            enemy_index = 0
+
+        # Enemy fights player
+        target = random.choice(player_list)
+        enemy_list[enemy_index].attack(target)
+
+        if target.health <= 0:
+            player_list.remove(target)
+
+        player_index += 1
+        if player_index > len(player_list) - 1:
+            player_index = 0
+
+
 class Room(object):
     def __init__(self, name,  description, north=None,  east=None, south=None,
                  west=None, northeast=None, northwest=None,  southeast=None,
@@ -18,12 +44,11 @@ class Room(object):
         self.characters = []
 
 
-class Player(object):
-    def __init__(self, name, starting_location, energy=100, health=100,
-                 resistance=100, weapon=None, armor=None):
+class Character(object):
+    def __init__(self, name, dialogue, health=100, resistance=75, weapon=None,
+                 armor=None):
         self.name = name
-        self.current_location = starting_location
-        self.energy = energy
+        self.dialogue = dialogue
         self.health = health
         self.resistance = resistance
         self.weapon = weapon
@@ -32,6 +57,7 @@ class Player(object):
         self.awake = True
         self.bitten = False
         self.inventory = []
+        self.follower = None  # Character Object
 
     def take_damage(self, damage: int):
         if self.armor.protection > damage:
@@ -49,6 +75,9 @@ class Player(object):
 
         :param new_location: The room object of which you are going to
         """
+        if self.follower is not None:
+            self.current_location.characters.remove(self.follower)
+            new_location.characters.append(self.follower)
         self.current_location = new_location
 
     def find_next_room(self, direction):
@@ -60,58 +89,34 @@ class Player(object):
         :return: The room object if it exists, or none if it does not
         """
         name_of_room = getattr(self.current_location, direction)
-        if name_of_room == "ncar" and "key" not in player.inventory:
+        if name_of_room == "ncar" and "key" not in self.inventory and isinstance(self, Player):
             print("You don't have the keys")
             return None
         return globals()[name_of_room]
 
 
-class Character(object):
+class Player(Character):
+    def __init__(self, name, starting_location, energy=100, health=100,
+                 resistance=100, weapon=None, armor=None):
+        super(Player, self).__init__(name, None, health, resistance, weapon, armor)
+        self.current_location = starting_location
+        self.energy = energy
+
+
+class NPC(Character):
     def __init__(self, name, dialogue, health=100, resistance=75, weapon=None,
                  armor=None):
-        self.name = name
-        self.dialogue = dialogue
-        self.health = health
-        self.resistance = resistance
-        self.weapon = weapon
-        self.armor = armor
-        self.dead = False
-        self.awake = True
-        self.bitten = False
-        self.inventory = []
-
-    def take_damage(self, damage: int):
-        if self.armor.protection > damage:
-            print("No damage is done because of great armor")
-        else:
-            self.health -= damage - self.armor.protection
-        print("%s has %d health left" % (self.name, self.health))
-
-    def attack(self, target):
-        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
-        target.take_damage(self.weapon.damage)
-
-# def take_damage1(self, damage):
-#   self.health = self.health - (damage - (self.resistance - self.armor.protection))
+        super(NPC, self).__init__(name, dialogue, health, resistance, weapon, armor)
 
 
-class Enemy(object):
-    def __init__(self, name, dialogue, health=75, resistance=75, weapon=None):
-        self.name = name
-        self.dialogue = dialogue
-        self.health = health
-        self.resistance = resistance
-        self.weapon = weapon
-        self.dead = False
-        self.awake = True
-        self.bitten = False
-        self.inventory = []
+class Enemy(Character):
+    def __init__(self, name, dialogue, health=75, resistance=75, weapon=None, armor=None):
+        super(Enemy, self).__init__(name, dialogue, health, resistance, weapon, armor)
 
 
-class Zombie(Character):
+class Zombie(Enemy):
     def __init__(self, name, dialogue, health, resistance, weapon, armor):
         super(Zombie, self).__init__(name, dialogue, health, resistance, weapon, armor)
-        self.resistance = resistance
         self.bite = False
 
 
@@ -214,15 +219,15 @@ class Woodbat(Bat):
     def __init__(self):
         super(Woodbat, self).__init__('Woodbat', 50, 100)
 
-    def hit_target(self, target):
+    def hit_target(self, origin, target):
         hit = random.randint(0, 100)
         if hit > 50:
-            knockout = True
+            origin.knockout = True
             target.take_damage(self.damage)
-            target.self.awake = False
-            print("You knocked them out and they received 50 damage")
+            target.awake = False
+            print("%s knocked them out and %s received 50 damage" % (origin.name, target.name))
         else:
-            knockout = False
+            origin.knockout = False
             target.take_damage(self.damage)
             print("They received 50 damage")
 
@@ -360,6 +365,8 @@ nkitchen.item = "key"
 
 
 player = Player("You", living_room)
+player.follower = Dean
+player.follower = None
 
 playing = True
 directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
