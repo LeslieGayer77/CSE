@@ -42,6 +42,7 @@ class Room(object):
         self.southeast = southeast
         self.southwest = southwest
         self.characters = []
+        self.Enemys = None
 
 
 class Character(object):
@@ -59,16 +60,27 @@ class Character(object):
         self.inventory = []
         self.follower = None  # Character Object
 
-    def take_damage(self, damage: int):
-        if self.armor.protection > damage:
-            print("No damage is done because of great armor")
-        else:
-            self.health -= damage - self.armor.protection
+    def take_damage(self, damage: int, damage_type):
+        if damage_type == "gun":
+            if self.armor.protectiong > damage:
+                print("No damage is done because of great armor")
+            else:
+                self.health -= damage - self.armor.protectiong
+        elif damage_type == 'knife':
+            if self.armor.protectionk > damage:
+                print("No damage is done because of great armor")
+            else:
+                self.health -= damage - self.armor.protectionk
+        elif damage_type == 'bat':
+            if self.armor.protectionb > damage:
+                print("No damage is done because of great armor")
+            else:
+                self.health -= damage - self.armor.protectionb
         print("%s has %d health left" % (self.name, self.health))
 
     def attack(self, target):
         print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
-        target.take_damage(self.weapon.damage)
+        target.take_damage(self.weapon.damage, self.weapon.dmg_type)
 
     def move(self, new_location):
         """ This moves the player to a new room
@@ -79,6 +91,8 @@ class Character(object):
             self.current_location.characters.remove(self.follower)
             new_location.characters.append(self.follower)
         self.current_location = new_location
+
+    def pickup(self): 
 
     def find_next_room(self, direction):
         """
@@ -163,6 +177,7 @@ class Gun(Weapon):
     def __init__(self,  name, damage, visibility, blocked):
         super(Gun, self).__init__(name, damage, visibility)
         self.blocked = blocked
+        self.dmg_type = "gun"
 
 
 class Pistol(Gun):
@@ -180,6 +195,7 @@ class Shotgun(Gun):
 class Knife(Weapon):
     def __init__(self, name, damage, visibility):
         super(Knife, self).__init__(name, damage, visibility)
+        self.dmg_type = "knife"
 
 
 class KitchenKnife(Knife):
@@ -196,11 +212,13 @@ class Melee(Weapon):
     def __init__(self, name, damage, visibility, kill_count):
         super(Melee, self).__init__(name, damage, visibility, )
         self.kill_count = kill_count
+        self.dmg_type = "knife"
 
 
 class Katana(Melee):
     def __init__(self):
         super(Katana, self).__init__('Katana', 100, 100, 3)
+
 
 
 class Machete(Melee):
@@ -213,6 +231,7 @@ class Bat(Weapon):
     def __init__(self, name, damage, visibility, knockout=False):
         super(Bat, self).__init__(name, damage, visibility, )
         self.knockout = knockout
+        self.dmg_type = "bat"
 
 
 class Woodbat(Bat):
@@ -312,7 +331,10 @@ road_1 = Room("The Road", "Maybe if i follow this road East "
                           "I could get somewhere. \n"
                           "If only i had a car.", None, 'nroad', 'grass', None, None,
               None, "my_car", "grass")
-kitchen = Room("The Kitchen", "The kitchen", 'garage', 'stake_knives', None, 'hallway', None,
+kitchen = Room("The Kitchen", "There is a couple raw steaks to the east \n"
+                              "with a bloody knife to the side", 'garage', 'kitchen_knives', None, 'hallway', None,
+               None, None, None)
+kitchen_knives = Room("T", "The kitchen", 'garage', 'kitchen_knives', None, 'hallway', None,
                None, None, None)
 my_car = Room("Empty Drive-Way", "", 'road', 'bushes', 'front_yard', 'front_yard', 'nroad',
               'road1', None, 'front_yard')
@@ -373,6 +395,10 @@ directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
               'southeast', 'southwest', 'up', 'down']
 actions = ['hit', 'shoot', 'stab', 'run', 'hide']
 
+
+"""Dean.attack(Sam)
+Sam.attack(Dean)"""
+
 while playing:
     print(player.current_location.name)
     print(player.current_location.description)
@@ -398,3 +424,4 @@ while playing:
         print("Command Not Found")
 
 print()
+
