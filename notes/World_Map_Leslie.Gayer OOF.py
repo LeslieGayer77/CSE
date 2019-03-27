@@ -30,7 +30,9 @@ def fight(player_list: list, enemy_list: list):
 class Room(object):
     def __init__(self, name,  description, north=None,  east=None, south=None,
                  west=None, northeast=None, northwest=None,  southeast=None,
-                 southwest=None):
+                 southwest=None, characters=None):
+        if characters is None:
+            characters = []
         self.name = name
         self.description = description
         self.north = north
@@ -41,8 +43,7 @@ class Room(object):
         self.northwest = northwest
         self.southeast = southeast
         self.southwest = southwest
-        self.characters = []
-        self.Enemys = None
+        self.characters = characters
 
 
 class Character(object):
@@ -90,9 +91,7 @@ class Character(object):
         if self.follower is not None:
             self.current_location.characters.remove(self.follower)
             new_location.characters.append(self.follower)
-        self.current_location = new_location
-
-    def pickup(self): 
+            self.current_location = new_location
 
     def find_next_room(self, direction):
         """
@@ -150,7 +149,16 @@ nc = Car("Neighbors car", 100, 100)
 bdc = Car("Broken down car", 50, 50)
 
 
+class Animal(Character):
+    def __init__(self, name, health=100, ):
+        super(Animal, self).__init__(name, health)
+
+
+Dog = Animal(input, 100)
+
+
 class Food(Item):
+
     def __init__(self,  name,  energy=0):
         super(Food, self).__init__(name)
         self.energy = energy
@@ -220,7 +228,6 @@ class Katana(Melee):
         super(Katana, self).__init__('Katana', 100, 100, 3)
 
 
-
 class Machete(Melee):
     def __init__(self, kill_count):
         super(Machete, self).__init__('Basic Machete', 100, 100, 2)
@@ -283,12 +290,21 @@ class BV(Armor):
 
 class RG(Armor):
     def __init__(self):
-        super(RG, self).__init__("Riot Gear", 90, 50, 100)
+        super(RG, self).__init__("Riot Gear", 80, 50, 100)
 
 
 class Key(Item):
     def __init__(self, name):
         super(Key, self).__init__(name)
+
+
+class BBA(Armor):
+    def __init__(self):
+        super(BBA, self).__init__("Basic Body Armor", 0, 25, 25)
+
+
+"""'Dean', 'Maverick', 'Asher', 'Westly', 'Hunter', 'Misty',
+                          'Naomi', 'Demitres', 'Kodak'"""
 
 
 Dean = Character("Dean", "HOwdy", 100, 100, Machete(1), BV(), )
@@ -300,8 +316,8 @@ Sam = Character("Sam", "No hablo espanol", 100, 90, Pistol(), RG(), )
 # R19A.north + parking_lot
 
 # Option 2 - Se tall at once, modify controller
-R19A = Room("Mr. Weibe's Room", 'parking_lot')
-parking_lot = Room("Parking Lot", None, "R19A")
+"""R19A = Room("Mr. Weibe's Room", 'parking_lot')
+parking_lot = Room("Parking Lot", None, "R19A")"""
 
 
 living_room = Room("Living Room",  "The TV is Screeching on the North wall " 
@@ -334,8 +350,8 @@ road_1 = Room("The Road", "Maybe if i follow this road East "
 kitchen = Room("The Kitchen", "There is a couple raw steaks to the east \n"
                               "with a bloody knife to the side", 'garage', 'kitchen_knives', None, 'hallway', None,
                None, None, None)
-kitchen_knives = Room("T", "The kitchen", 'garage', 'kitchen_knives', None, 'hallway', None,
-               None, None, None)
+kitchen_knives = Room("A kitchen knife and stake", "Should I take it?", 'garage', None, None, 'hallway',
+                      None, None, None, None)
 my_car = Room("Empty Drive-Way", "", 'road', 'bushes', 'front_yard', 'front_yard', 'nroad',
               'road1', None, 'front_yard')
 bushes = Room("Some bushes", "I can see my neighbors nice car from here",
@@ -361,7 +377,7 @@ almost_otherside = Room("An Open Fence", "Okay the growling is definitely more p
 fence2 = Room("Fence", "", 'dog', 'dog', 'south', 'backyard', 'backyard',
               'backyard', None, None)
 dog = Room("Neighbors Backyard",  "", 'nlr', 'pool', 'fence2', 'almost_otherside', 'wall2',
-           'wall2', 'fence2', 'fence2')
+           'wall2', 'fence2', 'fence2', characters=[Dog])
 wall2 = Room("wall", "", None, 'backyard', 'fence2', 'backyard', None,
              None, 'backyard', 'backyard')
 nlr = Room("Neighbor Living Room", "There is a kitchen to the Northwest. \n"
@@ -384,6 +400,7 @@ grass2 = Room("The Neigbor's Lawn", " ", 'nroad', 'nroad', 'ndoor', 'ncar', 'nro
 playgrounds = Room("Playground Front Gate", " ", None, 'east', 'south', 'nroad', 'northeast',
                    'northwest', 'southeast', 'southwest')
 nkitchen.item = "key"
+kitchenknife =
 
 
 player = Player("You", living_room)
@@ -424,4 +441,3 @@ while playing:
         print("Command Not Found")
 
 print()
-
