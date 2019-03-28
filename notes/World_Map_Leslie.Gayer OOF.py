@@ -30,9 +30,11 @@ def fight(player_list: list, enemy_list: list):
 class Room(object):
     def __init__(self, name,  description, north=None,  east=None, south=None,
                  west=None, northeast=None, northwest=None,  southeast=None,
-                 southwest=None, characters=None):
+                 southwest=None, characters=None, items=None):
         if characters is None:
             characters = []
+        if items is None:
+            items = []
         self.name = name
         self.description = description
         self.north = north
@@ -44,6 +46,7 @@ class Room(object):
         self.southeast = southeast
         self.southwest = southwest
         self.characters = characters
+        self.items = items
 
 
 class Character(object):
@@ -91,7 +94,8 @@ class Character(object):
         if self.follower is not None:
             self.current_location.characters.remove(self.follower)
             new_location.characters.append(self.follower)
-            self.current_location = new_location
+
+        self.current_location = new_location
 
     def find_next_room(self, direction):
         """
@@ -114,6 +118,7 @@ class Player(Character):
         super(Player, self).__init__(name, None, health, resistance, weapon, armor)
         self.current_location = starting_location
         self.energy = energy
+        self.inventory = []
 
 
 class NPC(Character):
@@ -349,8 +354,8 @@ road_1 = Room("The Road", "Maybe if i follow this road East "
               None, "my_car", "grass")
 kitchen = Room("The Kitchen", "There is a couple raw steaks to the east \n"
                               "with a bloody knife to the side", 'garage', 'kitchen_knives', None, 'hallway', None,
-               None, None, None)
-kitchen_knives = Room("A kitchen knife and stake", "Should I take it?", 'garage', None, None, 'hallway',
+               None, None, None, None, 'Knife')
+kitchen_knives = Room("A kitchen knife and stake", "Should I pick it up?", 'garage', None, None, 'hallway',
                       None, None, None, None)
 my_car = Room("Empty Drive-Way", "", 'road', 'bushes', 'front_yard', 'front_yard', 'nroad',
               'road1', None, 'front_yard')
@@ -383,8 +388,11 @@ wall2 = Room("wall", "", None, 'backyard', 'fence2', 'backyard', None,
 nlr = Room("Neighbor Living Room", "There is a kitchen to the Northwest. \n"
                                    "and a hallway to the east ", 'ntv', 'nhw', 'dog', 'nwindow', 'nhw',
            'nkitchen', None, None)
-nkitchen = Room("Kitchen", "The outside front door is to the Northeast. \n"
-                           "There are keys on the North counter!", 'counter1', 'nhw', 'counter', 'nwindow', 'ndoor',
+nkitchen = Room("Kitchen", "The front door is to the Northeast. \n"
+                           "There are keys on the South counter!", 'counter1', 'nhw', 'ncounter', 'nwindow', 'ndoor',
+                'ngarage', 'nhw', 'nlr')
+ncounter = Room("Keys", "Some car keys. \n"
+                        "Should i pick them up?", 'counter1', 'nhw', None, 'nwindow', 'ndoor',
                 'ngarage', 'nhw', 'nlr')
 nhw = Room("Hallway", "A hallway with one door to the North wall and"
                       "one door to the South wall. ", 'room2', None, 'room3', 'nlr', None,
@@ -399,8 +407,6 @@ grass2 = Room("The Neigbor's Lawn", " ", 'nroad', 'nroad', 'ndoor', 'ncar', 'nro
               'noroad', None, None)
 playgrounds = Room("Playground Front Gate", " ", None, 'east', 'south', 'nroad', 'northeast',
                    'northwest', 'southeast', 'southwest')
-nkitchen.item = "key"
-kitchenknife =
 
 
 player = Player("You", living_room)
@@ -410,7 +416,7 @@ player.follower = None
 playing = True
 directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
               'southeast', 'southwest', 'up', 'down']
-actions = ['hit', 'shoot', 'stab', 'run', 'hide']
+actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up']
 
 
 """Dean.attack(Sam)
@@ -432,11 +438,15 @@ while playing:
             print()
     elif "pick up" in command:
         item_name = command[8:].lower()
-        if item_name == player.current_location.item:
-            print("You pick up the %s" % player.current_location.item)
-            player.inventory.append(player.current_location.item)
-            if item_name == "keycard":
-                living_room.north = "secret"
+        for item in player.current_location.items:
+            if item_name == item.name:
+                print("You pick up the %s" % item.name)
+                player.inventory.append(player.current_location.item)
+                if item_name == "keycard":
+                    living_room.north = "secret"
+    elif command.lower() in actions:
+        if actions[5]:
+            print(player.inventory)
     else:
         print("Command Not Found")
 
