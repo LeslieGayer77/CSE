@@ -354,9 +354,9 @@ road_1 = Room("The Road", "Maybe if i follow this road East "
               None, "my_car", "grass")
 kitchen = Room("The Kitchen", "There is a couple raw steaks to the east \n"
                               "with a bloody knife to the side", 'garage', 'kitchen_knives', None, 'hallway', None,
-               None, None, None, None, 'Knife')
-kitchen_knives = Room("A kitchen knife and stake", "Should I pick it up?", 'garage', None, None, 'hallway',
-                      None, None, None, None)
+               None, None, None, None)
+kitchen_knives = Room("A kitchen knife and stake", "", 'garage', None, None, 'hallway',
+                      None, None, None, None, 'Kitchen Knife')
 my_car = Room("Empty Drive-Way", "", 'road', 'bushes', 'front_yard', 'front_yard', 'nroad',
               'road1', None, 'front_yard')
 bushes = Room("Some bushes", "I can see my neighbors nice car from here",
