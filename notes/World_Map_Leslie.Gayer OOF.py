@@ -101,7 +101,6 @@ class Character(object):
         """
         This method  searches the current room so see if a room
         exists in that direction
-
         :param direction: The direction you want to move to
         :return: The room object if it exists, or none if it does not
         """
@@ -356,7 +355,7 @@ kitchen = Room("The Kitchen", "There is a couple raw steaks to the east \n"
                               "with a bloody knife to the side", 'garage', 'kitchen_knives', None, 'hallway', None,
                None, None, None, None)
 kitchen_knives = Room("A kitchen knife and stake", "", 'garage', None, None, 'hallway',
-                      None, None, None, None, 'Kitchen Knife')
+                      None, None, None, None, None, [KitchenKnife()])
 my_car = Room("Empty Drive-Way", "", 'road', 'bushes', 'front_yard', 'front_yard', 'nroad',
               'road1', None, 'front_yard')
 bushes = Room("Some bushes", "I can see my neighbors nice car from here",
@@ -416,7 +415,7 @@ player.follower = None
 playing = True
 directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
               'southeast', 'southwest', 'up', 'down']
-actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up']
+actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory']
 
 
 """Dean.attack(Sam)
@@ -437,11 +436,12 @@ while playing:
             print("I can't go that way")
             print()
     elif "pick up" in command:
-        item_name = command[8:].lower()
+        item_name = command[8:]
         for item in player.current_location.items:
             if item_name == item.name:
                 print("You pick up the %s" % item.name)
-                player.inventory.append(player.current_location.item)
+                print("It is now in your inventory")
+                player.inventory.append(item)
                 if item_name == "keycard":
                     living_room.north = "secret"
     elif command.lower() in actions:
