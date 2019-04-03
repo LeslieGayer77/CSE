@@ -105,7 +105,7 @@ class Character(object):
         :return: The room object if it exists, or none if it does not
         """
         name_of_room = getattr(self.current_location, direction)
-        if name_of_room == "ncar" and "key" not in self.inventory and isinstance(self, Player):
+        if name_of_room == "ncar" and 'Key1' not in self.inventory and isinstance(self, Player):
             print("You don't have the keys")
             return None
         return globals()[name_of_room]
@@ -301,6 +301,8 @@ class Key(Item):
     def __init__(self, name):
         super(Key, self).__init__(name)
 
+key1 = Key("Keys")
+
 
 class BBA(Armor):
     def __init__(self):
@@ -336,6 +338,7 @@ hallway = Room("The hallway", "A narrow hallway with family photos arranged "
                               "The kitchens to the East.\n"
                               "A room is to the West. \n ",
                'living_room', 'kitchen', 'backyard', 'room1', None, None, None,  None)
+room1 = Room("Room", "", 'dresser', )
 couch = Room("The Couch", "good for taking long naps on",
              'tv', 'hallway', None, 'window', 'front_yard', None, 'hallway', None)
 window = Room("The Window", "can't see much. \n"
@@ -363,7 +366,7 @@ bushes = Room("Some bushes", "I can see my neighbors nice car from here",
 garage = Room("The Garage", "Nothing here besides a tool box to the west. \n",
               None, None, 'kitchen', 'tool_box', None, None, None, None)
 tool_box = Room("Toolbox", "There is tape and a wrench in here. \n",
-                None, 'garage', None, None, None, None, None, None)
+                None, 'garage', None, None, None, None, None, None, None, [key1])
 backyard = Room("The Backyard", "There is a broken open fence to my neighbors yard in the east. \n"
                                 "I think im going crazy is that barking?. \n",
                 'hallway', 'almost_otherside', 'fence1', 'garden', 'wall1',
@@ -415,7 +418,7 @@ player.follower = None
 playing = True
 directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
               'southeast', 'southwest', 'up', 'down']
-actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory']
+actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get in']
 
 
 """Dean.attack(Sam)
