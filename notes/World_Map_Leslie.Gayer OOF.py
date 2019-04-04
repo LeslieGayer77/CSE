@@ -301,7 +301,14 @@ class Key(Item):
     def __init__(self, name):
         super(Key, self).__init__(name)
 
+
 key1 = Key("Keys")
+
+
+class Medicine(Item):
+    def __init__(self, name, heal_amount):
+        super(Medicine, self).__init__(name)
+        self.heal_amount = heal_amount
 
 
 class BBA(Armor):
@@ -338,7 +345,15 @@ hallway = Room("The hallway", "A narrow hallway with family photos arranged "
                               "The kitchens to the East.\n"
                               "A room is to the West. \n ",
                'living_room', 'kitchen', 'backyard', 'room1', None, None, None,  None)
-room1 = Room("Room", "", 'dresser', )
+room1 = Room("Room", "", 'dresser', 'hallway', 'closet', 'bed', 'r1w', 'r1w', 'r1w', 'r1w')
+dresser = Room("dresser", 'nothing in here except some Excedrin', None, 'hallway', 'closet',
+               'r1w', None, None, 'r1w', 'bed', None)
+bed = Room("Bed", 'should i sleep?', 'r1w', 'hallway', 'r1w', None, 'dresser', None,
+           'closet', None)
+r1w = Room("Wall", "", 'room1', 'room1', 'room1', 'room1', 'room1', 'room1', 'room1',
+           'room1', 'room1')
+closet = Room("Closet", 'Some thin shirts and sweaters with a leather jacket', 'dresser',
+              'r1w', None, 'r1w', 'r1w', 'bed', 'r1w', None, None)
 couch = Room("The Couch", "good for taking long naps on",
              'tv', 'hallway', None, 'window', 'front_yard', None, 'hallway', None)
 window = Room("The Window", "can't see much. \n"
@@ -418,7 +433,7 @@ player.follower = None
 playing = True
 directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
               'southeast', 'southwest', 'up', 'down']
-actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get in']
+actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get in', 'take', 'swallow']
 
 
 """Dean.attack(Sam)
@@ -447,6 +462,13 @@ while playing:
                 player.inventory.append(item)
                 if item_name == "keycard":
                     living_room.north = "secret"
+    elif "swallow" in command:
+        item_name = command[8:]
+        for item in player.current_location.items:
+            if item_name == item.name:
+                print("You swallow %s" % item.name)
+                print("you now have %s" % player.health)
+                player.inventory.append(item)
     elif command.lower() in actions:
         if actions[5]:
             print(player.inventory)
