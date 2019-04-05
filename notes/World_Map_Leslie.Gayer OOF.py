@@ -162,10 +162,12 @@ Dog = Animal(input, 100)
 
 
 class Food(Item):
-
-    def __init__(self,  name,  energy=0):
+    def __init__(self,  name,  energy_amount=None):
         super(Food, self).__init__(name)
-        self.energy = energy
+        self.energy_amount = energy_amount
+
+    def replenish_energy(self):
+        Character.energy = Character.energy + self.energy_amount
 
 
 class Junk(Food):
@@ -297,6 +299,11 @@ class RG(Armor):
         super(RG, self).__init__("Riot Gear", 80, 50, 100)
 
 
+class LJ(Armor):
+    def __init__(self):
+        super(LJ, self).__init__("Leather Jacket", 0, 20, 20)
+
+
 class Key(Item):
     def __init__(self, name):
         super(Key, self).__init__(name)
@@ -306,9 +313,15 @@ key1 = Key("Keys")
 
 
 class Medicine(Item):
-    def __init__(self, name, heal_amount):
+    def __init__(self, name, heal_amount=None):
         super(Medicine, self).__init__(name)
         self.heal_amount = heal_amount
+
+    def heal(self):
+        Character.health = Character.health + self.heal_amount
+
+
+excedrin = Medicine("Excedrin", 20)
 
 
 class BBA(Armor):
@@ -345,15 +358,18 @@ hallway = Room("The hallway", "A narrow hallway with family photos arranged "
                               "The kitchens to the East.\n"
                               "A room is to the West. \n ",
                'living_room', 'kitchen', 'backyard', 'room1', None, None, None,  None)
-room1 = Room("Room", "", 'dresser', 'hallway', 'closet', 'bed', 'r1w', 'r1w', 'r1w', 'r1w')
+room1 = Room("Room", "My dresser is to the North. \n"
+                     "my bed is to the West and my closet"
+                     "is to the South",
+             'dresser', 'hallway', 'closet', 'bed', 'r1w', 'r1w', 'r1w', 'r1w')
 dresser = Room("dresser", 'nothing in here except some Excedrin', None, 'hallway', 'closet',
-               'r1w', None, None, 'r1w', 'bed', None)
+               'r1w', None, None, 'r1w', 'bed', None, [excedrin])
 bed = Room("Bed", 'should i sleep?', 'r1w', 'hallway', 'r1w', None, 'dresser', None,
            'closet', None)
 r1w = Room("Wall", "", 'room1', 'room1', 'room1', 'room1', 'room1', 'room1', 'room1',
            'room1', 'room1')
 closet = Room("Closet", 'Some thin shirts and sweaters with a leather jacket', 'dresser',
-              'r1w', None, 'r1w', 'r1w', 'bed', 'r1w', None, None)
+              'r1w', None, 'r1w', 'r1w', 'bed', 'r1w', None, None, [LJ])
 couch = Room("The Couch", "good for taking long naps on",
              'tv', 'hallway', None, 'window', 'front_yard', None, 'hallway', None)
 window = Room("The Window", "can't see much. \n"
@@ -381,7 +397,7 @@ bushes = Room("Some bushes", "I can see my neighbors nice car from here",
 garage = Room("The Garage", "Nothing here besides a tool box to the west. \n",
               None, None, 'kitchen', 'tool_box', None, None, None, None)
 tool_box = Room("Toolbox", "There is tape and a wrench in here. \n",
-                None, 'garage', None, None, None, None, None, None, None, [key1])
+                None, 'garage', None, None, None, None, None, None, None)
 backyard = Room("The Backyard", "There is a broken open fence to my neighbors yard in the east. \n"
                                 "I think im going crazy is that barking?. \n",
                 'hallway', 'almost_otherside', 'fence1', 'garden', 'wall1',
@@ -399,7 +415,7 @@ almost_otherside = Room("An Open Fence", "Okay the growling is definitely more p
 fence2 = Room("Fence", "", 'dog', 'dog', 'south', 'backyard', 'backyard',
               'backyard', None, None)
 dog = Room("Neighbors Backyard",  "", 'nlr', 'pool', 'fence2', 'almost_otherside', 'wall2',
-           'wall2', 'fence2', 'fence2', characters=[Dog])
+           'wall2', 'fence2', 'fence2', [Dog])
 wall2 = Room("wall", "", None, 'backyard', 'fence2', 'backyard', None,
              None, 'backyard', 'backyard')
 nlr = Room("Neighbor Living Room", "There is a kitchen to the Northwest. \n"
@@ -410,7 +426,7 @@ nkitchen = Room("Kitchen", "The front door is to the Northeast. \n"
                 'ngarage', 'nhw', 'nlr')
 ncounter = Room("Keys", "Some car keys. \n"
                         "Should i pick them up?", 'counter1', 'nhw', None, 'nwindow', 'ndoor',
-                'ngarage', 'nhw', 'nlr')
+                'ngarage', 'nhw', 'nlr', None, [key1])
 nhw = Room("Hallway", "A hallway with one door to the North wall and"
                       "one door to the South wall. ", 'room2', None, 'room3', 'nlr', None,
            None, None, None)
