@@ -436,10 +436,13 @@ nroad = Room("The Road", " ", None, 'playgrounds', 'grass2', 'nroad', None,
              "road1", 'grass2', 'ncar')
 ncar = Room("Neighbor's Car", " ", 'north', 'east', 'south', 'west', 'nroad',
             'nroad', 'grass1', None)
+driveablecar = Room("In Car", "I can now go east", None, 'crossroads', None, 'Endroad', None,
+None, None, None)
 grass2 = Room("The Neigbor's Lawn", " ", 'nroad', 'nroad', 'ndoor', 'ncar', 'nroad',
               'noroad', None, None)
-playgrounds = Room("Playground Front Gate", " ", None, 'east', 'south', 'nroad', 'northeast',
-                   'northwest', 'southeast', 'southwest')
+playgrounds = Room("Nowhere", "I can't go and farther east on foot \n"
+                              "It would be best if i find a vehicle", None, None, None, 'nroad', None,
+                   None, None, None)
 
 
 player = Player("You", living_room)
@@ -478,6 +481,9 @@ while playing:
                 player.inventory.append(item)
                 if item_name == "keycard":
                     living_room.north = "secret"
+                if item == key1:
+                    ncar.north = "drivable"
+                    ncar.south =
     elif "swallow" in command:
         item_name = command[8:]
         for item in player.current_location.items:
