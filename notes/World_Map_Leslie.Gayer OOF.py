@@ -318,7 +318,7 @@ class Medicine(Item):
         self.heal_amount = heal_amount
 
     def heal(self):
-        Character.health = Character.health + self.heal_amount
+        player.health = player.health + self.heal_amount
 
 
 excedrin = Medicine("Excedrin", 20)
@@ -352,7 +352,7 @@ living_room = Room("Living Room",  "The TV is Screeching on the North wall "
                                    "The hallway is leading to the East. \n",
                    'tv', 'hallway', 'couch', 'window', 'front_yard', None, 'hallway', None)
 tv = Room("Tv", "Its ear piercing. \n", None, 'living_room', 'couch', 'window', 'front_yard',
-          None, 'hallway', None)
+          None, 'hallway', None, None, [excedrin])
 hallway = Room("The hallway", "A narrow hallway with family photos arranged "
                               "across the wall. \n"
                               "The kitchens to the East.\n"
@@ -363,7 +363,7 @@ room1 = Room("Room", "My dresser is to the North. \n"
                      "is to the South",
              'dresser', 'hallway', 'closet', 'bed', 'r1w', 'r1w', 'r1w', 'r1w')
 dresser = Room("dresser", 'nothing in here except some Excedrin', None, 'hallway', 'closet',
-               'r1w', None, None, 'r1w', 'bed', None, [excedrin])
+               'r1w', None, None, 'r1w', 'bed', None)
 bed = Room("Bed", 'should i sleep?', 'r1w', 'hallway', 'r1w', None, 'dresser', None,
            'closet', None)
 r1w = Room("Wall", "", 'room1', 'room1', 'room1', 'room1', 'room1', 'room1', 'room1',
@@ -436,8 +436,8 @@ nroad = Room("The Road", " ", None, 'playgrounds', 'grass2', 'nroad', None,
              "road1", 'grass2', 'ncar')
 ncar = Room("Neighbor's Car", " ", 'north', 'east', 'south', 'west', 'nroad',
             'nroad', 'grass1', None)
-driveablecar = Room("In Car", "I can now go east", None, 'crossroads', None, 'Endroad', None,
-None, None, None)
+drivable = Room("In Car", "I can now go east", None, 'crossroads', None, 'Endroad', None,
+                None, None, None)
 grass2 = Room("The Neigbor's Lawn", " ", 'nroad', 'nroad', 'ndoor', 'ncar', 'nroad',
               'noroad', None, None)
 playgrounds = Room("Nowhere", "I can't go and farther east on foot \n"
@@ -472,25 +472,26 @@ while playing:
         except KeyError:
             print("I can't go that way")
             print()
-    elif "pick up" in command:
+    elif "pick up" in command.lower():
         item_name = command[8:]
         for item in player.current_location.items:
-            if item_name == item.name:
+            if item_name.lower() == item.name.lower():
                 print("You pick up the %s" % item.name)
                 print("It is now in your inventory")
                 player.inventory.append(item)
                 if item_name == "keycard":
                     living_room.north = "secret"
                 if item == key1:
-                    ncar.north = "drivable"
-                    ncar.south =
+                    ncar = 'drivable'
     elif "swallow" in command:
         item_name = command[8:]
         for item in player.current_location.items:
-            if item_name == item.name:
-                print("You swallow %s" % item.name)
-                print("you now have %s" % player.health)
-                player.inventory.append(item)
+            if item_name.lower() == item.name.lower():
+                if type(item) is Medicine:
+                    item.heal()
+                    print("You swallow %s" % item.name)
+                    print("you now have %s" % player.health)
+                player.inventory.remove(item)
     elif command.lower() in actions:
         if actions[5]:
             print(player.inventory)

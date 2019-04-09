@@ -47,6 +47,11 @@ class Enemy(Character):
         super(Enemy, self).__init__(name, dialogue, health, resistance, weapon, armor)
 
 
+class Animal(Character):
+    def __init__(self, name, health=100, ):
+        super(Animal, self).__init__(name, health)
+
+
 class Zombie(Enemy):
     def __init__(self, name, dialogue, health, resistance, weapon, armor):
         super(Zombie, self).__init__(name, dialogue, health, resistance, weapon, armor)
@@ -196,6 +201,16 @@ class BV(Armor):
 class RG(Armor):
     def __init__(self):
         super(RG, self) .__init__("Riot Gear", 100)
+
+
+class BBA(Armor):
+    def __init__(self):
+        super(BBA, self).__init__("Basic Body Armor", 25)
+
+
+class LJ(Armor):
+    def __init__(self):
+        super(LJ, self).__init__("Leather Jacket", 20)
 
 
 class Key(Item):
