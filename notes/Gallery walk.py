@@ -2,7 +2,7 @@ import random
 
 
 def fight(player_list: list, enemy_list: list):
-    # Player fights person
+    # Player fights enemy/person
     player_index = 0
     enemy_index = -1
     while player in player_list and len(enemy_list) > 0:
@@ -492,6 +492,16 @@ while playing:
                     print("You swallow %s" % item.name)
                     print("you now have %s" % player.health)
                 player.inventory.remove(item)
+    elif "fight" in command.lower():
+        Character_name = command[6:]
+        for item in player.current_location.items:
+            if Character_name.lower() == Character_name.lower():
+                print("You want to fight %s ?" % Character_name)
+                if 'yes':
+                    print("You fight %s" % Character_name)
+                if 'no':
+                    print("You back down from the fight")
+
     elif command.lower() in actions:
         if actions[5]:
             print(player.inventory)
