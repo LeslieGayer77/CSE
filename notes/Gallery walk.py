@@ -2,11 +2,16 @@ import random
 
 
 def fight(player_list: list, enemy_list: list):
+    print("You start to fight")
+    print(player)
+    print(player_list)
+    print(enemy_list)
     # Player fights enemy/person
     player_index = 0
     enemy_index = -1
     while player in player_list and len(enemy_list) > 0:
         target = random.choice(enemy_list)
+        print(target)
         player_list[player_index].attack(target)
         if target.health <= 0:
             enemy_list.remove(target)
@@ -30,11 +35,13 @@ def fight(player_list: list, enemy_list: list):
 class Room(object):
     def __init__(self, name,  description, north=None,  east=None, south=None,
                  west=None, northeast=None, northwest=None,  southeast=None,
-                 southwest=None, characters=None, items=None):
+                 southwest=None, characters=None, items=None, enemies1=None):
         if characters is None:
             characters = []
         if items is None:
             items = []
+        if enemies1 is None:
+            enemies1 = []
         self.name = name
         self.description = description
         self.north = north
@@ -47,10 +54,12 @@ class Room(object):
         self.southwest = southwest
         self.characters = characters
         self.items = items
+        self.enemies1 = enemies1
 
 
 class Character(object):
-    def __init__(self, name, dialogue, health=100, resistance=75, weapon=None,
+    def __init__(self, name, dialogue, starting_location: str, health=100, resistance=75,
+                 weapon=None,
                  armor=None):
         self.name = name
         self.dialogue = dialogue
@@ -58,6 +67,7 @@ class Character(object):
         self.resistance = resistance
         self.weapon = weapon
         self.armor = armor
+        self.current_location = starting_location
         self.dead = False
         self.awake = True
         self.bitten = False
@@ -94,7 +104,6 @@ class Character(object):
         if self.follower is not None:
             self.current_location.characters.remove(self.follower)
             new_location.characters.append(self.follower)
-
         self.current_location = new_location
 
     def find_next_room(self, direction):
@@ -114,8 +123,8 @@ class Character(object):
 class Player(Character):
     def __init__(self, name, starting_location, energy=100, health=100,
                  resistance=100, weapon=None, armor=None):
-        super(Player, self).__init__(name, None, health, resistance, weapon, armor)
-        self.current_location = starting_location
+        super(Player, self).__init__(name, starting_location, starting_location,
+                                     health, resistance, weapon, armor)
         self.energy = energy
         self.inventory = []
 
@@ -154,8 +163,8 @@ bdc = Car("Broken down car", 50, 50)
 
 
 class Animal(Character):
-    def __init__(self, name, health=100, ):
-        super(Animal, self).__init__(name, health)
+    def __init__(self, name, starting_location, health=100):
+        super(Animal, self).__init__(name, health, starting_location)
 
 
 Dog = Animal(input, 100)
@@ -333,8 +342,8 @@ class BBA(Armor):
                           'Naomi', 'Demitres', 'Kodak'"""
 
 
-Dean = Character("Dean", "HOwdy", 100, 100, Machete(1), BV(), )
-Sam = Character("Sam", "No hablo espanol", 100, 90, Pistol(), RG(), )
+Dean = Enemy("Dean", "Hello", 100, 100, Machete(1), BV())
+Sam = Character("Sam", "No hablo espanol", 100, 90, 75, Pistol(), RG())
 # Option 1 - define as we go
 # R19A = Room("Mr. Weibe's Room")
 # parking_lot = Room("Parking Lot", None, R19A)
@@ -351,8 +360,9 @@ living_room = Room("Living Room",  "The TV is Screeching on the North wall "
                                    "The front door is leading to Northeast. \n" 
                                    "The hallway is leading to the East. \n",
                    'tv', 'hallway', 'couch', 'window', 'front_yard', None, 'hallway', None)
-tv = Room("Tv", "Its ear piercing. \n", None, 'living_room', 'couch', 'window', 'front_yard',
-          None, 'hallway', None, None, [excedrin])
+tv = Room("Tv", "Its ear piercing. \n"
+                "dean is here", None, 'living_room', 'couch', 'window', 'front_yard',
+          None, 'hallway', None, None, [excedrin], [Dean])
 hallway = Room("The hallway", "A narrow hallway with family photos arranged "
                               "across the wall. \n"
                               "The kitchens to the East.\n"
@@ -446,7 +456,7 @@ playgrounds = Room("Nowhere", "I can't go and farther east on foot \n"
 
 
 player = Player("You", living_room)
-player.follower = Dean
+# Player.follower = Dean
 player.follower = None
 
 playing = True
@@ -496,10 +506,16 @@ while playing:
         Character_name = command[6:]
         for item in player.current_location.items:
             if Character_name.lower() == Character_name.lower():
-                print("You want to fight %s ?" % Character_name)
-                if 'yes':
+                ques = input("You want to fight %s?" % Character_name)
+                players = [player]
+                enemies = player.current_location.characters
+                if Dean in player.current_location.characters:
+                    players.append(Dean)
+                    enemies.remove(Dean)
+                if ques == 'yes':
                     print("You fight %s" % Character_name)
-                if 'no':
+                    fight(players, enemies)
+                if ques == 'no':
                     print("You back down from the fight")
 
     elif command.lower() in actions:
