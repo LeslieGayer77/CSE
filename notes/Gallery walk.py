@@ -450,7 +450,7 @@ drivable = Room("In Car", "I can now go east", None, 'crossroads', None, 'Endroa
                 None, None, None)
 grass2 = Room("The Neigbor's Lawn", " ", 'nroad', 'nroad', 'ndoor', 'ncar', 'nroad',
               'noroad', None, None)
-playgrounds = Room("Nowhere", "I can't go and farther east on foot \n"
+crossroads = Room("Nowhere", "I can't go and farther east on foot \n"
                               "It would be best if i find a vehicle", None, None, None, 'nroad', None,
                    None, None, None)
 

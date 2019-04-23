@@ -1,12 +1,6 @@
 import random
 
 
-class fists(object):
-    def __init__(self):
-        self.damage = 5
-        self.dmg_type = "knife"
-
-
 def fight(player_list: list, enemy_list: list):
     # Player fights person
     print(player_list)
@@ -35,117 +29,6 @@ def fight(player_list: list, enemy_list: list):
             player_index = 0
 
 
-class Room(object):
-    def __init__(self, name,  description, north=None,  east=None, south=None,
-                 west=None, northeast=None, northwest=None,  southeast=None,
-                 southwest=None, characters=None, items=None):
-        if characters is None:
-            characters = []
-        if items is None:
-            items = []
-        self.name = name
-        self.description = description
-        self.north = north
-        self.east = east
-        self.south = south
-        self.west = west
-        self.northeast = northeast
-        self.northwest = northwest
-        self.southeast = southeast
-        self.southwest = southwest
-        self.characters = characters
-        self.items = items
-
-
-class Character(object):
-    def __init__(self, name, dialogue, health=100, resistance=75, weapon=None,
-                 armor=None):
-        self.name = name
-        self.dialogue = dialogue
-        self.health = health
-        self.resistance = resistance
-        self.weapon = weapon
-        self.armor = armor
-        self.dead = False
-        self.awake = True
-        self.bitten = False
-        self.inventory = []
-        self.follower = None  # Character Object
-
-    def take_damage(self, damage: int, damage_type):
-        if damage_type == "gun":
-            if self.armor.protectiong > damage:
-                print("No damage is done because of great armor")
-            else:
-                self.health -= damage - self.armor.protectiong
-        elif damage_type == 'knife':
-            if self.armor.protectionk > damage:
-                print("No damage is done because of great armor")
-            else:
-                self.health -= damage - self.armor.protectionk
-        elif damage_type == 'bat':
-            if self.armor.protectionb > damage:
-                print("No damage is done because of great armor")
-            else:
-                self.health -= damage - self.armor.protectionb
-        print("%s has %d health left" % (self.name, self.health))
-
-    def attack(self, target):
-        print(self.weapon.damage)
-        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
-        target.take_damage(self.weapon.damage, self.weapon.dmg_type)
-
-    def move(self, new_location):
-        """ This moves the player to a new room
-
-        :param new_location: The room object of which you are going to
-        """
-        if self.follower is not None:
-            self.current_location.characters.remove(self.follower)
-            new_location.characters.append(self.follower)
-
-        self.current_location = new_location
-
-    def find_next_room(self, direction):
-        """
-        This method  searches the current room so see if a room
-        exists in that direction
-        :param direction: The direction you want to move to
-        :return: The room object if it exists, or none if it does not
-        """
-        name_of_room = getattr(self.current_location, direction)
-        if name_of_room == "ncar" and 'Key1' not in self.inventory and isinstance(self, Player):
-            print("You don't have the keys")
-            return None
-        return globals()[name_of_room]
-
-
-class Player(Character):
-    def __init__(self, name, starting_location, energy=100, health=100,
-                 resistance=100, weapon=fists(), armor=None):
-        super(Player, self).__init__(name, None, health, resistance, weapon, armor)
-        self.current_location = starting_location
-        self.energy = energy
-        self.inventory = []
-
-
-class NPC(Character):
-    def __init__(self, name, dialogue, health=100, resistance=75, weapon=None,
-                 armor=None):
-        super(NPC, self).__init__(name, dialogue, health, resistance, weapon, armor)
-
-
-class Enemy(Character):
-    def __init__(self, name, dialogue, health=75, resistance=75, weapon=None, armor=None):
-        super(Enemy, self).__init__(name, dialogue, health, resistance, weapon, armor)
-
-
-class Zombie(Enemy):
-    def __init__(self, name, dialogue, health, resistance, weapon, armor):
-        super(Zombie, self).__init__(name, dialogue, health, resistance, weapon, armor)
-        self.bite = False
-
-
 class Item(object):
     def __init__(self,  name):
         self.name = name
@@ -160,14 +43,6 @@ class Car(Item):
 
 nc = Car("Neighbors car", 100, 100)
 bdc = Car("Broken down car", 50, 50)
-
-
-class Animal(Character):
-    def __init__(self, name, health=100, ):
-        super(Animal, self).__init__(name, health)
-
-
-Dog = Animal(input, 100)
 
 
 class Food(Item):
@@ -194,6 +69,12 @@ class Weapon(Item):
         super(Weapon, self).__init__(name)
         self.damage = damage
         self.visibility = visibility
+
+
+class fists(Weapon):
+    def __init__(self):
+        super(fists, self).__init__("Fists", 10, None)
+        self.dmg_type = "knife"
 
 
 class Gun(Weapon):
@@ -298,6 +179,11 @@ class Armor(Item):
         self.protectionb = protectionb
 
 
+class GenericArmor(Armor):
+    def __init__(self):
+        super(GenericArmor, self).__init__("Generic Armor", 0, 0, 0)
+
+
 class BV(Armor):
     def __init__(self):
         super(BV, self).__init__("Bulletproof Vest", 100, 0, 0)
@@ -338,11 +224,130 @@ class BBA(Armor):
         super(BBA, self).__init__("Basic Body Armor", 0, 25, 25)
 
 
+class Room(object):
+    def __init__(self, name,  description, north=None,  east=None, south=None,
+                 west=None, northeast=None, northwest=None,  southeast=None,
+                 southwest=None, characters=None, items=None):
+        if characters is None:
+            characters = []
+        if items is None:
+            items = []
+        self.name = name
+        self.description = description
+        self.north = north
+        self.east = east
+        self.south = south
+        self.west = west
+        self.northeast = northeast
+        self.northwest = northwest
+        self.southeast = southeast
+        self.southwest = southwest
+        self.characters = characters
+        self.items = items
+
+
+class Character(object):
+    def __init__(self, name, dialogue, health=100, resistance=75, weapon=fists(),
+                 armor=GenericArmor()):
+        self.name = name
+        self.dialogue = dialogue
+        self.health = health
+        self.resistance = resistance
+        self.weapon = weapon
+        self.armor = armor
+        self.dead = False
+        self.awake = True
+        self.bitten = False
+        self.inventory = []
+        self.follower = None  # Character Object
+
+    def take_damage(self, damage: int, damage_type):
+        if damage_type == "gun":
+            if self.armor.protectiong > damage:
+                print("No damage is done because of great armor")
+            else:
+                self.health -= damage - self.armor.protectiong
+        elif damage_type == 'knife':
+            if self.armor.protectionk > damage:
+                print("No damage is done because of great armor")
+            else:
+                self.health -= damage - self.armor.protectionk
+        elif damage_type == 'bat':
+            if self.armor.protectionb > damage:
+                print("No damage is done because of great armor")
+            else:
+                self.health -= damage - self.armor.protectionb
+        print("%s has %d health left" % (self.name, self.health))
+
+    def attack(self, target):
+        print(self.weapon.damage)
+        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
+        target.take_damage(self.weapon.damage, self.weapon.dmg_type)
+
+    def move(self, new_location):
+        """ This moves the player to a new room
+
+        :param new_location: The room object of which you are going to
+        """
+        if self.follower is not None:
+            self.current_location.characters.remove(self.follower)
+            new_location.characters.append(self.follower)
+
+        self.current_location = new_location
+
+    def find_next_room(self, direction):
+        """
+        This method  searches the current room so see if a room
+        exists in that direction
+        :param direction: The direction you want to move to
+        :return: The room object if it exists, or none if it does not
+        """
+        name_of_room = getattr(self.current_location, direction)
+        if name_of_room == "ncar" and 'Key1' not in self.inventory and isinstance(self, Player):
+            print("You don't have the keys")
+            return None
+        return globals()[name_of_room]
+
+
+class Animal(Character):
+    def __init__(self, name, health=100, ):
+        super(Animal, self).__init__(name, health)
+
+
+Dog = Animal(input, 100)
+
+
+class Player(Character):
+    def __init__(self, name, starting_location, energy=100, health=100,
+                 resistance=100, weapon=fists(), armor=None):
+        super(Player, self).__init__(name, None, health, resistance, weapon, armor)
+        self.current_location = starting_location
+        self.energy = energy
+        self.inventory = []
+
+
+class NPC(Character):
+    def __init__(self, name, dialogue, health=100, resistance=75, weapon=fists(),
+                 armor=GenericArmor()):
+        super(NPC, self).__init__(name, dialogue, health, resistance, weapon, armor)
+
+
+class Enemy(Character):
+    def __init__(self, name, dialogue, health=75, resistance=75, weapon=fists(), armor=GenericArmor()):
+        super(Enemy, self).__init__(name, dialogue, health, resistance, weapon, armor)
+
+
+class Zombie(Enemy):
+    def __init__(self, name, dialogue, health, resistance, weapon, armor):
+        super(Zombie, self).__init__(name, dialogue, health, resistance, weapon, armor)
+        self.bite = False
+
+
 """'Dean', 'Maverick', 'Asher', 'Westly', 'Hunter', 'Misty',
                           'Naomi', 'Demitres', 'Kodak'"""
 
 
-Dean = Character("Dean", "Hello", 100, 100, Machete(1), BV())
+Dean = Character("Dean", "Hello", 100, 100, Machete(), BV())
 Sam = Character("Sam", "No hablo espanol", 100, 90, Pistol(), RG(), )
 # Option 1 - define as we go
 # R19A = Room("Mr. Weibe's Room")
@@ -441,7 +446,7 @@ nhw = Room("Hallway", "A hallway with one door to the North wall and"
            None, None, None)
 ndoor = Room("Neighbor's portch", " ", 'grass2', 'offlawn', 'nkitchen', 'ncar', 'nroad',
              'noroad', 'southeast', 'southwest')
-nroad = Room("The Road", " ", None, 'playgrounds', 'grass2', 'nroad', None,
+nroad = Room("The Road", " ", None, 'deadend', 'grass2', 'nroad', None,
              "road1", 'grass2', 'ncar')
 ncar = Room("Neighbor's Car", " ", 'north', 'east', 'south', 'west', 'nroad',
             'nroad', 'grass1', None)
@@ -449,9 +454,9 @@ drivable = Room("In Car", "I can now go east", None, 'crossroads', None, 'Endroa
                 None, None, None)
 grass2 = Room("The Neigbor's Lawn", " ", 'nroad', 'nroad', 'ndoor', 'ncar', 'nroad',
               'noroad', None, None)
-playgrounds = Room("Nowhere", "I can't go and farther east on foot \n"
-                              "It would be best if i find a vehicle", None, None, None, 'nroad', None,
-                   None, None, None)
+crossroads = Room("Nowhere", "I can't go and farther east on foot \n" 
+                             "It would be best if i find a vehicle", None, None, None, 'nroad', None,
+                  None, None, None)
 
 
 player = Player("You", living_room)

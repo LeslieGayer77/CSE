@@ -24,7 +24,7 @@
     <SUITE FILE_PATH="coverage/notes$Leslie_Gayer_DeadManWonderland.coverage" NAME="Leslie.Gayer.DeadManWonderland Coverage Results" MODIFIED="1550684095906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$hello_world.coverage" NAME="hello world Coverage Results" MODIFIED="1544461356998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/notes$Gallery_walk.coverage" NAME="Gallery walk Coverage Results" MODIFIED="1555090467477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/notes$World_Map_Leslie_Gayer_OOF.coverage" NAME="World_Map_Leslie.Gayer OOF Coverage Results" MODIFIED="1556036755038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/notes$World_Map_Leslie_Gayer_OOF.coverage" NAME="World_Map_Leslie.Gayer OOF Coverage Results" MODIFIED="1556061493918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/notes$Leslie_Gayer_1_1_000_000.coverage" NAME="Leslie Gayer 1-1,000,000 Coverage Results" MODIFIED="1540575464082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/notes$Leslie_Gayer___Guess_Game.coverage" NAME="Leslie Gayer - Guess Game Coverage Results" MODIFIED="1543944677069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/notes$World_Map_OOF.coverage" NAME="World_Map OOF Coverage Results" MODIFIED="1551892044598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -47,10 +47,11 @@
     <session id="1478536887">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="32" />
+          <entry key="project.closed" value="33" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.104" value="1" />
           <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.29" value="2" />
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.34" value="1" />
@@ -89,7 +90,7 @@
           <entry key="project.open.time.85" value="1" />
           <entry key="project.open.time.87" value="1" />
           <entry key="project.open.time.95" value="1" />
-          <entry key="project.opened" value="70" />
+          <entry key="project.opened" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -105,13 +106,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="42" />
-          <entry key="py" value="33119" />
+          <entry key="py" value="33394" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="42" />
-          <entry key="Python" value="33119" />
+          <entry key="Python" value="33394" />
         </counts>
       </usages-collector>
     </session>
@@ -124,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gallery walk.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="518" column="57" lean-forward="true" selection-start-line="504" selection-start-column="4" selection-end-line="518" selection-end-column="57" />
+            <state relative-caret-position="8064">
+              <caret line="448" selection-start-line="448" selection-end-line="454" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -133,10 +134,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/World_Map_Leslie.Gayer OOF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+            <state relative-caret-position="169">
+              <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
               <folding>
-                <marker date="1556037065890" expanded="true" signature="36:118" ph="..." />
+                <marker date="1556061901788" expanded="true" signature="14:15" ph="..." />
+                <marker date="1556061901788" expanded="true" signature="14:16" ph="..." />
               </folding>
             </state>
           </provider>
@@ -153,10 +155,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dean</find>
       <find>Player</find>
       <find>class pl</find>
       <find>dmg_t</find>
+      <find>dean</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -401,9 +403,9 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.32980332" />
-      <window_info anchor="right" id="Event Log" order="4" side_tool="true" weight="0.3290469" />
-      <window_info anchor="right" id="SciView" order="5" weight="0.32980332" />
+      <window_info anchor="right" id="Event Log" order="3" side_tool="true" weight="0.3290469" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32980332" />
+      <window_info anchor="right" id="SciView" order="5" visible="true" weight="0.0" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,17 +509,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gallery walk.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="518" column="57" lean-forward="true" selection-start-line="504" selection-start-column="4" selection-end-line="518" selection-end-column="57" />
+        <state relative-caret-position="8064">
+          <caret line="448" selection-start-line="448" selection-end-line="454" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/World_Map_Leslie.Gayer OOF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        <state relative-caret-position="169">
+          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
           <folding>
-            <marker date="1556037065890" expanded="true" signature="36:118" ph="..." />
+            <marker date="1556061901788" expanded="true" signature="14:15" ph="..." />
+            <marker date="1556061901788" expanded="true" signature="14:16" ph="..." />
           </folding>
         </state>
       </provider>
