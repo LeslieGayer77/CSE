@@ -1,8 +1,16 @@
 import random
 
 
+class fists(object):
+    def __init__(self):
+        self.damage = 5
+        self.dmg_type = "knife"
+
+
 def fight(player_list: list, enemy_list: list):
     # Player fights person
+    print(player_list)
+    print(enemy_list)
     player_index = 0
     enemy_index = -1
     while player in player_list and len(enemy_list) > 0:
@@ -11,7 +19,7 @@ def fight(player_list: list, enemy_list: list):
         if target.health <= 0:
             enemy_list.remove(target)
 
-        enemy_list += 1
+        # enemy_list += 1
         if enemy_index > len(enemy_list) - 1:
             enemy_index = 0
 
@@ -83,6 +91,7 @@ class Character(object):
         print("%s has %d health left" % (self.name, self.health))
 
     def attack(self, target):
+        print(self.weapon.damage)
         print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
         target.take_damage(self.weapon.damage, self.weapon.dmg_type)
 
@@ -113,7 +122,7 @@ class Character(object):
 
 class Player(Character):
     def __init__(self, name, starting_location, energy=100, health=100,
-                 resistance=100, weapon=None, armor=None):
+                 resistance=100, weapon=fists(), armor=None):
         super(Player, self).__init__(name, None, health, resistance, weapon, armor)
         self.current_location = starting_location
         self.energy = energy
@@ -333,7 +342,7 @@ class BBA(Armor):
                           'Naomi', 'Demitres', 'Kodak'"""
 
 
-Dean = Character("Dean", "HOwdy", 100, 100, Machete(1), BV(), )
+Dean = Character("Dean", "Hello", 100, 100, Machete(1), BV())
 Sam = Character("Sam", "No hablo espanol", 100, 90, Pistol(), RG(), )
 # Option 1 - define as we go
 # R19A = Room("Mr. Weibe's Room")
@@ -352,7 +361,7 @@ living_room = Room("Living Room",  "The TV is Screeching on the North wall "
                                    "The hallway is leading to the East. \n",
                    'tv', 'hallway', 'couch', 'window', 'front_yard', None, 'hallway', None)
 tv = Room("Tv", "Its ear piercing. \n", None, 'living_room', 'couch', 'window', 'front_yard',
-          None, 'hallway', None, None, [excedrin])
+          None, 'hallway', None, [Dean], [excedrin])
 hallway = Room("The hallway", "A narrow hallway with family photos arranged "
                               "across the wall. \n"
                               "The kitchens to the East.\n"
@@ -492,6 +501,21 @@ while playing:
                     print("You swallow %s" % item.name)
                     print("you now have %s" % player.health)
                 player.inventory.remove(item)
+    elif "fight" in command.lower():
+        Character_name = command[6:]
+        for item in player.current_location.items:
+            if Character_name.lower() == Character_name.lower():
+                ques = input("You want to fight %s?" % Character_name)
+                players = [player]
+                enemies = player.current_location.characters
+                # if Dean in player.current_location.characters:
+                #     players.append(Dean)
+                #     enemies.remove(Dean)
+                if ques == 'yes':
+                    print("You fight %s" % Character_name)
+                    fight(players, enemies)
+                if ques == 'no':
+                    print("You back down from the fight")
     elif command.lower() in actions:
         if actions[5]:
             print(player.inventory)
