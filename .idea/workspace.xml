@@ -35,133 +35,25 @@
     <expand />
     <select />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-817533975">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="20" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.103" value="1" />
-          <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.36" value="1" />
-          <entry key="project.open.time.38" value="1" />
-          <entry key="project.open.time.39" value="1" />
-          <entry key="project.open.time.40" value="2" />
-          <entry key="project.open.time.41" value="1" />
-          <entry key="project.open.time.44" value="1" />
-          <entry key="project.open.time.46" value="1" />
-          <entry key="project.open.time.48" value="1" />
-          <entry key="project.open.time.50" value="1" />
-          <entry key="project.open.time.51" value="1" />
-          <entry key="project.open.time.52" value="1" />
-          <entry key="project.open.time.54" value="1" />
-          <entry key="project.open.time.56" value="3" />
-          <entry key="project.open.time.57" value="1" />
-          <entry key="project.open.time.58" value="1" />
-          <entry key="project.open.time.59" value="1" />
-          <entry key="project.open.time.60" value="1" />
-          <entry key="project.open.time.61" value="1" />
-          <entry key="project.open.time.70" value="1" />
-          <entry key="project.open.time.76" value="1" />
-          <entry key="project.opened" value="26" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="py" value="20" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Python" value="20" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="Python Console" value="1" />
-          <entry key="dummy" value="22" />
-          <entry key="py" value="11649" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="PLAIN_TEXT" value="22" />
-          <entry key="Python" value="11650" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FavoritesManager">
     <favorites_list name="CSE" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notes/Hangman-Leslie.Gayer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notes/Dictionary.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1360">
-              <caret line="80" selection-start-line="80" selection-end-line="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notes/Leslie.Gayer_Dictionary.World.Map.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notes/Leslie.Gayer.DeadManWonderland.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="116" column="57" selection-start-line="116" selection-start-column="57" selection-end-line="116" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notes/Object_Notes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notes/item_for_projects_Leslie.Gayer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="219" selection-start-line="219" selection-end-line="223" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/notes/CSV Notes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/notes/World_Map_Leslie.Gayer OOF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="94" column="22" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
-              <folding>
-                <marker date="1553643534891" expanded="true" signature="63:749" ph="..." />
-                <marker date="1553643534891" expanded="true" signature="3195:3202" ph="..." />
-              </folding>
+            <state relative-caret-position="6137">
+              <caret line="361" selection-start-line="361" selection-end-line="361" />
             </state>
           </provider>
         </entry>
@@ -198,14 +90,9 @@
         <option value="$PROJECT_DIR$/notes/Object_Notes.py" />
         <option value="$PROJECT_DIR$/notes/World_Map OOF.py" />
         <option value="$PROJECT_DIR$/notes/World_Map_Leslie.Gayer OOF.py" />
+        <option value="$PROJECT_DIR$/notes/CSV Notes.py" />
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
@@ -238,11 +125,12 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -262,7 +150,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.World_Map_Leslie.Gayer OOF">
+  <component name="RunManager" selected="Python.CSV Notes">
+    <configuration name="CSV Notes" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CSE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/notes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/notes/CSV Notes.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Leslie.Gayer.DeadManWonderland" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -277,28 +187,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/notes/Leslie.Gayer.DeadManWonderland.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Leslie.Gayer_Dictionary.World.Map" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CSE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/notes" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/notes/Leslie.Gayer_Dictionary.World.Map.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -374,19 +262,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Leslie.Gayer_Dictionary.World.Map" />
       <item itemvalue="Python.Leslie.Gayer.DeadManWonderland" />
       <item itemvalue="Python.Object_Notes" />
       <item itemvalue="Python.World_Map OOF" />
       <item itemvalue="Python.World_Map_Leslie.Gayer OOF" />
+      <item itemvalue="Python.CSV Notes" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.CSV Notes" />
         <item itemvalue="Python.World_Map_Leslie.Gayer OOF" />
         <item itemvalue="Python.World_Map OOF" />
         <item itemvalue="Python.Object_Notes" />
         <item itemvalue="Python.Leslie.Gayer.DeadManWonderland" />
-        <item itemvalue="Python.Leslie.Gayer_Dictionary.World.Map" />
       </list>
     </recent_temporary>
   </component>
@@ -400,19 +288,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1546882792458</updated>
+      <workItem from="1556208265956" duration="2551000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2551000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1376" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49836066" weight="0.26823708" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49836066" visible="true" weight="0.26812366" />
       <window_info id="Favorites" order="1" side_tool="true" weight="0.32980332" />
       <window_info id="Structure" order="2" sideWeight="0.50163937" side_tool="true" weight="0.26096824" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36006546" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.35969663" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -456,8 +348,8 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CSE$CSV_Notes.coverage" NAME="CSV Notes Coverage Results" MODIFIED="1556210819077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/notes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Lucky 7's_LeslieGayer.py" />
@@ -488,17 +380,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes/Dictionary.py">
+    <entry file="file://$PROJECT_DIR$/notes/Object_Notes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
+        <state relative-caret-position="527">
+          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes/Leslie.Gayer_Dictionary.World.Map.py">
+    <entry file="file://$PROJECT_DIR$/notes/item_for_projects_Leslie.Gayer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+        <state relative-caret-position="433">
+          <caret line="219" selection-start-line="219" selection-end-line="223" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -509,28 +401,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes/Object_Notes.py">
+    <entry file="file://$PROJECT_DIR$/notes/Leslie.Gayer_Dictionary.World.Map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+        <state relative-caret-position="102">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes/item_for_projects_Leslie.Gayer.py">
+    <entry file="file://$PROJECT_DIR$/notes/Dictionary.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="219" selection-start-line="219" selection-end-line="223" selection-end-column="16" />
+        <state relative-caret-position="841">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/notes/World_Map_Leslie.Gayer OOF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="94" column="22" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
-          <folding>
-            <marker date="1553643534891" expanded="true" signature="63:749" ph="..." />
-            <marker date="1553643534891" expanded="true" signature="3195:3202" ph="..." />
-          </folding>
+        <state relative-caret-position="6137">
+          <caret line="361" selection-start-line="361" selection-end-line="361" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/CSV Notes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
         </state>
       </provider>
     </entry>
