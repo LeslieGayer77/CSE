@@ -52,6 +52,11 @@ def devisableby2(num: str):
 # print("OK")
 
 
+def reverse_it(string):
+    print(string[::-1])
+
+
+reverse_it("Hello World")
 with open("Book1.csv", 'r') as old_csv:
     with open("MyNewFile.csv", 'w', newline='') as new_csv:
         print("Writing file.....")
@@ -67,3 +72,8 @@ with open("Book1.csv", 'r') as old_csv:
 def all16digits(num: str):
     if len(num) == 16:
         return True
+
+
+list_num = list(number)
+for index in range(len(list_num)):
+    list_num[index] = int(list_num[index])
