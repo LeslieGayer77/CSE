@@ -57,7 +57,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/notes/Validator_Leslie.Gayer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="644">
               <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
             </state>
           </provider>
@@ -335,23 +335,22 @@
       <workItem from="1556208265956" duration="2551000" />
       <workItem from="1556293791931" duration="3446000" />
       <workItem from="1556635774678" duration="6793000" />
-      <workItem from="1556808563229" duration="6791000" />
+      <workItem from="1556808563229" duration="6859000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19581000" />
+    <option name="totallyTimeSpent" value="19649000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49836066" visible="true" weight="0.098824784" />
       <window_info id="Favorites" order="1" side_tool="true" weight="0.32980332" />
       <window_info id="Structure" order="2" sideWeight="0.50163937" side_tool="true" weight="0.26096824" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.35877863" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.35877863" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -513,7 +512,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/notes/Validator_Leslie.Gayer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="644">
           <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
         </state>
       </provider>
