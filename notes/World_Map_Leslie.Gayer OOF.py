@@ -88,12 +88,14 @@ class Pistol(Gun):
     def __init__(self):
         super(Pistol, self).__init__("Pistol", 90, 50, False)
         self.blocked = False
+        self.dmg_type = "gun"
 
 
 class Shotgun(Gun):
     def __init__(self):
         super(Shotgun, self).__init__("Shotgun", 100, 100, False)
         self.blocked = False
+        self.dmg_type = "gun"
 
 
 class Knife(Weapon):
@@ -105,11 +107,13 @@ class Knife(Weapon):
 class KitchenKnife(Knife):
     def __init__(self):
         super(KitchenKnife, self).__init__('Kitchen Knife', 50, 25)
+        self.dmg_type = "knife"
 
 
 class HuntingKnife(Knife):
     def __init__(self):
         super(HuntingKnife, self).__init__('Hunting Knife', 50, 25)
+        self.dmg_type = "knife"
 
 
 class Melee(Weapon):
@@ -122,12 +126,14 @@ class Melee(Weapon):
 class Katana(Melee):
     def __init__(self):
         super(Katana, self).__init__('Katana', 100, 100, 3)
+        self.dmg_type = "knife"
 
 
 class Machete(Melee):
     def __init__(self, kill_count):
         super(Machete, self).__init__('Basic Machete', 100, 100, 2)
         self.kill_count = kill_count
+        self.dmg_type = "knife"
 
 
 class Bat(Weapon):
@@ -140,6 +146,7 @@ class Bat(Weapon):
 class Woodbat(Bat):
     def __init__(self):
         super(Woodbat, self).__init__('Woodbat', 50, 100)
+        self.dmg_type = "bat"
 
     def hit_target(self, origin, target):
         hit = random.randint(0, 100)
@@ -157,6 +164,7 @@ class Woodbat(Bat):
 class Ironbat(Bat):
     def __init__(self):
         super(Ironbat, self).__init__('Ironbat', 65, 100)
+        self.dmg_type = "bat"
 
     def hit_target(self, origin, target):
         hit = random.randint(0, 100)
@@ -319,7 +327,7 @@ Dog = Animal(input, 100)
 
 class Player(Character):
     def __init__(self, name, starting_location, energy=100, health=100,
-                 resistance=100, weapon=fists(), armor=None):
+                 resistance=100, weapon=fists(), armor=GenericArmor):
         super(Player, self).__init__(name, None, health, resistance, weapon, armor)
         self.current_location = starting_location
         self.energy = energy
@@ -486,7 +494,7 @@ while playing:
         except KeyError:
             print("I can't go that way")
             print()
-    elif "pick up" in command.lower():
+    elif ["pick up" or "take" or "grab"] in command.lower():
         item_name = command[8:]
         for item in player.current_location.items:
             if item_name.lower() == item.name.lower():
@@ -506,7 +514,7 @@ while playing:
                     print("You swallow %s" % item.name)
                     print("you now have %s" % player.health)
                 player.inventory.remove(item)
-    elif "fight" in command.lower():
+    elif ["fight" or "attack" or "punch"] in command.lower():
         Character_name = command[6:]
         for item in player.current_location.items:
             if Character_name.lower() == Character_name.lower():

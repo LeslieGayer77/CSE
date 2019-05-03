@@ -9,7 +9,7 @@ import csv
 
 def all16digits(num: str):
     if len(num) == 16:
-        print("All the digits are 16 numbers long")
+        # print("All the digits are 16 numbers long")
         return True
     return False
 
@@ -42,12 +42,12 @@ def multiply(num):
 
 def validate_card_number(num: str):
     if not all16digits(num):
-        print("This number is not 16 digits. It is not valid.")
+        # print("This number is not 16 digits. It is not valid.")
         return False
-    if not multiply(reverse_it(drop_last_digit(num))) % 10 == num[15]:
-        print("This number is not valid")
+    if not multiply(reverse_it(drop_last_digit(num))) % 10 == int(num[15]):
+        # print("This number is not valid")
         return False
-    print("This number is valid")
+    # print("This number is valid")
     return True
 
 
@@ -62,6 +62,6 @@ with open("Book1.csv", 'r') as old_csv:
         for row in reader:
             # Old_number = int(row[0]) + 1
             old_number = row[0]
-            if not validate_card_number(old_number):
-                print(old_number, "is not valid")
+            if validate_card_number(old_number):
+                # print(old_number, "is not valid")
                 writer.writerow(row)
