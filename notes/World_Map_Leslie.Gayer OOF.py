@@ -117,22 +117,20 @@ class HuntingKnife(Knife):
 
 
 class Melee(Weapon):
-    def __init__(self, name, damage, visibility, kill_count):
+    def __init__(self, name, damage, visibility):
         super(Melee, self).__init__(name, damage, visibility, )
-        self.kill_count = kill_count
         self.dmg_type = "knife"
 
 
 class Katana(Melee):
     def __init__(self):
-        super(Katana, self).__init__('Katana', 100, 100, 3)
+        super(Katana, self).__init__('Katana', 100, 100)
         self.dmg_type = "knife"
 
 
 class Machete(Melee):
-    def __init__(self, kill_count):
-        super(Machete, self).__init__('Basic Machete', 100, 100, 2)
-        self.kill_count = kill_count
+    def __init__(self):
+        super(Machete, self).__init__('Basic Machete', 100, 100)
         self.dmg_type = "knife"
 
 
@@ -259,6 +257,7 @@ class Character(object):
                  armor=GenericArmor()):
         self.name = name
         self.dialogue = dialogue
+        self.dialogue_line = 0
         self.health = health
         self.resistance = resistance
         self.weapon = weapon
@@ -268,6 +267,7 @@ class Character(object):
         self.bitten = False
         self.inventory = []
         self.follower = None  # Character Object
+        self.provoked = False
 
     def take_damage(self, damage: int, damage_type):
         if damage_type == "gun":
@@ -355,8 +355,11 @@ class Zombie(Enemy):
                           'Naomi', 'Demitres', 'Kodak'"""
 
 
-Dean = Character("Dean", "Hello", 100, 100, Machete(), BV())
-Sam = Character("Sam", "No hablo espanol", 100, 90, Pistol(), RG(), )
+Dean = Character("Dean", ["Hello.", "Ouch! Now you've done it! Get over here!", "Here, take this thingy."], 100, 100,
+                 Machete, BV)
+Sam = Character("Sam", ["", "", ""], 100, 90, Pistol, RG)
+Asher = Character("Asher", "")
+
 # Option 1 - define as we go
 # R19A = Room("Mr. Weibe's Room")
 # parking_lot = Room("Parking Lot", None, R19A)
@@ -405,7 +408,7 @@ grass = Room("The Grass", "", 'road_1', 'my_car', 'front_yard', None, 'road_1', 
              None, None)
 road_1 = Room("The Road", "Maybe if i follow this road East "
                           "I could get somewhere. \n"
-                          "If only i had a car.", None, 'nroad', 'grass', None, None,
+                        , None, 'nroad', 'grass', None, None,
               None, "my_car", "grass")
 kitchen = Room("The Kitchen", "There is a couple raw steaks to the east \n"
                               "with a bloody knife to the side", 'garage', 'kitchen_knives', None, 'hallway', None,
@@ -458,15 +461,25 @@ nroad = Room("The Road", " ", None, 'deadend', 'grass2', 'nroad', None,
              "road1", 'grass2', 'ncar')
 ncar = Room("Neighbor's Car", " ", 'north', 'east', 'south', 'west', 'nroad',
             'nroad', 'grass1', None)
-drivable = Room("In Car", "I can now go east", None, 'crossroads', None, 'Endroad', None,
+drivable = Room("In Car", "I can now go farther down east", None, 'crossroads', None, 'Endroad', None,
                 None, None, None)
 grass2 = Room("The Neigbor's Lawn", " ", 'nroad', 'nroad', 'ndoor', 'ncar', 'nroad',
               'noroad', None, None)
 crossroads = Room("Nowhere", "I can't go and farther east on foot \n" 
-                             "It would be best if i find a vehicle", None, None, None, 'nroad', None,
+                             "It would be best if i find a Car", None, None, None, 'nroad', None,
                   None, None, None)
+crossroads1 = Room("Crossroads", "There are three long roads", 'muddy', 'longroad', 'forest', 'nroad', None, None,
+                   None, None)
+muddy = Room("long stretch of muddy land", "There is no way i can get through this on foot \n""i should head back",
+             'dies', None, 'crossroads1', None, None, None, None, None)
 
-
+forest = Room("Forest Entryway", "looks like a deep forest that could stretch for miles", 'crossroads1', 'nothing',
+              'dforest', 'nothing', None, None, None, None)
+dforest = Room("Shallow Forest", "Nothing much here besides a weird shine coming from a tree to the East", 'forest',
+               'tree', 'walkers1', None, None, None, None, None)
+walkers1 = Room("I hear a couple groaning voices going south", "", 'dforest', 'st', 'walkers', None, 'st', None, None,
+                None)
+walkers = Room("They see me now i have to fight", "", 'walkers1', None, None, None, None, None, None, None, )
 player = Player("You", living_room)
 player.follower = Dean
 player.follower = None
@@ -476,6 +489,22 @@ directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
               'southeast', 'southwest', 'up', 'down']
 actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get in', 'take', 'swallow']
 
+def character_dialogue()
+    for i in range(len(player.current_location.characters)):
+        print(player.current_location.characters[i].dialogue[player.current_location.characters[i].dialogue_line])
+
+def character_events(string):
+    characters = []
+    for i in range(len(player.current_location.characters)):
+        characters.append(player.current_location.characters[i])
+
+    if "ATTACK" in string:
+        for i in range(len(characters)):
+            if characters[i].name.upper() in string:
+                characters[i].dialogue_line = 1
+                characters[i].provoked = True
+
+
 
 """Dean.attack(Sam)
 Sam.attack(Dean)"""
@@ -483,6 +512,8 @@ Sam.attack(Dean)"""
 while playing:
     print(player.current_location.name)
     print(player.current_location.description)
+    print()
+    character_dialogue()
     command = input(">_")
 
     if command.lower() in ['q', 'quit', 'exit']:
@@ -494,7 +525,7 @@ while playing:
         except KeyError:
             print("I can't go that way")
             print()
-    elif ["pick up" or "take" or "grab"] in command.lower():
+    elif "pick up" or "take" or "grab" in command.lower():
         item_name = command[8:]
         for item in player.current_location.items:
             if item_name.lower() == item.name.lower():
@@ -514,7 +545,7 @@ while playing:
                     print("You swallow %s" % item.name)
                     print("you now have %s" % player.health)
                 player.inventory.remove(item)
-    elif ["fight" or "attack" or "punch"] in command.lower():
+    elif "fight" or "attack" or "punch" in command.lower():
         Character_name = command[6:]
         for item in player.current_location.items:
             if Character_name.lower() == Character_name.lower():
@@ -529,6 +560,7 @@ while playing:
                     fight(players, enemies)
                 if ques == 'no':
                     print("You back down from the fight")
+        character_events(command.upper())
     elif command.lower() in actions:
         if actions[5]:
             print(player.inventory)
