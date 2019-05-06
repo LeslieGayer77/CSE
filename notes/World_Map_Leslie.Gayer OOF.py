@@ -65,85 +65,81 @@ class Cans(Food):
 
 
 class Weapon(Item):
-    def __init__(self, name, damage, visibility):
+    def __init__(self, name, damage):
         super(Weapon, self).__init__(name)
         self.damage = damage
-        self.visibility = visibility
+
+
+class Gun(Weapon):
+    def __init__(self,  name, damage):
+        super(Gun, self).__init__(name, damage)
+        self.dmg_type = "gun"
 
 
 class fists(Weapon):
     def __init__(self):
-        super(fists, self).__init__("Fists", 10, None)
+        super(fists, self).__init__("Fists", 10)
         self.dmg_type = "knife"
-
-
-class Gun(Weapon):
-    def __init__(self,  name, damage, visibility, blocked):
-        super(Gun, self).__init__(name, damage, visibility)
-        self.blocked = blocked
-        self.dmg_type = "gun"
 
 
 class Pistol(Gun):
     def __init__(self):
-        super(Pistol, self).__init__("Pistol", 90, 50, False)
-        self.blocked = False
+        super(Pistol, self).__init__("Pistol", 50)
         self.dmg_type = "gun"
 
 
 class Shotgun(Gun):
     def __init__(self):
-        super(Shotgun, self).__init__("Shotgun", 100, 100, False)
-        self.blocked = False
+        super(Shotgun, self).__init__("Shotgun", 100)
         self.dmg_type = "gun"
 
 
 class Knife(Weapon):
-    def __init__(self, name, damage, visibility):
-        super(Knife, self).__init__(name, damage, visibility)
+    def __init__(self, name, damage):
+        super(Knife, self).__init__(name, damage)
         self.dmg_type = "knife"
 
 
 class KitchenKnife(Knife):
     def __init__(self):
-        super(KitchenKnife, self).__init__('Kitchen Knife', 50, 25)
+        super(KitchenKnife, self).__init__('Kitchen Knife', 50)
         self.dmg_type = "knife"
 
 
 class HuntingKnife(Knife):
     def __init__(self):
-        super(HuntingKnife, self).__init__('Hunting Knife', 50, 25)
+        super(HuntingKnife, self).__init__('Hunting Knife', 50)
         self.dmg_type = "knife"
 
 
 class Melee(Weapon):
-    def __init__(self, name, damage, visibility):
-        super(Melee, self).__init__(name, damage, visibility, )
+    def __init__(self, name, damage):
+        super(Melee, self).__init__(name, damage)
         self.dmg_type = "knife"
 
 
 class Katana(Melee):
     def __init__(self):
-        super(Katana, self).__init__('Katana', 100, 100)
+        super(Katana, self).__init__('Katana', 100)
         self.dmg_type = "knife"
 
 
 class Machete(Melee):
     def __init__(self):
-        super(Machete, self).__init__('Basic Machete', 100, 100)
+        super(Machete, self).__init__('Basic Machete', 100)
         self.dmg_type = "knife"
 
 
 class Bat(Weapon):
-    def __init__(self, name, damage, visibility, knockout=False):
-        super(Bat, self).__init__(name, damage, visibility, )
+    def __init__(self, name, damage, knockout=False):
+        super(Bat, self).__init__(name, damage)
         self.knockout = knockout
         self.dmg_type = "bat"
 
 
 class Woodbat(Bat):
     def __init__(self):
-        super(Woodbat, self).__init__('Woodbat', 50, 100)
+        super(Woodbat, self).__init__('Woodbat', 50)
         self.dmg_type = "bat"
 
     def hit_target(self, origin, target):
@@ -161,7 +157,7 @@ class Woodbat(Bat):
 
 class Ironbat(Bat):
     def __init__(self):
-        super(Ironbat, self).__init__('Ironbat', 65, 100)
+        super(Ironbat, self).__init__('Ironbat', 65)
         self.dmg_type = "bat"
 
     def hit_target(self, origin, target):
@@ -253,13 +249,12 @@ class Room(object):
 
 
 class Character(object):
-    def __init__(self, name, dialogue, health=100, resistance=75, weapon=fists(),
+    def __init__(self, name, dialogue, health=100, weapon=fists(),
                  armor=GenericArmor()):
         self.name = name
         self.dialogue = dialogue
         self.dialogue_line = 0
         self.health = health
-        self.resistance = resistance
         self.weapon = weapon
         self.armor = armor
         self.dead = False
@@ -268,6 +263,8 @@ class Character(object):
         self.inventory = []
         self.follower = None  # Character Object
         self.provoked = False
+# def die(self, kill, origin, target):
+    #     if self.health < 0:
 
     def take_damage(self, damage: int, damage_type):
         if damage_type == "gun":
@@ -327,27 +324,31 @@ Dog = Animal(input, 100)
 
 class Player(Character):
     def __init__(self, name, starting_location, energy=100, health=100,
-                 resistance=100, weapon=fists(), armor=GenericArmor):
-        super(Player, self).__init__(name, None, health, resistance, weapon, armor)
+                 weapon=fists(), armor=GenericArmor):
+        """
+
+        :type weapon: weapon
+        """
+        super(Player, self).__init__(name, None, health, weapon, armor)
         self.current_location = starting_location
         self.energy = energy
         self.inventory = []
 
 
 class NPC(Character):
-    def __init__(self, name, dialogue, health=100, resistance=75, weapon=fists(),
+    def __init__(self, name, dialogue, health=100, weapon=fists(),
                  armor=GenericArmor()):
-        super(NPC, self).__init__(name, dialogue, health, resistance, weapon, armor)
+        super(NPC, self).__init__(name, dialogue, health, weapon, armor)
 
 
 class Enemy(Character):
-    def __init__(self, name, dialogue, health=75, resistance=75, weapon=fists(), armor=GenericArmor()):
-        super(Enemy, self).__init__(name, dialogue, health, resistance, weapon, armor)
+    def __init__(self, name, dialogue, health=75, weapon=fists(), armor=GenericArmor()):
+        super(Enemy, self).__init__(name, dialogue, health, weapon, armor)
 
 
 class Zombie(Enemy):
-    def __init__(self, name, dialogue, health, resistance, weapon, armor):
-        super(Zombie, self).__init__(name, dialogue, health, resistance, weapon, armor)
+    def __init__(self, name, dialogue, health, weapon, armor):
+        super(Zombie, self).__init__(name, dialogue, health, weapon, armor)
         self.bite = False
 
 
@@ -355,10 +356,15 @@ class Zombie(Enemy):
                           'Naomi', 'Demitres', 'Kodak'"""
 
 
-Dean = Character("Dean", ["Hello.", "Ouch! Now you've done it! Get over here!", "Here, take this thingy."], 100, 100,
-                 Machete, BV)
-Sam = Character("Sam", ["", "", ""], 100, 90, Pistol, RG)
-Asher = Character("Asher", "")
+Dean = Character("Dean", ["Hello.", "Ouch! Now you've done it! Get over here!", "Here, take this thingy."], 100,
+                 Machete, LJ)
+# Sam = Character("Sam", ["", "", ""], 100, 90, Pistol(), RG())
+Asher = Character("Asher", "", 100, Ironbat, RG)
+Misty = NPC("Misty", "The whole world has gone to hell so quickly in the last couple days. \n"
+            "Who knew the dead would rise again. \n"
+            "ME! that's who!,\n"
+            "I'LL KILL EVERY LAST ONE OF THEM!", 80, Shotgun, BV)
+Zombie1 = Zombie("Zombie", "errrhggg", 40, None, None)
 
 # Option 1 - define as we go
 # R19A = Room("Mr. Weibe's Room")
@@ -406,9 +412,8 @@ front_yard = Room("The Front Yard", "The really is no one out here. \n"
                   'grass', 'car', 'living_room', None, 'road', 'road1', None, None)
 grass = Room("The Grass", "", 'road_1', 'my_car', 'front_yard', None, 'road_1', 'road_1',
              None, None)
-road_1 = Room("The Road", "Maybe if i follow this road East "
-                          "I could get somewhere. \n"
-                        , None, 'nroad', 'grass', None, None,
+road_1 = Room("The Road", "Maybe if i follow this road East"
+                          "I could get somewhere.\n", None, 'nroad', 'grass', None, None,
               None, "my_car", "grass")
 kitchen = Room("The Kitchen", "There is a couple raw steaks to the east \n"
                               "with a bloody knife to the side", 'garage', 'kitchen_knives', None, 'hallway', None,
@@ -472,7 +477,7 @@ crossroads1 = Room("Crossroads", "There are three long roads", 'muddy', 'longroa
                    None, None)
 muddy = Room("long stretch of muddy land", "There is no way i can get through this on foot \n""i should head back",
              'dies', None, 'crossroads1', None, None, None, None, None)
-
+die = Room("You die", "You can respawn by moving", 'living_room', 'lving_room', 'lving_room', 'lvin_room', 'iving_room')
 forest = Room("Forest Entryway", "looks like a deep forest that could stretch for miles", 'crossroads1', 'nothing',
               'dforest', 'nothing', None, None, None, None)
 dforest = Room("Shallow Forest", "Nothing much here besides a weird shine coming from a tree to the East", 'forest',
@@ -480,6 +485,8 @@ dforest = Room("Shallow Forest", "Nothing much here besides a weird shine coming
 walkers1 = Room("I hear a couple groaning voices going south", "", 'dforest', 'st', 'walkers', None, 'st', None, None,
                 None)
 walkers = Room("They see me now i have to fight", "", 'walkers1', None, None, None, None, None, None, None, )
+
+
 player = Player("You", living_room)
 player.follower = Dean
 player.follower = None
@@ -489,9 +496,11 @@ directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
               'southeast', 'southwest', 'up', 'down']
 actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get in', 'take', 'swallow']
 
-def character_dialogue()
+
+def character_dialogue():
     for i in range(len(player.current_location.characters)):
         print(player.current_location.characters[i].dialogue[player.current_location.characters[i].dialogue_line])
+
 
 def character_events(string):
     characters = []
@@ -505,19 +514,22 @@ def character_events(string):
                 characters[i].provoked = True
 
 
-
 """Dean.attack(Sam)
 Sam.attack(Dean)"""
 
 while playing:
     print(player.current_location.name)
     print(player.current_location.description)
-    print()
     character_dialogue()
+    print()
+    # print("You have %d" %d (player.inventory))
     command = input(">_")
 
     if command.lower() in ['q', 'quit', 'exit']:
-        playing = False
+        print(input("Are you sure you want to exit?"))
+        if ['yea', 'yes', 'ya', 'ya']:
+            playing = False
+
     elif command.lower() in directions:
         try:
             next_room = player.find_next_room(command)
@@ -525,7 +537,7 @@ while playing:
         except KeyError:
             print("I can't go that way")
             print()
-    elif "pick up" or "take" or "grab" in command.lower():
+    elif ['pick up', 'take', 'grab'] in command.lower():
         item_name = command[8:]
         for item in player.current_location.items:
             if item_name.lower() == item.name.lower():
@@ -536,7 +548,7 @@ while playing:
                     living_room.north = "secret"
                 if item == key1:
                     ncar = 'drivable'
-    elif "swallow" in command:
+    elif ['swallow', 'take'] in command:
         item_name = command[8:]
         for item in player.current_location.items:
             if item_name.lower() == item.name.lower():
@@ -545,7 +557,7 @@ while playing:
                     print("You swallow %s" % item.name)
                     print("you now have %s" % player.health)
                 player.inventory.remove(item)
-    elif "fight" or "attack" or "punch" in command.lower():
+    elif ['fight', 'attack', 'punch'] in command.lower():
         Character_name = command[6:]
         for item in player.current_location.items:
             if Character_name.lower() == Character_name.lower():
