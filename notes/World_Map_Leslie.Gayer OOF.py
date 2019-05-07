@@ -525,7 +525,7 @@ while playing:
     # print("You have %d" %d (player.inventory))
     command = input(">_")
 
-    if command.lower() in ['q', 'quit', 'exit']:
+    if command.lower() in 'q' or if command.lower() in 'quit'if command.lower() in 'exit':
         print(input("Are you sure you want to exit?"))
         if ['yea', 'yes', 'ya', 'ya']:
             playing = False
@@ -537,7 +537,7 @@ while playing:
         except KeyError:
             print("I can't go that way")
             print()
-    elif ['pick up', 'take', 'grab'] in command.lower():
+    elif 'pick up' in command.lower() or 'take' in command.lower() or 'grab' in command.lower():
         item_name = command[8:]
         for item in player.current_location.items:
             if item_name.lower() == item.name.lower():
@@ -548,7 +548,7 @@ while playing:
                     living_room.north = "secret"
                 if item == key1:
                     ncar = 'drivable'
-    elif ['swallow', 'take'] in command:
+    elif 'swallow' in command.lower() or 'take' in command.lower():
         item_name = command[8:]
         for item in player.current_location.items:
             if item_name.lower() == item.name.lower():
@@ -557,7 +557,7 @@ while playing:
                     print("You swallow %s" % item.name)
                     print("you now have %s" % player.health)
                 player.inventory.remove(item)
-    elif ['fight', 'attack', 'punch'] in command.lower():
+    elif 'fight'in command.lower() or 'attack' in command.lower() or 'punch' in command.lower():
         Character_name = command[6:]
         for item in player.current_location.items:
             if Character_name.lower() == Character_name.lower():
