@@ -357,13 +357,13 @@ class Zombie(Enemy):
 
 
 Dean = Character("Dean", ["Hello.", "Ouch! Now you've done it! Get over here!", "Here, take this thingy."], 100,
-                 Machete, LJ)
+                 Machete(), LJ())
 # Sam = Character("Sam", ["", "", ""], 100, 90, Pistol(), RG())
-Asher = Character("Asher", "", 100, Ironbat, RG)
+Asher = Character("Asher", "", 100, Ironbat(), RG())
 Misty = NPC("Misty", "The whole world has gone to hell so quickly in the last couple days. \n"
             "Who knew the dead would rise again. \n"
             "ME! that's who!,\n"
-            "I'LL KILL EVERY LAST ONE OF THEM!", 80, Shotgun, BV)
+            "I'LL KILL EVERY LAST ONE OF THEM!", 80, Shotgun(), BV())
 Zombie1 = Zombie("Zombie", "errrhggg", 40, None, None)
 
 # Option 1 - define as we go
@@ -507,7 +507,7 @@ def character_events(string):
     for i in range(len(player.current_location.characters)):
         characters.append(player.current_location.characters[i])
 
-    if "ATTACK" in string:
+    if "ATTACK" in string or "FIGHT" in string or "PUNCH" in string:
         for i in range(len(characters)):
             if characters[i].name.upper() in string:
                 characters[i].dialogue_line = 1
@@ -525,7 +525,7 @@ while playing:
     # print("You have %d" %d (player.inventory))
     command = input(">_")
 
-    if command.lower() in 'q' or if command.lower() in 'quit'if command.lower() in 'exit':
+    if 'q' in command.lower() or 'quit' in command.lower() or 'exit' in command.lower():
         print(input("Are you sure you want to exit?"))
         if ['yea', 'yes', 'ya', 'ya']:
             playing = False
