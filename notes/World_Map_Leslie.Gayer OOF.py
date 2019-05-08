@@ -263,6 +263,7 @@ class Character(object):
         self.inventory = []
         self.follower = None  # Character Object
         self.provoked = False
+        self.spotted = False
 # def die(self, kill, origin, target):
     #     if self.health < 0:
 
@@ -324,7 +325,7 @@ Dog = Animal(input, 100)
 
 class Player(Character):
     def __init__(self, name, starting_location, energy=100, health=100,
-                 weapon=fists(), armor=GenericArmor):
+                 weapon=fists(), armor=GenericArmor()):
         """
 
         :type weapon: weapon
@@ -356,7 +357,9 @@ class Zombie(Enemy):
                           'Naomi', 'Demitres', 'Kodak'"""
 
 
-Dean = Character("Dean", ["Hello.", "Ouch! Now you've done it! Get over here!", "Here, take this thingy."], 100,
+I = Player("")
+Dean = Character("Dean", ["Hello?", "what do you want?", "Can i help you?" "You wanna get tough huh? then lets go!", "Take this",
+                          "WAIT!, I need help!", "Is it okay if i can hitch a ride?", "Thanks you're a doll"], 100,
                  Machete(), LJ())
 # Sam = Character("Sam", ["", "", ""], 100, 90, Pistol(), RG())
 Asher = Character("Asher", "", 100, Ironbat(), RG())
@@ -512,7 +515,8 @@ def character_events(string):
             if characters[i].name.upper() in string:
                 characters[i].dialogue_line = 1
                 characters[i].provoked = True
-
+    if player.current_location == 'crossroads1':
+        print(Dean.dialogue[2])
 
 """Dean.attack(Sam)
 Sam.attack(Dean)"""
@@ -568,11 +572,13 @@ while playing:
                 #     players.append(Dean)
                 #     enemies.remove(Dean)
                 if ques == 'yes':
-                    print("You fight %s" % Character_name)
+                    character_events(command.upper())
+                    character_dialogue()
+                    print("You fight %s" % Character.name)
                     fight(players, enemies)
                 if ques == 'no':
                     print("You back down from the fight")
-        character_events(command.upper())
+
     elif command.lower() in actions:
         if actions[5]:
             print(player.inventory)
