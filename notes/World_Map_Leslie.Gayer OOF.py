@@ -247,6 +247,10 @@ class Room(object):
         self.characters = characters
         self.items = items
 
+    def print_characters_names(self):
+        if
+            print(" %s is right her" % Character_name)
+        
 
 class Character(object):
     def __init__(self, name, dialogue, health=100, weapon=fists(),
@@ -264,6 +268,7 @@ class Character(object):
         self.follower = None  # Character Object
         self.provoked = False
         self.spotted = False
+        self.greeted = False
 # def die(self, kill, origin, target):
     #     if self.health < 0:
 
@@ -357,7 +362,7 @@ class Zombie(Enemy):
                           'Naomi', 'Demitres', 'Kodak'"""
 
 
-I = Player("")
+#I = Player("")
 Dean = Character("Dean", ["Hello?", "what do you want?", "Can i help you?" "You wanna get tough huh? then lets go!", "Take this",
                           "WAIT!, I need help!", "Is it okay if i can hitch a ride?", "Thanks you're a doll"], 100,
                  Machete(), LJ())
@@ -504,6 +509,7 @@ def character_dialogue():
     for i in range(len(player.current_location.characters)):
         print(player.current_location.characters[i].dialogue[player.current_location.characters[i].dialogue_line])
 
+random_hello = [3]
 
 def character_events(string):
     characters = []
@@ -513,8 +519,13 @@ def character_events(string):
     if "ATTACK" in string or "FIGHT" in string or "PUNCH" in string:
         for i in range(len(characters)):
             if characters[i].name.upper() in string:
-                characters[i].dialogue_line = 1
+                characters[i].dialogue_line = 3
                 characters[i].provoked = True
+    if "HELLO" in string or "HI" in string or "GREET" in string or "WHATS UP" in string:
+        for i in range(len(characters)):
+            if characters[i].name.upper() in string:
+                characters[i].dialogue_line = random_hello
+                characters[i].greeted = True
     if player.current_location == 'crossroads1':
         print(Dean.dialogue[2])
 
