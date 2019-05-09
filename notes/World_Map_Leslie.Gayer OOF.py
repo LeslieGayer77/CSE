@@ -247,10 +247,6 @@ class Room(object):
         self.characters = characters
         self.items = items
 
-    def print_characters_names(self):
-        if
-            print(" %s is right her" % Character_name)
-        
 
 class Character(object):
     def __init__(self, name, dialogue, health=100, weapon=fists(),
@@ -474,7 +470,7 @@ nroad = Room("The Road", " ", None, 'deadend', 'grass2', 'nroad', None,
              "road1", 'grass2', 'ncar')
 ncar = Room("Neighbor's Car", " ", 'north', 'east', 'south', 'west', 'nroad',
             'nroad', 'grass1', None)
-drivable = Room("In Car", "I can now go farther down east", None, 'crossroads', None, 'Endroad', None,
+drivable = Room("In Car", "I can now go farther down east", None, 'crossroads1', None, 'Endroad', None,
                 None, None, None)
 grass2 = Room("The Neigbor's Lawn", " ", 'nroad', 'nroad', 'ndoor', 'ncar', 'nroad',
               'noroad', None, None)
@@ -507,11 +503,12 @@ actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get i
 
 def character_dialogue():
     for i in range(len(player.current_location.characters)):
+        print(" %s is right here" % player.current_location.characters[i].name)
         print(player.current_location.characters[i].dialogue[player.current_location.characters[i].dialogue_line])
 
 random_hello = [3]
-
-def character_events(string):
+initial_meeting = False
+def character_events(string, extra=None):
     characters = []
     for i in range(len(player.current_location.characters)):
         characters.append(player.current_location.characters[i])
@@ -526,8 +523,9 @@ def character_events(string):
             if characters[i].name.upper() in string:
                 characters[i].dialogue_line = random_hello
                 characters[i].greeted = True
-    if player.current_location == 'crossroads1':
+    if player.current_location == 'crossroads1' and not extra:
         print(Dean.dialogue[2])
+        return True
 
 """Dean.attack(Sam)
 Sam.attack(Dean)"""
@@ -562,6 +560,7 @@ while playing:
                 if item_name == "keycard":
                     living_room.north = "secret"
                 if item == key1:
+                    print("You now have the keys to your neighbor's car.")
                     ncar = 'drivable'
     elif 'swallow' in command.lower() or 'take' in command.lower():
         item_name = command[8:]
@@ -585,7 +584,7 @@ while playing:
                 if ques == 'yes':
                     character_events(command.upper())
                     character_dialogue()
-                    print("You fight %s" % Character.name)
+                    print("You fight %s" % Character_name)
                     fight(players, enemies)
                 if ques == 'no':
                     print("You back down from the fight")
@@ -595,5 +594,6 @@ while playing:
             print(player.inventory)
     else:
         print("Command Not Found")
+    character_events(command.lower(), initial_meeting)
 
 print()
