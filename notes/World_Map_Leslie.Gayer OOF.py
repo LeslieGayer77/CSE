@@ -296,6 +296,9 @@ class Character(object):
 
         :param new_location: The room object of which you are going to
         """
+        if new_location is None:
+            print("Uh...")
+            return
         if self.follower is not None:
             self.current_location.characters.remove(self.follower)
             new_location.characters.append(self.follower)
@@ -310,9 +313,11 @@ class Character(object):
         :return: The room object if it exists, or none if it does not
         """
         name_of_room = getattr(self.current_location, direction)
-        if name_of_room == "ncar" and 'Key1' not in self.inventory and isinstance(self, Player):
+        if name_of_room == "ncar" and key1 not in self.inventory and isinstance(self, Player):
             print("You don't have the keys")
             return None
+        elif name_of_room == "ncar" and key1 in self.inventory and isinstance(self, Player):
+            print("You have the keys to your neighbors' car! Yay!")
         return globals()[name_of_room]
 
 
@@ -387,7 +392,7 @@ living_room = Room("Living Room",  "The TV is Screeching on the North wall "
                                    "The hallway is leading to the East. \n",
                    'tv', 'hallway', 'couch', 'window', 'front_yard', None, 'hallway', None)
 tv = Room("Tv", "Its ear piercing. \n", None, 'living_room', 'couch', 'window', 'front_yard',
-          None, 'hallway', None, [Dean], [excedrin])
+          None, 'hallway', None, [Dean], [key1])
 hallway = Room("The hallway", "A narrow hallway with family photos arranged "
                               "across the wall. \n"
                               "The kitchens to the East.\n"
@@ -460,7 +465,7 @@ nkitchen = Room("Kitchen", "The front door is to the Northeast. \n"
                 'ngarage', 'nhw', 'nlr')
 ncounter = Room("Keys", "Some car keys. \n"
                         "Should i pick them up?", 'counter1', 'nhw', None, 'nwindow', 'ndoor',
-                'ngarage', 'nhw', 'nlr', None, [key1])
+                'ngarage', 'nhw', 'nlr', None)
 nhw = Room("Hallway", "A hallway with one door to the North wall and"
                       "one door to the South wall. ", 'room2', None, 'room3', 'nlr', None,
            None, None, None)
@@ -496,7 +501,7 @@ player.follower = Dean
 player.follower = None
 
 playing = True
-directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
+directions = ['north' or 'n', 'east', 'south', 'west', 'northeast', 'northwest',
               'southeast', 'southwest', 'up', 'down']
 actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get in', 'take', 'swallow']
 
@@ -506,8 +511,11 @@ def character_dialogue():
         print(" %s is right here" % player.current_location.characters[i].name)
         print(player.current_location.characters[i].dialogue[player.current_location.characters[i].dialogue_line])
 
+
 random_hello = [3]
 initial_meeting = False
+
+
 def character_events(string, extra=None):
     characters = []
     for i in range(len(player.current_location.characters)):
@@ -526,6 +534,7 @@ def character_events(string, extra=None):
     if player.current_location == 'crossroads1' and not extra:
         print(Dean.dialogue[2])
         return True
+
 
 """Dean.attack(Sam)
 Sam.attack(Dean)"""
@@ -561,7 +570,7 @@ while playing:
                     living_room.north = "secret"
                 if item == key1:
                     print("You now have the keys to your neighbor's car.")
-                    ncar = 'drivable'
+                    ncar.name = 'drivable'
     elif 'swallow' in command.lower() or 'take' in command.lower():
         item_name = command[8:]
         for item in player.current_location.items:
