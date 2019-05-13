@@ -3,8 +3,6 @@ import random
 
 def fight(player_list: list, enemy_list: list):
     # Player fights person
-    print(player_list)
-    print(enemy_list)
     player_index = 0
     enemy_index = -1
     while player in player_list and len(enemy_list) > 0:
@@ -27,6 +25,10 @@ def fight(player_list: list, enemy_list: list):
         player_index += 1
         if player_index > len(player_list) - 1:
             player_index = 0
+
+        if player.health <= 0:
+            print("You have died")
+            quit(0)
 
 
 class Item(object):
@@ -76,9 +78,9 @@ class Gun(Weapon):
         self.dmg_type = "gun"
 
 
-class fists(Weapon):
+class Fists(Weapon):
     def __init__(self):
-        super(fists, self).__init__("Fists", 10)
+        super(Fists, self).__init__("Fists", 10)
         self.dmg_type = "knife"
 
 
@@ -206,7 +208,7 @@ class Key(Item):
         super(Key, self).__init__(name)
 
 
-key1 = Key("Keys")
+key1 = Key("keys")
 
 
 class Medicine(Item):
@@ -249,7 +251,7 @@ class Room(object):
 
 
 class Character(object):
-    def __init__(self, name, dialogue, health=100, weapon=fists(),
+    def __init__(self, name, dialogue, health=100, weapon=Fists(),
                  armor=GenericArmor()):
         self.name = name
         self.dialogue = dialogue
@@ -265,8 +267,7 @@ class Character(object):
         self.provoked = False
         self.spotted = False
         self.greeted = False
-# def die(self, kill, origin, target):
-    #     if self.health < 0:
+        self.current_location = None
 
     def take_damage(self, damage: int, damage_type):
         if damage_type == "gun":
@@ -288,7 +289,7 @@ class Character(object):
 
     def attack(self, target):
         print(self.weapon.damage)
-        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
+        print("%s attack %s for %d damage" % (self.name, target.name, self.weapon.damage))
         target.take_damage(self.weapon.damage, self.weapon.dmg_type)
 
     def move(self, new_location):
@@ -326,12 +327,12 @@ class Animal(Character):
         super(Animal, self).__init__(name, health)
 
 
-Dog = Animal(input, 100)
+Dog = Animal(input("What do you want to name the dog?"), 100)
 
 
 class Player(Character):
     def __init__(self, name, starting_location, energy=100, health=100,
-                 weapon=fists(), armor=GenericArmor()):
+                 weapon=Fists(), armor=GenericArmor()):
         """
 
         :type weapon: weapon
@@ -343,13 +344,13 @@ class Player(Character):
 
 
 class NPC(Character):
-    def __init__(self, name, dialogue, health=100, weapon=fists(),
+    def __init__(self, name, dialogue, health=100, weapon=Fists(),
                  armor=GenericArmor()):
         super(NPC, self).__init__(name, dialogue, health, weapon, armor)
 
 
 class Enemy(Character):
-    def __init__(self, name, dialogue, health=75, weapon=fists(), armor=GenericArmor()):
+    def __init__(self, name, dialogue, health=75, weapon=Fists(), armor=GenericArmor()):
         super(Enemy, self).__init__(name, dialogue, health, weapon, armor)
 
 
@@ -364,8 +365,8 @@ class Zombie(Enemy):
 
 
 #I = Player("")
-Dean = Character("Dean", ["Hello?", "what do you want?", "Can i help you?" "You wanna get tough huh? then lets go!", "Take this",
-                          "WAIT!, I need help!", "Is it okay if i can hitch a ride?", "Thanks you're a doll"], 100,
+Dean = Character("Dean", ["Hello?", "what do you want?", "Can i help you?", "You wanna get tough huh? then lets go!",
+                          "Take this", "WAIT!, I need help!", "Is it okay if i can hitch a ride?", "Thanks you're a doll"], 100,
                  Machete(), LJ())
 # Sam = Character("Sam", ["", "", ""], 100, 90, Pistol(), RG())
 Asher = Character("Asher", "", 100, Ironbat(), RG())
@@ -387,9 +388,14 @@ parking_lot = Room("Parking Lot", None, "R19A")"""
 
 
 living_room = Room("Living Room",  "The TV is Screeching on the North wall " 
-                                   "while a distant dog barks. \n" 
+                                   # "while a distant dog barks. \n" 
                                    "The front door is leading to Northeast. \n" 
-                                   "The hallway is leading to the East. \n",
+                                   "The hallway is leading to the East. \n"
+                                   "Dean is standing by the tv\n"
+                                   "along with the keys to the neighbors car\n"
+                                   "you can pick those up\n"
+                                   "You can chose to fight him,"
+                                   "talk to him and greet him",
                    'tv', 'hallway', 'couch', 'window', 'front_yard', None, 'hallway', None)
 tv = Room("Tv", "Its ear piercing. \n", None, 'living_room', 'couch', 'window', 'front_yard',
           None, 'hallway', None, [Dean], [key1])
@@ -501,6 +507,7 @@ player.follower = Dean
 player.follower = None
 
 playing = True
+    
 directions = ['north' or 'n', 'east', 'south', 'west', 'northeast', 'northwest',
               'southeast', 'southwest', 'up', 'down']
 actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get in', 'take', 'swallow']
@@ -532,8 +539,13 @@ def character_events(string, extra=None):
                 characters[i].dialogue_line = random_hello
                 characters[i].greeted = True
     if player.current_location == 'crossroads1' and not extra:
-        print(Dean.dialogue[2])
+        print(Dean.dialogue[4])
         return True
+    if "TALK TO" in string or "SPEAK TO" in string or "ASK" in string:
+        for i in range(len(characters)):
+            if characters[i].name.upper() in string:
+                characters[i].dialogue_line = 3
+                characters[i].provoked = True
 
 
 """Dean.attack(Sam)
@@ -570,7 +582,7 @@ while playing:
                     living_room.north = "secret"
                 if item == key1:
                     print("You now have the keys to your neighbor's car.")
-                    ncar.name = 'drivable'
+                    grass2.west = 'drivable'
     elif 'swallow' in command.lower() or 'take' in command.lower():
         item_name = command[8:]
         for item in player.current_location.items:
@@ -604,5 +616,6 @@ while playing:
     else:
         print("Command Not Found")
     character_events(command.lower(), initial_meeting)
+    
 
 print()
