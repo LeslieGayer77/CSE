@@ -66,6 +66,9 @@ class Cans(Food):
         super(Cans, self).__init__('Canned Food', 50)
 
 
+steak = Food(10)
+
+
 class Weapon(Item):
     def __init__(self, name, damage):
         super(Weapon, self).__init__(name)
@@ -322,12 +325,12 @@ class Character(object):
         return globals()[name_of_room]
 
 
-class Animal(Character):
-    def __init__(self, name, health=100, ):
-        super(Animal, self).__init__(name, health)
+# class Animal(Character):
+#     def __init__(self, name, health=100, ):
+#         super(Animal, self).__init__(name, health)
 
 
-Dog = Animal(input("What do you want to name the dog?"), 100)
+Dog = Character("Buster", "", 10)
 
 
 class Player(Character):
@@ -366,10 +369,11 @@ class Zombie(Enemy):
 
 #I = Player("")
 Dean = Character("Dean", ["Hello?", "what do you want?", "Can i help you?", "You wanna get tough huh? then lets go!",
-                          "Take this", "WAIT!, I need help!", "Is it okay if i can hitch a ride?", "Thanks you're a doll"], 100,
+                          "Take this", "WAIT!, Is it okay if i can hitch a ride?", "Thanks you're a doll",
+                          "No?, NO?, you're going to regret that"], 100,
                  Machete(), LJ())
 # Sam = Character("Sam", ["", "", ""], 100, 90, Pistol(), RG())
-Asher = Character("Asher", "", 100, Ironbat(), RG())
+Ash = Character("Ash", "", 100, Ironbat(), RG())
 Misty = NPC("Misty", "The whole world has gone to hell so quickly in the last couple days. \n"
             "Who knew the dead would rise again. \n"
             "ME! that's who!,\n"
@@ -456,11 +460,13 @@ wall1 = Room("Wall", "", 'north', 'backyard', 'fence1', 'backyard', 'backyard',
              'backyard', 'backyard', 'backyard')
 almost_otherside = Room("An Open Fence", "Okay the growling is definitely more prevalent. \n"
                                          "If i continue to go this way that dog is gonna attack me. \n",
-                        'wall1', 'dog', 'fence1', 'dog', None, 'hallway', None, 'backyard')
+                        'wall1', 'dog', 'fence1', 'backyard', None, 'hallway', None, 'backyard')
 fence2 = Room("Fence", "", 'dog', 'dog', 'south', 'backyard', 'backyard',
               'backyard', None, None)
-dog = Room("Neighbors Backyard",  "There is a dog here", 'nlr', 'pool', 'fence2', 'almost_otherside', 'wall2',
+dog = Room("Neighbors Backyard", 'nlr', 'pool', 'fence2', 'almost_otherside', 'wall2',
            'wall2', 'fence2', 'fence2', [Dog])
+friendly = Room("The do is right here", 'nlr', 'pool', 'fence2', 'almost_otherside', 'wall2', 'wall2', 'fence2',
+                'fence2', [Dog])
 wall2 = Room("wall", "", None, 'backyard', 'fence2', 'backyard', None,
              None, 'backyard', 'backyard')
 nlr = Room("Neighbor Living Room", "There is a kitchen to the Northwest. \n"
@@ -515,11 +521,11 @@ actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get i
 
 def character_dialogue():
     for i in range(len(player.current_location.characters)):
+        player.current_location.characters[i].dialogue_line = random.randint(0, 2)
         print(" %s is right here" % player.current_location.characters[i].name)
         print(player.current_location.characters[i].dialogue[player.current_location.characters[i].dialogue_line])
 
 
-random_hello = [3]
 initial_meeting = False
 
 
@@ -536,16 +542,39 @@ def character_events(string, extra=None):
     if "HELLO" in string or "HI" in string or "GREET" in string or "WHATS UP" in string:
         for i in range(len(characters)):
             if characters[i].name.upper() in string:
-                characters[i].dialogue_line = random_hello
+                characters[i].dialogue_line = random.randint(0, 2)  # print(list[random.randint(1, 3)])
                 characters[i].greeted = True
-    if player.current_location == 'crossroads1' and not extra:
-        print(Dean.dialogue[4])
-        return True
     if "TALK TO" in string or "SPEAK TO" in string or "ASK" in string:
         for i in range(len(characters)):
             if characters[i].name.upper() in string:
                 characters[i].dialogue_line = 3
                 characters[i].provoked = True
+    if player.current_location == 'crossroads1' and not extra:
+        # Dean = Character("Dean",
+        #                  ["Hello?", "what do you want?", "Can i help you?", "You wanna get tough huh? then lets go!",
+        #                   "Take this", "WAIT!, I need help!", "Is it okay if i can hitch a ride?",
+        #                   "Thanks you're a doll"], 100,
+        answer = input(Dean.dialogue[5])
+        if answer == "yes" in string:
+            print(Dean.dialogue[6])
+            Dean.follower = True
+        if answer == "no" in string:
+            print(Dean.dialogue[7])
+            Dean.provoked = True
+
+        return True
+    if player.current_location == 'friendly' and steak in player.inventory and not extra:
+        answer1 = input("Should i give Buster the steak")
+        if answer1 == "no" in string:
+            Dog.provoked = True
+            print("The dog attacked you")
+        if answer1 == "yes" in string:
+            Dog.follower = True
+            print("The dog is now following you")
+            player.inventory.remove(steak)
+    if player.current_location == 'dog' and steak not in player.inventory and not extra:
+        Dog.provoked = True
+        print("The dog attacked you")
 
 
 """Dean.attack(Sam)
@@ -583,6 +612,9 @@ while playing:
                 if item == key1:
                     print("You now have the keys to your neighbor's car.")
                     grass2.west = 'drivable'
+                if item == steak:
+                    print("You should save this for later you might need it")
+                    backyard.east = 'friendly'
     elif 'swallow' in command.lower() or 'take' in command.lower():
         item_name = command[8:]
         for item in player.current_location.items:
