@@ -483,7 +483,7 @@ nhw = Room("Hallway", "A hallway with one door to the North wall and"
            None, None, None)
 ndoor = Room("Neighbor's portch", " ", 'grass2', 'offlawn', 'nkitchen', 'ncar', 'nroad',
              'noroad', 'southeast', 'southwest')
-nroad = Room("The Road", " ", None, 'deadend', 'grass2', 'nroad', None,
+nroad = Room("The Road above my neighbor's house", " ", None, 'crossroads', 'grass2', 'road_1', None,
              "road1", 'grass2', 'ncar')
 ncar = Room("Neighbor's Car", " ", 'north', 'east', 'south', 'west', 'nroad',
             'nroad', 'grass1', None)
@@ -509,13 +509,13 @@ walkers = Room("They see me now i have to fight", "", 'walkers1', None, None, No
 
 
 player = Player("You", living_room)
-player.follower = Dean
 player.follower = None
 
 playing = True
     
-directions = ['north' or 'n', 'east', 'south', 'west', 'northeast', 'northwest',
+directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
               'southeast', 'southwest', 'up', 'down']
+quick_directions = ['n', 'e', 's', ]
 actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get in', 'take', 'swallow']
 
 
@@ -523,7 +523,10 @@ def character_dialogue():
     for i in range(len(player.current_location.characters)):
         player.current_location.characters[i].dialogue_line = random.randint(0, 2)
         print(" %s is right here" % player.current_location.characters[i].name)
-        print(player.current_location.characters[i].dialogue[player.current_location.characters[i].dialogue_line])
+        if not player.current_location.characters[i].greeted:
+            if not player.current_location.characters[i].spotted:
+                print(player.current_location.characters[i].dialogue[player.current_location.characters[i].dialogue_line])
+                player.current_location.characters[i].spotted = True
 
 
 initial_meeting = False
@@ -533,27 +536,27 @@ def character_events(string, extra=None):
     characters = []
     for i in range(len(player.current_location.characters)):
         characters.append(player.current_location.characters[i])
-
     if "ATTACK" in string or "FIGHT" in string or "PUNCH" in string:
         for i in range(len(characters)):
             if characters[i].name.upper() in string:
                 characters[i].dialogue_line = 3
                 characters[i].provoked = True
+        return True
     if "HELLO" in string or "HI" in string or "GREET" in string or "WHATS UP" in string:
         for i in range(len(characters)):
             if characters[i].name.upper() in string:
                 characters[i].dialogue_line = random.randint(0, 2)  # print(list[random.randint(1, 3)])
+                print(characters[i].dialogue[characters[i].dialogue_line])
                 characters[i].greeted = True
+        return True
     if "TALK TO" in string or "SPEAK TO" in string or "ASK" in string:
         for i in range(len(characters)):
             if characters[i].name.upper() in string:
                 characters[i].dialogue_line = 3
                 characters[i].provoked = True
+        return True
     if player.current_location == 'crossroads1' and not extra:
-        # Dean = Character("Dean",
-        #                  ["Hello?", "what do you want?", "Can i help you?", "You wanna get tough huh? then lets go!",
-        #                   "Take this", "WAIT!, I need help!", "Is it okay if i can hitch a ride?",
-        #                   "Thanks you're a doll"], 100,
+        print(Dean.dialogue[5])
         answer = input(Dean.dialogue[5])
         if answer == "yes" in string:
             print(Dean.dialogue[6])
@@ -561,7 +564,6 @@ def character_events(string, extra=None):
         if answer == "no" in string:
             print(Dean.dialogue[7])
             Dean.provoked = True
-
         return True
     if player.current_location == 'friendly' and steak in player.inventory and not extra:
         answer1 = input("Should i give Buster the steak")
@@ -572,9 +574,11 @@ def character_events(string, extra=None):
             Dog.follower = True
             print("The dog is now following you")
             player.inventory.remove(steak)
+        return True
     if player.current_location == 'dog' and steak not in player.inventory and not extra:
         Dog.provoked = True
         print("The dog attacked you")
+    return False
 
 
 """Dean.attack(Sam)
@@ -586,14 +590,18 @@ while playing:
     character_dialogue()
     print()
     # print("You have %d" %d (player.inventory))
-    command = input(">_")
 
-    if 'q' in command.lower() or 'quit' in command.lower() or 'exit' in command.lower():
+    command = input(">_")
+    if character_events(command.upper()):
+        pass
+    elif 'q' in command.lower() or 'quit' in command.lower() or 'exit' in command.lower():
         print(input("Are you sure you want to exit?"))
         if ['yea', 'yes', 'ya', 'ya']:
             playing = False
-
-    elif command.lower() in directions:
+    elif command.lower() in directions or command.lower() in quick_directions:
+        if command.lower() in quick_directions:
+            pos = quick_directions.index(command.lower())
+            command = directions[pos]
         try:
             next_room = player.find_next_room(command)
             player.move(next_room)
@@ -647,7 +655,7 @@ while playing:
             print(player.inventory)
     else:
         print("Command Not Found")
-    character_events(command.lower(), initial_meeting)
+
     
 
 print()
