@@ -291,6 +291,8 @@ class Character(object):
         print("%s has %d health left" % (self.name, self.health))
 
     def attack(self, target):
+        # if self.weapon is None:
+        #
         print(self.weapon.damage)
         print("%s attack %s for %d damage" % (self.name, target.name, self.weapon.damage))
         target.take_damage(self.weapon.damage, self.weapon.dmg_type)
@@ -357,8 +359,8 @@ class Enemy(Character):
         super(Enemy, self).__init__(name, dialogue, health, weapon, armor)
 
 
-class Zombie(Enemy):
-    def __init__(self, name, dialogue, health, weapon, armor):
+class Zombie(Character):
+    def __init__(self, name, dialogue, health, weapon=Fists(), armor=None):
         super(Zombie, self).__init__(name, dialogue, health, weapon, armor)
         self.bite = False
 
@@ -378,7 +380,39 @@ Misty = NPC("Misty", "The whole world has gone to hell so quickly in the last co
             "Who knew the dead would rise again. \n"
             "ME! that's who!,\n"
             "I'LL KILL EVERY LAST ONE OF THEM!", 80, Shotgun(), BV())
-Zombie1 = Zombie("Zombie", "errrhggg", 40, None, None)
+Zombie1 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie2 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie3 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie4 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie5 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie6 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie7 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie8 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie9 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie10 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie11 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie12 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie13 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie14 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie15 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+Zombie16 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1.provoked = True
+
 
 # Option 1 - define as we go
 # R19A = Room("Mr. Weibe's Room")
@@ -402,24 +436,24 @@ living_room = Room("Living Room",  "The TV is Screeching on the North wall "
                                    "talk to him and greet him",
                    'tv', 'hallway', 'couch', 'window', 'front_yard', None, 'hallway', None)
 tv = Room("Tv", "Its ear piercing. \n", None, 'living_room', 'couch', 'window', 'front_yard',
-          None, 'hallway', None, [Dean], [key1])
+          None, 'hallway', None, [Dean, Zombie1], [key1])
 hallway = Room("The hallway", "A narrow hallway with family photos arranged "
                               "across the wall. \n"
                               "The kitchens to the East.\n"
                               "A room is to the West. \n ",
                'living_room', 'kitchen', 'backyard', 'room1', None, None, None,  None)
 room1 = Room("Room", "My dresser is to the North. \n"
-                     "my bed is to the West and my closet"
+                     "my bed is to the West and my closet "
                      "is to the South",
              'dresser', 'hallway', 'closet', 'bed', 'r1w', 'r1w', 'r1w', 'r1w')
-dresser = Room("dresser", 'nothing in here except some Excedrin', None, 'hallway', 'closet',
+dresser = Room("dresser", "", None, 'hallway', 'closet',
                'r1w', None, None, 'r1w', 'bed', None)
-bed = Room("Bed", 'should i sleep?', 'r1w', 'hallway', 'r1w', None, 'dresser', None,
+bed = Room("Bed", "", 'r1w', 'hallway', 'r1w', None, 'dresser', None,
            'closet', None)
 r1w = Room("Wall", "", 'room1', 'room1', 'room1', 'room1', 'room1', 'room1', 'room1',
            'room1', 'room1')
 closet = Room("Closet", 'Some thin shirts and sweaters with a leather jacket', 'dresser',
-              'r1w', None, 'r1w', 'r1w', 'bed', 'r1w', None, None, [LJ])
+              'r1w', None, 'r1w', 'r1w', 'bed', 'r1w', None, None, [LJ()])
 couch = Room("The Couch", "good for taking long naps on",
              'tv', 'hallway', None, 'window', 'front_yard', None, 'hallway', None)
 window = Room("The Window", "can't see much. \n"
@@ -503,9 +537,11 @@ forest = Room("Forest Entryway", "looks like a deep forest that could stretch fo
               'dforest', 'nothing', None, None, None, None)
 dforest = Room("Shallow Forest", "Nothing much here besides a weird shine coming from a tree to the East", 'forest',
                'tree', 'walkers1', None, None, None, None, None)
+tree = Room("Large tree", "There seems to be something shining up there", 'canal', 'alsh', 'w2', 'dforest', None, None,
+            None, None, None, [HuntingKnife])
 walkers1 = Room("I hear a couple groaning voices going south", "", 'dforest', 'st', 'walkers', None, 'st', None, None,
                 None)
-walkers = Room("They see me now i have to fight", "", 'walkers1', None, None, None, None, None, None, None, )
+walkers = Room("They see me now i have to fight", "", 'walkers1', None, None, None, None, None, None, None, [])
 
 
 player = Player("You", living_room)
@@ -514,8 +550,8 @@ player.follower = None
 playing = True
     
 directions = ['north', 'east', 'south', 'west', 'northeast', 'northwest',
-              'southeast', 'southwest', 'up', 'down']
-quick_directions = ['n', 'e', 's', ]
+              'southeast', 'southwest']
+quick_directions = ['n', 'e', 's', 'w', 'ne', 'nw', 'se', 'sw']
 actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get in', 'take', 'swallow']
 
 
@@ -525,8 +561,14 @@ def character_dialogue():
         print(" %s is right here" % player.current_location.characters[i].name)
         if not player.current_location.characters[i].greeted:
             if not player.current_location.characters[i].spotted:
-                print(player.current_location.characters[i].dialogue[player.current_location.characters[i].dialogue_line])
+                print(player.current_location.characters[i].dialogue[player.current_location.characters[i].
+                      dialogue_line])
                 player.current_location.characters[i].spotted = True
+
+
+def weapon_description():
+    for i in range(len(player.current_location.items)):
+        print("The %s is right here" % player.current_location.items[i].name)
 
 
 initial_meeting = False
@@ -536,6 +578,9 @@ def character_events(string, extra=None):
     characters = []
     for i in range(len(player.current_location.characters)):
         characters.append(player.current_location.characters[i])
+    for i in range(len(characters)):
+        if characters[i].provoked:
+            characters[i].attack(player)
     if "ATTACK" in string or "FIGHT" in string or "PUNCH" in string:
         for i in range(len(characters)):
             if characters[i].name.upper() in string:
@@ -565,6 +610,13 @@ def character_events(string, extra=None):
             print(Dean.dialogue[7])
             Dean.provoked = True
         return True
+    if player.current_location == 'bed' and not extra:
+        anss = input("Would you like to sleep")
+        if answer == "yes" in string:
+            print("Okay you sleep an hour")
+        if answer == "no" in string:
+            print
+        return True
     if player.current_location == 'friendly' and steak in player.inventory and not extra:
         answer1 = input("Should i give Buster the steak")
         if answer1 == "no" in string:
@@ -588,6 +640,7 @@ while playing:
     print(player.current_location.name)
     print(player.current_location.description)
     character_dialogue()
+    weapon_description()
     print()
     # print("You have %d" %d (player.inventory))
 
@@ -632,7 +685,7 @@ while playing:
                     print("You swallow %s" % item.name)
                     print("you now have %s" % player.health)
                 player.inventory.remove(item)
-    elif 'fight'in command.lower() or 'attack' in command.lower() or 'punch' in command.lower():
+    elif 'fight' in command.lower() or 'attack' in command.lower() or 'punch' in command.lower():
         Character_name = command[6:]
         for item in player.current_location.items:
             if Character_name.lower() == Character_name.lower():
@@ -657,5 +710,4 @@ while playing:
         print("Command Not Found")
 
     
-
 print()
