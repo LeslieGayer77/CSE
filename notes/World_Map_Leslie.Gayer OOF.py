@@ -4,7 +4,8 @@ import random
 def fight(player_list: list, enemy_list: list):
     # Player fights person
     player_index = 0
-    enemy_index = -1
+    # enemy_index = -1
+    enemy_index = 0
     while player in player_list and len(enemy_list) > 0:
         target = random.choice(enemy_list)
         player_list[player_index].attack(target)
@@ -273,6 +274,9 @@ class Character(object):
         self.current_location = None
 
     def take_damage(self, damage: int, damage_type):
+        if self.armor is None:
+            self.health -= damage
+            return
         if damage_type == "gun":
             if self.armor.protectiong > damage:
                 print("No damage is done because of great armor")
@@ -288,13 +292,13 @@ class Character(object):
                 print("No damage is done because of great armor")
             else:
                 self.health -= damage - self.armor.protectionb
-        print("%s has %d health left" % (self.name, self.health))
+        print("%s have %d health left" % (self.name, self.health))
 
     def attack(self, target):
         # if self.weapon is None:
         #
         print(self.weapon.damage)
-        print("%s attack %s for %d damage" % (self.name, target.name, self.weapon.damage))
+        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
         target.take_damage(self.weapon.damage, self.weapon.dmg_type)
 
     def move(self, new_location):
@@ -370,16 +374,22 @@ class Zombie(Character):
 
 
 #I = Player("")
-Dean = Character("Dean", ["Hello?", "what do you want?", "Can i help you?", "You wanna get tough huh? then lets go!",
-                          "Take this", "WAIT!, Is it okay if i can hitch a ride?", "Thanks you're a doll",
-                          "No?, NO?, you're going to regret that"], 100,
-                 Machete(), LJ())
-# Sam = Character("Sam", ["", "", ""], 100, 90, Pistol(), RG())
+Dean = Character("Dean", ["Hello?", "what do you want", "Do you need something?",
+                          "You wanna get tough huh? then lets go!", "Take this",
+                          "WAIT!, Is it okay if i can hitch a ride?", "Thanks you're a doll",
+                          "No?, NO?, you're going to regret that"], 100, Machete(), LJ())
+
+Sam = Character("Sam", ["Hey!", "Whats up!", "How are you doing?", "You want to fight?, Really?, okay then"],
+                100, Pistol(), RG())
+
+Maverick = Character("Maverick", ["Go away", "I dont have time for this", "Stop bothering me",
+                                  "You're gonna regret that"], 50, 10, None)
 Ash = Character("Ash", "", 100, Ironbat(), RG())
-Misty = NPC("Misty", "The whole world has gone to hell so quickly in the last couple days. \n"
-            "Who knew the dead would rise again. \n"
-            "ME! that's who!,\n"
-            "I'LL KILL EVERY LAST ONE OF THEM!", 80, Shotgun(), BV())
+
+Misty = NPC("Misty", ["The whole world has gone to hell so quickly in the last couple days.",
+            "Who knew the dead would rise. ME! that's who!", "I'LL KILL EVERY LAST ONE OF THEM!",
+                      "You have underestimated me"], 80, Shotgun(), BV())
+
 Zombie1 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
 Zombie1.provoked = True
 Zombie2 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
@@ -586,6 +596,7 @@ def character_events(string, extra=None):
             if characters[i].name.upper() in string:
                 characters[i].dialogue_line = 3
                 characters[i].provoked = True
+                print("You have provoked", characters[i].name)
         return True
     if "HELLO" in string or "HI" in string or "GREET" in string or "WHATS UP" in string:
         for i in range(len(characters)):
@@ -611,11 +622,12 @@ def character_events(string, extra=None):
             Dean.provoked = True
         return True
     if player.current_location == 'bed' and not extra:
-        anss = input("Would you like to sleep")
-        if answer == "yes" in string:
-            print("Okay you sleep an hour")
-        if answer == "no" in string:
-            print
+        answer11 = input("Would you like to sleep")
+        if answer11 == "yes" in string:
+            print("Okay you sleep an hour + 20 Health")
+            player.health += 20
+        if answer11 == "no" in string:
+            print("You dont sleep")
         return True
     if player.current_location == 'friendly' and steak in player.inventory and not extra:
         answer1 = input("Should i give Buster the steak")
@@ -645,9 +657,8 @@ while playing:
     # print("You have %d" %d (player.inventory))
 
     command = input(">_")
-    if character_events(command.upper()):
-        pass
-    elif 'q' in command.lower() or 'quit' in command.lower() or 'exit' in command.lower():
+
+    if 'q' in command.lower() or 'quit' in command.lower() or 'exit' in command.lower():
         print(input("Are you sure you want to exit?"))
         if ['yea', 'yes', 'ya', 'ya']:
             playing = False
@@ -684,14 +695,21 @@ while playing:
                     item.heal()
                     print("You swallow %s" % item.name)
                     print("you now have %s" % player.health)
+                    excedrin.heal
                 player.inventory.remove(item)
+    elif 'talk' in command.lower() or "hi" in command.lower():
+        character_events(command.upper())
     elif 'fight' in command.lower() or 'attack' in command.lower() or 'punch' in command.lower():
+        print("U are going to fight")
         Character_name = command[6:]
-        for item in player.current_location.items:
-            if Character_name.lower() == Character_name.lower():
+        for person in range (len(player.current_location.characters)):
+            if Character_name.lower() == player.current_location.characters[person].name.lower():
                 ques = input("You want to fight %s?" % Character_name)
                 players = [player]
-                enemies = player.current_location.characters
+                enemies = []
+                for i in range(len(player.current_location.characters)):
+                    if player.current_location.characters[i].provoked:
+                        enemies.append(player.current_location.characters[i])
                 # if Dean in player.current_location.characters:
                 #     players.append(Dean)
                 #     enemies.remove(Dean)
@@ -702,12 +720,12 @@ while playing:
                     fight(players, enemies)
                 if ques == 'no':
                     print("You back down from the fight")
-
+        character_events(command.upper())
     elif command.lower() in actions:
         if actions[5]:
             print(player.inventory)
     else:
         print("Command Not Found")
-
+    character_events(command.upper())
     
 print()
