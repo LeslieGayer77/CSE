@@ -2,26 +2,53 @@ import random
 
 
 def fight(player_list: list, enemy_list: list):
+    print()
+    print("FIGHT MODE INITIATED")
+    print()
     # Player fights person
     player_index = 0
     # enemy_index = -1
     enemy_index = 0
     while player in player_list and len(enemy_list) > 0:
-        target = random.choice(enemy_list)
-        player_list[player_index].attack(target)
-        if target.health <= 0:
-            enemy_list.remove(target)
-
-        # enemy_list += 1
+        enemy_list_names = []
+        for name in range(len(enemy_list)):
+            enemy_list_names.append(enemy_list[name].name)
+        print("Of your enemies, there is", ", ".join(enemy_list_names))
+        attacking = input("Who do you want to attack?")
+        target = None
+        for enemy in range(len(enemy_list)):
+            if enemy_list[enemy].name.lower() in attacking.lower():
+                target = enemy_list[enemy]
+        if target is not None:
+            print("You fight %s" % target.name)
+            try:
+                print(target.dialogue[5])
+            except IndexError:
+                print("This is an angry one. Too angry to speak coherently.")
+            # print(player_list)  # DEV THINGY
+            # print(enemy_list)  # DEV THINGY
+            # print(enemy_index)  # DEV THINGY
+            player_list[player_index].attack(target)
+            if target.health <= 0:
+                enemy_list.remove(target)
+        if len(enemy_list) > 1:  # IF MULTIPLE ENEMIES
+            enemy_index += 1
         if enemy_index > len(enemy_list) - 1:
             enemy_index = 0
 
         # Enemy fights player
-        target = random.choice(player_list)
-        enemy_list[enemy_index].attack(target)
-
-        if target.health <= 0:
-            player_list.remove(target)
+        if len(enemy_list) > 0:
+            print()
+            print("ENEMY ATTACKS!")
+            # print(enemy_list)  # DEV THINGY
+            # print(enemy_index)  # DEV THINGY
+            target = random.choice(player_list)
+            enemy_list[enemy_index].attack(target)
+            if target.health <= 0:
+                player_list.remove(target)
+        else:
+            print("ALL ENEMIES HAVE BEEN VANQUISHED!")
+            print()
 
         player_index += 1
         if player_index > len(player_list) - 1:
@@ -30,6 +57,7 @@ def fight(player_list: list, enemy_list: list):
         if player.health <= 0:
             print("You have died")
             quit(0)
+            return
 
 
 class Item(object):
@@ -114,7 +142,7 @@ class KitchenKnife(Knife):
 
 class HuntingKnife(Knife):
     def __init__(self):
-        super(HuntingKnife, self).__init__('Hunting Knife', 50)
+        super(HuntingKnife, self).__init__('Hunting Knife', 35)
         self.dmg_type = "knife"
 
 
@@ -126,13 +154,13 @@ class Melee(Weapon):
 
 class Katana(Melee):
     def __init__(self):
-        super(Katana, self).__init__('Katana', 100)
+        super(Katana, self).__init__('Katana', 40)
         self.dmg_type = "knife"
 
 
 class Machete(Melee):
     def __init__(self):
-        super(Machete, self).__init__('Basic Machete', 100)
+        super(Machete, self).__init__('Basic Machete', 23)
         self.dmg_type = "knife"
 
 
@@ -204,7 +232,7 @@ class RG(Armor):
 
 class LJ(Armor):
     def __init__(self):
-        super(LJ, self).__init__("Leather Jacket", 0, 20, 20)
+        super(LJ, self).__init__("Leather Jacket", 0, 9, 20)
 
 
 class Key(Item):
@@ -256,7 +284,7 @@ class Room(object):
 
 class Character(object):
     def __init__(self, name, dialogue, health=100, weapon=Fists(),
-                 armor=GenericArmor()):
+                 armor=GenericArmor(), starting_location=None):
         self.name = name
         self.dialogue = dialogue
         self.dialogue_line = 0
@@ -267,39 +295,54 @@ class Character(object):
         self.awake = True
         self.bitten = False
         self.inventory = []
-        self.follower = None  # Character Object
+        # self.follower = None  # Character Object
         self.provoked = False
         self.spotted = False
         self.greeted = False
-        self.current_location = None
+        self.current_location = starting_location
+        self.followers = []
+
+    def die(self):
+        print("Dead is %s now" % self.name)
+        for i in range(len(self.inventory)):
+            self.current_location.items.append(self.inventory[i])
+        if self.weapon is not None or not isinstance(self.weapon, Fists):
+            self.current_location.items.append(self.weapon)
+        if self.armor is not None:
+            self.current_location.items.append(self.armor)
+        self.current_location.characters.remove(self)
 
     def take_damage(self, damage: int, damage_type):
         if self.armor is None:
             self.health -= damage
-            return
-        if damage_type == "gun":
-            if self.armor.protectiong > damage:
-                print("No damage is done because of great armor")
-            else:
-                self.health -= damage - self.armor.protectiong
-        elif damage_type == 'knife':
-            if self.armor.protectionk > damage:
-                print("No damage is done because of great armor")
-            else:
-                self.health -= damage - self.armor.protectionk
-        elif damage_type == 'bat':
-            if self.armor.protectionb > damage:
-                print("No damage is done because of great armor")
-            else:
-                self.health -= damage - self.armor.protectionb
-        print("%s have %d health left" % (self.name, self.health))
+        else:
+            if damage_type == "gun":
+                if self.armor.protectiong > damage:
+                    print("No damage is done because of great armor")
+                else:
+                    self.health -= damage - self.armor.protectiong
+            elif damage_type == 'knife':
+                if self.armor.protectionk > damage:
+                    print("No damage is done because of great armor")
+                else:
+                    self.health -= damage - self.armor.protectionk
+            elif damage_type == 'bat':
+                if self.armor.protectionb > damage:
+                    print("No damage is done because of great armor")
+                else:
+                    self.health -= damage - self.armor.protectionb
+        print("%s has/have %d health left!" % (self.name, self.health))
+        print()
+        if self.health <= 0:
+            self.die()
 
     def attack(self, target):
         # if self.weapon is None:
         #
-        print(self.weapon.damage)
-        print("%s attacks %s for %d damage" % (self.name, target.name, self.weapon.damage))
+        # print(self.weapon.damage)
+        print("%s attacked %s for %d damage" % (self.name, target.name, self.weapon.damage))
         target.take_damage(self.weapon.damage, self.weapon.dmg_type)
+        print()
 
     def move(self, new_location):
         """ This moves the player to a new room
@@ -309,9 +352,10 @@ class Character(object):
         if new_location is None:
             print("Uh...")
             return
-        if self.follower is not None:
-            self.current_location.characters.remove(self.follower)
-            new_location.characters.append(self.follower)
+        if len(self.followers) > 0:
+            for friend in range(len(self.followers)):
+                self.followers[friend].current_location.characters.remove(self.followers[friend])
+            new_location.characters.append(self.followers[friend])
 
         self.current_location = new_location
 
@@ -351,6 +395,17 @@ class Player(Character):
         self.energy = energy
         self.inventory = []
 
+    def die(self):
+        print("Dead is %s now" % self.name)
+        for i in range(len(self.inventory)):
+            self.current_location.items.append(self.inventory[i])
+        if self.weapon is not None or not isinstance(self.weapon, Fists):
+            self.current_location.items.append(self.weapon)
+        if self.armor is not None:
+            self.current_location.items.append(self.armor)
+        print("Now you're dead. You can't do anything when you're dead.")
+        quit(0)
+
 
 class NPC(Character):
     def __init__(self, name, dialogue, health=100, weapon=Fists(),
@@ -373,11 +428,12 @@ class Zombie(Character):
                           'Naomi', 'Demitres', 'Kodak'"""
 
 
-#I = Player("")
+# I = Player("")
 Dean = Character("Dean", ["Hello?", "what do you want", "Do you need something?",
                           "You wanna get tough huh? then lets go!", "Take this",
                           "WAIT!, Is it okay if i can hitch a ride?", "Thanks you're a doll",
-                          "No?, NO?, you're going to regret that"], 100, Machete(), LJ())
+                          "No?, NO?, you're going to regret that"], 5, Machete(), LJ())
+Dean.current_location = 'tv'
 
 Sam = Character("Sam", ["Hey!", "Whats up!", "How are you doing?", "You want to fight?, Really?, okay then"],
                 100, Pistol(), RG())
@@ -566,19 +622,19 @@ actions = ['hit', 'shoot', 'stab', 'run', 'hide', 'pick up', 'inventory', 'get i
 
 
 def character_dialogue():
-    for i in range(len(player.current_location.characters)):
-        player.current_location.characters[i].dialogue_line = random.randint(0, 2)
-        print(" %s is right here" % player.current_location.characters[i].name)
-        if not player.current_location.characters[i].greeted:
-            if not player.current_location.characters[i].spotted:
-                print(player.current_location.characters[i].dialogue[player.current_location.characters[i].
+    for l in range(len(player.current_location.characters)):
+        player.current_location.characters[l].dialogue_line = random.randint(0, 2)
+        print(" %s is right here" % player.current_location.characters[l].name)
+        if not player.current_location.characters[l].greeted:
+            if not player.current_location.characters[l].spotted:
+                print(player.current_location.characters[l].dialogue[player.current_location.characters[l].
                       dialogue_line])
-                player.current_location.characters[i].spotted = True
+                player.current_location.characters[l].spotted = True
 
 
 def weapon_description():
-    for i in range(len(player.current_location.items)):
-        print("The %s is right here" % player.current_location.items[i].name)
+    for u in range(len(player.current_location.items)):
+        print("The %s is right here" % player.current_location.items[u].name)
 
 
 initial_meeting = False
@@ -586,30 +642,30 @@ initial_meeting = False
 
 def character_events(string, extra=None):
     characters = []
-    for i in range(len(player.current_location.characters)):
-        characters.append(player.current_location.characters[i])
-    for i in range(len(characters)):
-        if characters[i].provoked:
-            characters[i].attack(player)
+    for c in range(len(player.current_location.characters)):
+        characters.append(player.current_location.characters[c])
+    for c in range(len(characters)):
+        if characters[c].provoked:
+            characters[c].attack(player)
     if "ATTACK" in string or "FIGHT" in string or "PUNCH" in string:
-        for i in range(len(characters)):
-            if characters[i].name.upper() in string:
-                characters[i].dialogue_line = 3
-                characters[i].provoked = True
-                print("You have provoked", characters[i].name)
+        for a in range(len(characters)):
+            if characters[a].name.upper() in string:
+                characters[a].dialogue_line = 3
+                characters[a].provoked = True
+                print("You have provoked", characters[a].name)
         return True
     if "HELLO" in string or "HI" in string or "GREET" in string or "WHATS UP" in string:
-        for i in range(len(characters)):
-            if characters[i].name.upper() in string:
-                characters[i].dialogue_line = random.randint(0, 2)  # print(list[random.randint(1, 3)])
-                print(characters[i].dialogue[characters[i].dialogue_line])
-                characters[i].greeted = True
+        for h in range(len(characters)):
+            if characters[h].name.upper() in string:
+                characters[h].dialogue_line = random.randint(0, 2)  # print(list[random.randint(1, 3)])
+                print(characters[h].dialogue[characters[h].dialogue_line])
+                characters[h].greeted = True
         return True
     if "TALK TO" in string or "SPEAK TO" in string or "ASK" in string:
-        for i in range(len(characters)):
-            if characters[i].name.upper() in string:
-                characters[i].dialogue_line = 3
-                characters[i].provoked = True
+        for t in range(len(characters)):
+            if characters[t].name.upper() in string:
+                characters[t].dialogue_line = 3
+                characters[t].provoked = True
         return True
     if player.current_location == 'crossroads1' and not extra:
         print(Dean.dialogue[5])
@@ -695,31 +751,33 @@ while playing:
                     item.heal()
                     print("You swallow %s" % item.name)
                     print("you now have %s" % player.health)
-                    excedrin.heal
+                    excedrin.heal()
                 player.inventory.remove(item)
     elif 'talk' in command.lower() or "hi" in command.lower():
         character_events(command.upper())
     elif 'fight' in command.lower() or 'attack' in command.lower() or 'punch' in command.lower():
         print("U are going to fight")
-        Character_name = command[6:]
-        for person in range (len(player.current_location.characters)):
-            if Character_name.lower() == player.current_location.characters[person].name.lower():
-                ques = input("You want to fight %s?" % Character_name)
-                players = [player]
-                enemies = []
-                for i in range(len(player.current_location.characters)):
-                    if player.current_location.characters[i].provoked:
-                        enemies.append(player.current_location.characters[i])
+        # Character_name = command[6:]
+        # for person in range(len(player.current_location.characters)):
+        #     if Character_name.lower() == player.current_location.characters[person].name.lower():
+        ques = input("You want to fight?")
                 # if Dean in player.current_location.characters:
                 #     players.append(Dean)
                 #     enemies.remove(Dean)
-                if ques == 'yes':
-                    character_events(command.upper())
-                    character_dialogue()
-                    print("You fight %s" % Character_name)
-                    fight(players, enemies)
-                if ques == 'no':
-                    print("You back down from the fight")
+        if ques == 'yes':
+            character_events(command.upper())
+            # players = [player]
+            enemies = []
+            for i in range(len(player.current_location.characters)):
+                if player.current_location.characters[i].provoked:
+                    enemies.append(player.current_location.characters[i])
+                    print(player.current_location.characters[i].name, "ADDED TO ENEMIES")
+            players = player.followers + [player]
+                # print(players)  # DEV THINGY
+
+            fight(players, enemies)
+        if ques == 'no':
+            print("You back down from the fight")
         character_events(command.upper())
     elif command.lower() in actions:
         if actions[5]:
