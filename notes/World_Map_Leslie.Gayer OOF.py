@@ -2,8 +2,8 @@ import random
 
 
 def fight(player_list: list, enemy_list: list):
-    print()
-    print("FIGHT MODE INITIATED")
+    # print()
+    # print("FIGHT MODE INITIATED")
     print()
     # Player fights person
     player_index = 0
@@ -22,7 +22,7 @@ def fight(player_list: list, enemy_list: list):
         if target is not None:
             print("You fight %s" % target.name)
             try:
-                print(target.dialogue[5])
+                print(target.dialogue[3])
             except IndexError:
                 print("This is an angry one. Too angry to speak coherently.")
             # print(player_list)  # DEV THINGY
@@ -39,7 +39,7 @@ def fight(player_list: list, enemy_list: list):
         # Enemy fights player
         if len(enemy_list) > 0:
             print()
-            print("ENEMY ATTACKS!")
+            print("You're attacked")
             # print(enemy_list)  # DEV THINGY
             # print(enemy_index)  # DEV THINGY
             target = random.choice(player_list)
@@ -47,7 +47,7 @@ def fight(player_list: list, enemy_list: list):
             if target.health <= 0:
                 player_list.remove(target)
         else:
-            print("ALL ENEMIES HAVE BEEN VANQUISHED!")
+            print("All the enemies are dead")
             print()
 
         player_index += 1
@@ -240,7 +240,7 @@ class Key(Item):
         super(Key, self).__init__(name)
 
 
-key1 = Key("keys")
+key1 = Key("key")
 
 
 class Medicine(Item):
@@ -283,8 +283,8 @@ class Room(object):
 
 
 class Character(object):
-    def __init__(self, name, dialogue, health=100, weapon=Fists(),
-                 armor=GenericArmor(), starting_location=None):
+    def __init__(self, name, dialogue, starting_location, health=100, weapon=Fists(),
+                 armor=GenericArmor(), ):
         self.name = name
         self.dialogue = dialogue
         self.dialogue_line = 0
@@ -303,9 +303,9 @@ class Character(object):
         self.followers = []
 
     def die(self):
-        print("Dead is %s now" % self.name)
-        for i in range(len(self.inventory)):
-            self.current_location.items.append(self.inventory[i])
+        print("Death has come upon %s" % self.name)
+        for p in range(len(self.inventory)):
+            self.current_location.items.append(self.inventory[p])
         if self.weapon is not None or not isinstance(self.weapon, Fists):
             self.current_location.items.append(self.weapon)
         if self.armor is not None:
@@ -331,7 +331,7 @@ class Character(object):
                     print("No damage is done because of great armor")
                 else:
                     self.health -= damage - self.armor.protectionb
-        print("%s has/have %d health left!" % (self.name, self.health))
+        print("%s have/has %d health left" % (self.name, self.health))
         print()
         if self.health <= 0:
             self.die()
@@ -380,7 +380,7 @@ class Character(object):
 #         super(Animal, self).__init__(name, health)
 
 
-Dog = Character("Buster", "", 10)
+Dog = Character("Buster", "", 'dog', 10)
 
 
 class Player(Character):
@@ -390,13 +390,13 @@ class Player(Character):
 
         :type weapon: weapon
         """
-        super(Player, self).__init__(name, None, health, weapon, armor)
+        super(Player, self).__init__(name, None, starting_location, health, weapon, armor)
         self.current_location = starting_location
         self.energy = energy
         self.inventory = []
 
     def die(self):
-        print("Dead is %s now" % self.name)
+        print("You have died" % self.name)
         for i in range(len(self.inventory)):
             self.current_location.items.append(self.inventory[i])
         if self.weapon is not None or not isinstance(self.weapon, Fists):
@@ -408,19 +408,19 @@ class Player(Character):
 
 
 class NPC(Character):
-    def __init__(self, name, dialogue, health=100, weapon=Fists(),
+    def __init__(self, name, dialogue, starting_location, health=100, weapon=Fists(),
                  armor=GenericArmor()):
-        super(NPC, self).__init__(name, dialogue, health, weapon, armor)
+        super(NPC, self).__init__(name, dialogue, starting_location, health, weapon, armor)
 
 
 class Enemy(Character):
-    def __init__(self, name, dialogue, health=75, weapon=Fists(), armor=GenericArmor()):
-        super(Enemy, self).__init__(name, dialogue, health, weapon, armor)
+    def __init__(self, name, dialogue, starting_location, health=75, weapon=Fists(), armor=GenericArmor()):
+        super(Enemy, self).__init__(name, dialogue, starting_location, health, weapon, armor)
 
 
 class Zombie(Character):
-    def __init__(self, name, dialogue, health, weapon=Fists(), armor=None):
-        super(Zombie, self).__init__(name, dialogue, health, weapon, armor)
+    def __init__(self, name, dialogue, health, starting_location, weapon=Fists(), armor=None):
+        super(Zombie, self).__init__(name, dialogue, starting_location, health, weapon, armor)
         self.bite = False
 
 
@@ -432,52 +432,52 @@ class Zombie(Character):
 Dean = Character("Dean", ["Hello?", "what do you want", "Do you need something?",
                           "You wanna get tough huh? then lets go!", "Take this",
                           "WAIT!, Is it okay if i can hitch a ride?", "Thanks you're a doll",
-                          "No?, NO?, you're going to regret that"], 5, Machete(), LJ())
-Dean.current_location = 'tv'
+                          "No?, NO?, you're going to regret that"], 'tv', 5, Machete(), LJ())
 
-Sam = Character("Sam", ["Hey!", "Whats up!", "How are you doing?", "You want to fight?, Really?, okay then"],
-                100, Pistol(), RG())
 
-Maverick = Character("Maverick", ["Go away", "I dont have time for this", "Stop bothering me",
-                                  "You're gonna regret that"], 50, 10, None)
-Ash = Character("Ash", "", 100, Ironbat(), RG())
+# Sam = Character("Sam", ["Hey!", "Whats up!", "How are you doing?", "You want to fight?, Really?, okay then"],
+#                 100, Pistol(), RG())
+#
+# Maverick = Character("Maverick", ["Go away", "I dont have time for this", "Stop bothering me",
+#                                   "You're gonna regret that"], 50, 10, None)
+# Ash = Character("Ash", "", 100, Ironbat(), RG())
+#
+# Misty = NPC("Misty", ["The whole world has gone to hell so quickly in the last couple days.",
+#             "Who knew the dead would rise. ME! that's who!", "I'LL KILL EVERY LAST ONE OF THEM!",
+#                       "You have underestimated me"], 80, Shotgun(), BV())
 
-Misty = NPC("Misty", ["The whole world has gone to hell so quickly in the last couple days.",
-            "Who knew the dead would rise. ME! that's who!", "I'LL KILL EVERY LAST ONE OF THEM!",
-                      "You have underestimated me"], 80, Shotgun(), BV())
-
-Zombie1 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+Zombie1 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40, None)
 Zombie1.provoked = True
-Zombie2 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie3 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie4 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie5 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie6 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie7 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie8 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie9 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie10 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie11 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie12 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie13 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie14 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie15 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
-Zombie16 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
-Zombie1.provoked = True
+# Zombie2 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie2.provoked = True
+# Zombie3 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie3.provoked = True
+# Zombie4 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie4.provoked = True
+# Zombie5 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie5.provoked = True
+# Zombie6 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie6.provoked = True
+# Zombie7 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie7.provoked = True
+# Zombie8 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie8.provoked = True
+# Zombie9 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie9.provoked = True
+# Zombie10 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie10.provoked = True
+# Zombie11 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie11.provoked = True
+# Zombie12 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie12.provoked = True
+# Zombie13 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie13.provoked = True
+# Zombie14 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie14.provoked = True
+# Zombie15 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie15.provoked = True
+# Zombie16 = Zombie("Zombie", ["errrhggg", "Ghrrr", "uhhhg", "ERRRRRGGH"], 40)
+# Zombie16.provoked = True
 
 
 # Option 1 - define as we go
@@ -492,17 +492,13 @@ parking_lot = Room("Parking Lot", None, "R19A")"""
 
 
 living_room = Room("Living Room",  "The TV is Screeching on the North wall " 
-                                   # "while a distant dog barks. \n" 
+                                   "while a distant dog barks. \n" 
                                    "The front door is leading to Northeast. \n" 
-                                   "The hallway is leading to the East. \n"
-                                   "Dean is standing by the tv\n"
-                                   "along with the keys to the neighbors car\n"
-                                   "you can pick those up\n"
-                                   "You can chose to fight him,"
-                                   "talk to him and greet him",
-                   'tv', 'hallway', 'couch', 'window', 'front_yard', None, 'hallway', None)
+                                   "The hallway is leading to the East. \n",
+                   'tv', 'hallway', 'couch', 'stree', 'front_yard', None, 'hallway', None)
 tv = Room("Tv", "Its ear piercing. \n", None, 'living_room', 'couch', 'window', 'front_yard',
           None, 'hallway', None, [Dean, Zombie1], [key1])
+Zombie1.current_location = tv
 hallway = Room("The hallway", "A narrow hallway with family photos arranged "
                               "across the wall. \n"
                               "The kitchens to the East.\n"
@@ -563,9 +559,10 @@ almost_otherside = Room("An Open Fence", "Okay the growling is definitely more p
                         'wall1', 'dog', 'fence1', 'backyard', None, 'hallway', None, 'backyard')
 fence2 = Room("Fence", "", 'dog', 'dog', 'south', 'backyard', 'backyard',
               'backyard', None, None)
-dog = Room("Neighbors Backyard", 'nlr', 'pool', 'fence2', 'almost_otherside', 'wall2',
+dog = Room("Neighbors Backyard", "", 'nlr', 'pool', 'fence2', 'almost_otherside', 'wall2',
            'wall2', 'fence2', 'fence2', [Dog])
-friendly = Room("The do is right here", 'nlr', 'pool', 'fence2', 'almost_otherside', 'wall2', 'wall2', 'fence2',
+dog.current_location = 'dog'
+friendly = Room("Buster is right here", 'nlr', 'pool', 'fence2', 'almost_otherside', 'wall2', 'wall2', 'fence2',
                 'fence2', [Dog])
 wall2 = Room("wall", "", None, 'backyard', 'fence2', 'backyard', None,
              None, 'backyard', 'backyard')
@@ -601,10 +598,25 @@ muddy = Room("long stretch of muddy land", "There is no way i can get through th
 die = Room("You die", "You can respawn by moving", 'living_room', 'lving_room', 'lving_room', 'lvin_room', 'iving_room')
 forest = Room("Forest Entryway", "looks like a deep forest that could stretch for miles", 'crossroads1', 'nothing',
               'dforest', 'nothing', None, None, None, None)
-dforest = Room("Shallow Forest", "Nothing much here besides a weird shine coming from a tree to the East", 'forest',
+sforest = Room("Shallow Forest", "Nothing much here besides a weird shine coming from a tree to the East", 'forest',
                'tree', 'walkers1', None, None, None, None, None)
-tree = Room("Large tree", "There seems to be something shining up there", 'canal', 'alsh', 'w2', 'dforest', None, None,
+tree = Room("Large tree", "", 'canal', 'alsh', 'stree', 'sforest', None, None,
             None, None, None, [HuntingKnife])
+alsh = Room("Small Path", "Looks like a small rocky pathway to the South.\n"
+                          "and a small rocky pathway to the North.", 'TP', 'lof', 'BP', 'tree', None, None, None, None)
+TP = Room("Rocky Pathway", "I cant see much from here", 'frsy', 'hell', 'alsh', 'frsy', 'frsy', 'frsy')
+LP = Room("Rocky Pathway", "I cant see much from here", 'frsy', 'hell', 'alsh', 'frsy', 'frsy', 'frsy')
+
+frsy = Room("Forest", "Looks easy to get lost in.", 'TP', 'TP', 'TP', 'TP', 'TP', 'TP', 'TP', 'TP')
+lof = Room("Forest", "Looks easy to get lost in.", None, 'alsh', None, None, None, None, None, None)
+stree = Room("Small Hill", "I hear an ungodly amount of groaning to the south, \n"
+                           "i should stay away.", 'tree', 'OSS', 'sstree', 'treez', None, None,
+            None, None)
+treez = Room("Forest", "Looks easy to get lost in.", None, 'stree', None, None, None, None, None, None)
+sstree = Room("Walkers", "Dear god.\n"
+                         "There is hundreds of them!", 'tl', 'tl', 'tl', 'tl', 'tl', 'tl', 'tl', 'tl')
+tl = Room("Too late. \n"
+          "There is no coming out of this", "")
 walkers1 = Room("I hear a couple groaning voices going south", "", 'dforest', 'st', 'walkers', None, 'st', None, None,
                 None)
 walkers = Room("They see me now i have to fight", "", 'walkers1', None, None, None, None, None, None, None, [])
@@ -697,7 +709,8 @@ def character_events(string, extra=None):
         return True
     if player.current_location == 'dog' and steak not in player.inventory and not extra:
         Dog.provoked = True
-        print("The dog attacked you")
+        print("The dog attacked you, you have died")
+        quit(0)
     return False
 
 
@@ -732,7 +745,7 @@ while playing:
         item_name = command[8:]
         for item in player.current_location.items:
             if item_name.lower() == item.name.lower():
-                print("You pick up the %s" % item.name)
+                print("You pick up a %s" % item.name)
                 print("It is now in your inventory")
                 player.inventory.append(item)
                 if item_name == "keycard":
@@ -756,14 +769,10 @@ while playing:
     elif 'talk' in command.lower() or "hi" in command.lower():
         character_events(command.upper())
     elif 'fight' in command.lower() or 'attack' in command.lower() or 'punch' in command.lower():
-        print("U are going to fight")
         # Character_name = command[6:]
         # for person in range(len(player.current_location.characters)):
         #     if Character_name.lower() == player.current_location.characters[person].name.lower():
         ques = input("You want to fight?")
-                # if Dean in player.current_location.characters:
-                #     players.append(Dean)
-                #     enemies.remove(Dean)
         if ques == 'yes':
             character_events(command.upper())
             # players = [player]
@@ -773,7 +782,6 @@ while playing:
                     enemies.append(player.current_location.characters[i])
                     print(player.current_location.characters[i].name, "ADDED TO ENEMIES")
             players = player.followers + [player]
-                # print(players)  # DEV THINGY
 
             fight(players, enemies)
         if ques == 'no':
