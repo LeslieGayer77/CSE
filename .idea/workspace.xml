@@ -91,8 +91,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/notes/World_Map_Leslie.Gayer OOF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="607" column="54" selection-start-line="607" selection-start-column="54" selection-end-line="607" selection-end-column="54" />
+            <state relative-caret-position="388">
+              <caret line="610" column="34" selection-start-line="610" selection-start-column="34" selection-end-line="610" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -176,7 +176,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1346" />
@@ -389,12 +389,12 @@
       <workItem from="1558021872705" duration="3367000" />
       <workItem from="1558111995691" duration="2847000" />
       <workItem from="1558450153392" duration="6806000" />
-      <workItem from="1558474382186" duration="4408000" />
+      <workItem from="1558474382186" duration="4685000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74990000" />
+    <option name="totallyTimeSpent" value="75267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
@@ -614,8 +614,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/notes/World_Map_Leslie.Gayer OOF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="607" column="54" selection-start-line="607" selection-start-column="54" selection-end-line="607" selection-end-column="54" />
+        <state relative-caret-position="388">
+          <caret line="610" column="34" selection-start-line="610" selection-start-column="34" selection-end-line="610" selection-end-column="34" />
         </state>
       </provider>
     </entry>

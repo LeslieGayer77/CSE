@@ -604,8 +604,11 @@ tree = Room("Large tree", "", 'canal', 'alsh', 'stree', 'sforest', None, None,
             None, None, None, [HuntingKnife])
 alsh = Room("Small Path", "Looks like a small rocky pathway to the South.\n"
                           "and a small rocky pathway to the North.", 'TP', 'lof', 'BP', 'tree', None, None, None, None)
-TP = Room("Rocky Pathway", "I cant see much from here", 'frsy', 'hell', 'alsh', 'frsy', 'frsy', 'frsy')
-LP = Room("Rocky Pathway", "I cant see much from here", 'frsy', 'hell', 'alsh', 'frsy', 'frsy', 'frsy')
+TP = Room("Rocky Pathway", "I cant see much from here, \n"
+                           "except some figures moving in the distance to the east.", 'frsy', 'hell', 'alsh', 'frsy', 'frsy', 'frsy')
+LP = Room("Rocky Pathway", "I cant see much from here,\n"
+                           " except a small gateway that leads to a...\n"
+                           "shack?", 'frsy1', 'oshack', 'alsh', 'frsy', 'frsy', 'frsy')
 
 frsy = Room("Forest", "Looks easy to get lost in.", 'TP', 'TP', 'TP', 'TP', 'TP', 'TP', 'TP', 'TP')
 lof = Room("Forest", "Looks easy to get lost in.", None, 'alsh', None, None, None, None, None, None)
