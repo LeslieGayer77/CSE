@@ -306,8 +306,9 @@ class Character(object):
         print("Death has come upon %s" % self.name)
         for p in range(len(self.inventory)):
             self.current_location.items.append(self.inventory[p])
-        if self.weapon is not None or not isinstance(self.weapon, Fists):
-            self.current_location.items.append(self.weapon)
+        if self.weapon is not None:
+            if not isinstance(self.weapon, Fists):
+                self.current_location.items.append(self.weapon)
         if self.armor is not None:
             self.current_location.items.append(self.armor)
         self.current_location.characters.remove(self)
@@ -353,9 +354,18 @@ class Character(object):
             print("Uh...")
             return
         if len(self.followers) > 0:
+            print("FOLLOWERS MOVING FIRST")  # DEV THINGY
             for friend in range(len(self.followers)):
-                self.followers[friend].current_location.characters.remove(self.followers[friend])
+                print(friend)
+                print(self.followers[friend].name, "MOVING")  # DEV THINGY
+                print(self.followers[friend].name, "Current location...", self.followers[friend].current_location.name)
+                print(self.followers[friend].current_location.characters)  # DEV THINGY
+                try:
+                    self.followers[friend].current_location.characters.remove(self.followers[friend])
+                except ValueError:
+                    pass
             new_location.characters.append(self.followers[friend])
+            self.followers[friend].current_location = new_location
 
         self.current_location = new_location
 
@@ -378,9 +388,6 @@ class Character(object):
 # class Animal(Character):
 #     def __init__(self, name, health=100, ):
 #         super(Animal, self).__init__(name, health)
-
-
-Dog = Character("Buster", "", 'dog', 10)
 
 
 class Player(Character):
@@ -427,6 +434,7 @@ class Zombie(Character):
 """'Dean', 'Maverick', 'Asher', 'Westly', 'Hunter', 'Misty',
                           'Naomi', 'Demitres', 'Kodak'"""
 
+Dog = Character("Buster", "", 'dog', 10)
 
 # I = Player("")
 Dean = Character("Dean", ["Hello?", "what do you want", "Do you need something?",
@@ -530,8 +538,7 @@ grass = Room("The Grass", "", 'road_1', 'my_car', 'front_yard', None, 'road_1', 
 road_1 = Room("The Road", "Maybe if i follow this road East \n"
                           "I could get somewhere.\n", None, 'nroad', 'grass', None, None,
               None, "my_car", "grass")
-kitchen = Room("The Kitchen", "There is a couple raw steaks to the east \n"
-                              "with a bloody knife to the side", 'garage', 'kitchen_knives', None, 'hallway', None,
+kitchen = Room("The Kitchen", "There is a dinner dish to the East.", 'garage', 'kitchen_knives', None, 'hallway', None,
                None, None, None, None)
 kitchen_knives = Room("A kitchen knife and stake", "", 'garage', None, None, 'hallway',
                       None, None, None, None, None, [KitchenKnife()])
@@ -561,7 +568,7 @@ fence2 = Room("Fence", "", 'dog', 'dog', 'south', 'backyard', 'backyard',
               'backyard', None, None)
 dog = Room("Neighbors Backyard", "", 'nlr', 'pool', 'fence2', 'almost_otherside', 'wall2',
            'wall2', 'fence2', 'fence2', [Dog])
-dog.current_location = 'dog'
+Dog.current_location = 'dog'
 friendly = Room("Buster is right here", 'nlr', 'pool', 'fence2', 'almost_otherside', 'wall2', 'wall2', 'fence2',
                 'fence2', [Dog])
 wall2 = Room("wall", "", None, 'backyard', 'fence2', 'backyard', None,
@@ -576,28 +583,34 @@ ncounter = Room("Keys", "Some car keys. \n"
                         "Should i pick them up?", 'counter1', 'nhw', None, 'nwindow', 'ndoor',
                 'ngarage', 'nhw', 'nlr', None)
 nhw = Room("Hallway", "A hallway with one door to the North wall and"
-                      "one door to the South wall. ", 'room2', None, 'room3', 'nlr', None,
-           None, None, None)
-ndoor = Room("Neighbor's portch", " ", 'grass2', 'offlawn', 'nkitchen', 'ncar', 'nroad',
-             'noroad', 'southeast', 'southwest')
+                      "one door to the South wall. ", 'room2', None, 'room3', 'nlr', None)
+#            None, None, None)
+# room2 = Room("Room", "This room is brightly colored \n"
+#                      "with bright colors all over", 'girl', 'rja', 'nhw', 'rja', 'rja', 'rja', 'rja', 'rja')
+# LittlegirlZ.current_location = 'dog'
+# girl = Room("Little Girl", "Dear god, \n"
+#                            "how the hell did this happen", None, 'rja', 'room2', 'rja', None, None, 'rja', 'rja',
+#             [LittlegirlZ])
+# ndoor = Room("Neighbor's portch", " ", 'grass2', 'offlawn', 'nkitchen', 'ncar', 'nroad',
+#              'noroad', 'southeast', 'southwest')
 nroad = Room("The Road above my neighbor's house", " ", None, 'crossroads', 'grass2', 'road_1', None,
-             "road1", 'grass2', 'ncar')
+             None, 'grass2', 'ncar')
 ncar = Room("Neighbor's Car", " ", 'north', 'east', 'south', 'west', 'nroad',
             'nroad', 'grass1', None)
 drivable = Room("In Car", "I can now go farther down east", None, 'crossroads1', None, 'Endroad', None,
                 None, None, None)
-grass2 = Room("The Neighbor's Lawn", " ", 'nroad', 'nroad', 'ndoor', 'ncar', 'nroad',
+grass2 = Room("The Neighbor's Lawn", "There is a car to the West.", 'nroad', 'nroad', 'ndoor', 'ncar', 'nroad',
               'nroad', None, None)
 crossroads = Room("Nowhere", "I can't go any farther east on foot.\n" 
                              "It would be best if i find a Car.", None, None, None, 'nroad', None,
                   None, None, None)
 crossroads1 = Room("Crossroads", "There are three long roads.", 'muddy', 'longroad', 'forest', 'nroad', None, None,
-                   None, None)
+                   None, None, [Dean])
 Dean.current_location = crossroads1
 muddy = Room("long stretch of muddy land", "There is no way i can get through this on foot \n""i should head back",
              'dies', None, 'crossroads1', None, None, None, None, None)
-dies = Room("You drowned in the mud.", "You can respawn by moving.", 'living_room', 'living_room', 'living_room', 'living_room',
-           'living_room')
+dies = Room("You drowned in the mud.", "You can respawn by moving.", 'living_room', 'living_room', 'living_room',
+            'living_room', 'living_room')
 forest = Room("Forest Entryway", "looks like a deep forest that could stretch for miles", 'crossroads1', 'nothing',
               'sforest', 'nothing', None, None, None, None)
 sforest = Room("Shallow Forest", "Nothing much here besides a weird shine coming from a tree to the East", 'forest',
@@ -643,7 +656,6 @@ Zombie2.current_location = walkers
 Zombie3.current_location = walkers
 
 
-
 player = Player("You", living_room)
 player.follower = None
 
@@ -661,8 +673,11 @@ def character_dialogue():
         print(" %s is right here" % player.current_location.characters[l].name)
         if not player.current_location.characters[l].greeted:
             if not player.current_location.characters[l].spotted:
-                print(player.current_location.characters[l].dialogue[player.current_location.characters[l].
-                      dialogue_line])
+                try:
+                    print(player.current_location.characters[l].dialogue[player.current_location.characters[l].
+                          dialogue_line])
+                except IndexError:
+                    print(player.current_location.characters[l].name, "cannot speak with words.")
                 player.current_location.characters[l].spotted = True
 
 
@@ -672,71 +687,82 @@ def weapon_description():
 
 
 initial_meeting = False
+extra = [
+    False,  # 0 DISABLED REGULARES
+    False,  # 1 CROSSROADS_MET
+    False,  # 2 FRIENDLY_DOG
+    False  # 3 UNFRIENDLY_DOG
+]
 
 
-def character_events(string, extra=None):
+def character_events(string, extra:list=None):
+    # -------------------EVENTS---------------
+    print("CHARACTER EVENTS>....")  # DEV THINGY
     characters = []
     for c in range(len(player.current_location.characters)):
         characters.append(player.current_location.characters[c])
     for c in range(len(characters)):
         if characters[c].provoked:
+            print(characters[c].name, "is a provoked character.")  # DEV THINGY
             characters[c].attack(player)
-    if "ATTACK" in string or "FIGHT" in string or "PUNCH" in string:
-        for a in range(len(characters)):
-            if characters[a].name.upper() in string:
-                characters[a].dialogue_line = 3
-                characters[a].provoked = True
-                print("You have provoked", characters[a].name)
-        return True
-    if "HELLO" in string or "HI" in string or "GREET" in string or "WHATS UP" in string:
-        for h in range(len(characters)):
-            if characters[h].name.upper() in string:
-                characters[h].dialogue_line = random.randint(0, 2)  # print(list[random.randint(1, 3)])
-                print(characters[h].dialogue[characters[h].dialogue_line])
-                characters[h].greeted = True
-        return True
-    if "TALK TO" in string or "SPEAK TO" in string or "ASK" in string:
-        for t in range(len(characters)):
-            if characters[t].name.upper() in string:
-                characters[t].dialogue_line = 3
-                characters[t].provoked = True
-        return True
-    if player.current_location == 'crossroads1' and not extra:
-        print(Dean.dialogue[5])
-        answer = input(Dean.dialogue[5])
-        if answer == "yes" in string:
-            print(Dean.dialogue[6])
-            Dean.follower = True
-        if answer == "no" in string:
-            print(Dean.dialogue[7])
-            Dean.provoked = True
-        return True
-    if player.current_location == 'bed' and not extra:
-        answer11 = input("Would you like to sleep")
-        if answer11 == "yes" in string:
-            print("Okay you sleep an hour + 20 Health")
-            player.health += 20
-        if answer11 == "no" in string:
-            print("You dont sleep")
-        return True
-    if player.current_location == 'friendly' and steak in player.inventory and not extra:
-        answer1 = input("Should i give Buster the steak")
-        if answer1 == "no" in string:
+    if extra is not None:
+        if player.current_location == crossroads1 and not extra[1]:
+            print("YOU'VE ARRIVED AT CROSSROADS.")  # DEV THINGY
+            answer = input(Dean.dialogue[5])
+            if "yes" in answer.lower():
+                print(Dean.dialogue[6])
+                player.followers.append(Dean)
+                Dean.follower = True
+            if "no" in answer.lower():
+                print(Dean.dialogue[7])
+                Dean.provoked = True
+            return "CROSSROADS_MET"
+        if player.current_location == bed:
+            answer11 = input("Would you like to sleep")
+            if answer11 == "yes":
+                print("Okay you sleep an hour + 20 Health")
+                player.health += 20
+            if answer11 == "no":
+                print("You dont sleep")
+            return True
+        if player.current_location == friendly and steak in player.inventory:
+            print("FRIENDCLY DOGGY")  # DEV THINGY
+            answer1 = input("Should i give Buster the steak?")
+            if answer1 == "no":
+                Dog.provoked = True
+                print("The dog attacked you")
+            if answer1 == "yes":
+                Dog.follower = True
+                print("The dog is now following you")
+                player.inventory.remove(steak)
+            return True
+        if player.current_location == dies:
+            print("DIE...")
+            print("rferf")
+            quit(0)
+            return True
+        if player.current_location == dog and steak not in player.inventory and not extra["UNFRIENDLY_DOG"]:
+            print("PROVOKED DOGGY")  # DEV THINGY
             Dog.provoked = True
-            print("The dog attacked you")
-        if answer1 == "yes" in string:
-            Dog.follower = True
-            print("The dog is now following you")
-            player.inventory.remove(steak)
-        return True
-    if player.current_location == 'die' and not extra:
-        quit(0)
-        print("rferf")
-        return True
-    if player.current_location == 'dog' and steak not in player.inventory and not extra:
-        Dog.provoked = True
-        print("The dog attacked you, you have died")
-        quit(0)
+            print("The dog attacked you, you have died")
+            quit(0)
+    else:
+        # -------------------------REGULARS--------------
+        if "HELLO" in string or "HI" in string or "GREET" in string or "WHATS UP" in string:
+            for h in range(len(characters)):
+                if characters[h].name.upper() in string:
+                    characters[h].dialogue_line = random.randint(0, 2)  # print(list[random.randint(1, 3)])
+                    print(characters[h].dialogue[characters[h].dialogue_line])
+                    characters[h].greeted = True
+            return True
+        if "TALK TO" in string or "SPEAK TO" in string or "ASK" in string:
+            for t in range(len(characters)):
+                if characters[t].name.upper() in string:
+                    characters[t].dialogue_line = 3
+                    characters[t].provoked = True
+            return True
+
+
     return False
 
 
@@ -752,7 +778,6 @@ while playing:
     # print("You have %d" %d (player.inventory))
 
     command = input(">_")
-
     if 'q' in command.lower() or 'quit' in command.lower() or 'exit' in command.lower():
         print(input("Are you sure you want to exit?"))
         if ['yea', 'yes', 'ya', 'ya']:
@@ -774,7 +799,7 @@ while playing:
                 print("You pick up a %s" % item.name)
                 print("It is now in your inventory")
                 player.inventory.append(item)
-                # self.current_location.characters.remove(item)
+                player.current_location.items.remove(item)
                 if item_name == "keycard":
                     living_room.north = "secret"
                 if item == key1:
@@ -801,7 +826,12 @@ while playing:
         #     if Character_name.lower() == player.current_location.characters[person].name.lower():
         ques = input("You want to fight?")
         if ques == 'yes':
-            # character_events(command.upper())
+            for a in range(len(player.current_location.characters)):
+                if player.current_location.characters[a].name.upper() in command.lower():
+                    player.current_location.characters[a].dialogue_line = 3
+                    if not player.current_location.characters[a].provoked:
+                        player.current_location.characters[a].provoked = True
+                        print("You have provoked", player.current_location.characters[a].name)
             # players = [player]
             enemies = []
             for i in range(len(player.current_location.characters)):
@@ -819,6 +849,8 @@ while playing:
             print(player.inventory)
     else:
         print("That's useless.")
-    character_events(command.upper())
-    
+    print(player.current_location.name)  # DEV THINGY
+    character_events(command.upper(), extra))
+    if character_events(command.upper(), extra)) == "CROSSROADS_MET":
+        extra[1] = True
 print()
